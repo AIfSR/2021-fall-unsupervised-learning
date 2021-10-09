@@ -2,6 +2,7 @@ from features.FeatureCreatorBase import FeatureCreatorBase
 from features.Features import Features
 
 class XFeatureCreator (FeatureCreatorBase):
+    """Creates a Feature that is just the X coordinates of the points"""
 
     def get_features(self) -> Features:
         """Gets all the X values as features"""

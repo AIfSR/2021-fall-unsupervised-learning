@@ -8,6 +8,7 @@ from tckfilereader.Points import Points
 class XFeatureCreatorTest (unittest.TestCase):
 
     def test_get_features(self):
+        """Tests getting features from the X Feature Creator"""
         points = Points([
             Point(1,2,3,4),
             Point(5,6,7,8),

@@ -3,6 +3,7 @@ from tckfilereader.Point import Point
 
 class Points:
     def __init__(self, pointsList:List[Point]=None) -> None:
+        """A Points class stores all the points generated from a tck file"""
         self.pointsList = pointsList or []
         pass
     
