@@ -8,8 +8,10 @@ class FeatureCreatorBase (ABC):
         """Saves points in a member variable when creating FeatureBase 
         instance"""
         self._points = Points
+        self._features = Features()
 
     @abstractmethod
-    def getFeatures(self) -> Features:
+    def get_features(self) -> Features:
         """Creates and gets the features"""
+        pass
     
