@@ -1,11 +1,11 @@
 import unittest
-from features.Feature import Feature
+from features.Features import Features
 
-class FeatureTest (unittest.TestCase):
+class FeaturesTest (unittest.TestCase):
 
     def test_add_feature(self):
         """Tests the add_feature_val method in Feature"""
-        feature = Feature()
+        feature = Features()
         solution = [1,2,3]
         feature.add_feature_val(solution[0])
         feature.add_feature_val(solution[1])
@@ -16,10 +16,10 @@ class FeatureTest (unittest.TestCase):
 
     def test_equals(self):
         """Tests the equals operator for Feature instances"""
-        feature1 = Feature()
-        feature2 = Feature()
-        feature3 = Feature()
-        feature4 = Feature()
+        feature1 = Features()
+        feature2 = Features()
+        feature3 = Features()
+        feature4 = Features()
 
         feature1.add_feature_val(1)
         feature1.add_feature_val(2)
@@ -40,7 +40,7 @@ class FeatureTest (unittest.TestCase):
 
     def test_length(self):
         """Tests the len() operator on a Feature instance"""
-        feature = Feature()
+        feature = Features()
         self.assertEquals(len(feature), 0)
         feature.add_feature_val(1)
         feature.add_feature_val(2)

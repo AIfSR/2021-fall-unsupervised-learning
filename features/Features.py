@@ -1,7 +1,7 @@
 from __future__  import annotations
 from typing import Generator
 
-class Feature:
+class Features:
     """A class to store the values for a feature of a learning algorithm"""
 
     def __init__(self) -> None:
@@ -17,9 +17,9 @@ class Feature:
         for val in self._featuresList:
             yield val
 
-    def __eq__(self, o: Feature) -> bool:
+    def __eq__(self, o: Features) -> bool:
         """Checks that the values of two features are equal"""
-        if not isinstance(o, Feature):
+        if not isinstance(o, Features):
             return False
 
         if not len(self) == len(o):

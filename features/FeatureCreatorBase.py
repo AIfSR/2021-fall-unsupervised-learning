@@ -1,5 +1,6 @@
 from tckfilereader.Points import Points
 from abc import ABC, abstractmethod
+from features.Features import Features
 
 class FeatureCreatorBase (ABC):
 
