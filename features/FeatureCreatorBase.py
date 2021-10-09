@@ -5,8 +5,7 @@ from features.Features import Features
 class FeatureCreatorBase (ABC):
 
     def __init__(self, points:Points) -> None:
-        """Saves points in a member variable when creating FeatureBase 
-        instance"""
+        """Takes Points and creates Features from them."""
         self._points = Points
         self._features = Features()
 
