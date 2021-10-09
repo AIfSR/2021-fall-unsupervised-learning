@@ -5,9 +5,6 @@ from tckfilereader.Point import Point
 
 class TCKFileReaderTest (unittest.TestCase):
 
-    def test_5(self):
-        self.assertEquals(5, 5)
-
     def test_get_points(self):
         path = "tests/tckfilereadertests/testfile.tck"
         tckFileReader = TCKFileReader()
