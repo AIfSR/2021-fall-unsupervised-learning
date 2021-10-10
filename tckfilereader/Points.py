@@ -37,6 +37,9 @@ class Points:
         """Returns the Iterator object"""
         return PointsIterator(self)
 
+    def __eq__(self, other):
+        return self.pointsList == other.pointsList
+
 
 
 

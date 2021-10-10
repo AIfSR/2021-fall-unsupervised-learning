@@ -9,13 +9,12 @@ class TCKFileReaderTest (unittest.TestCase):
         """Tests getting points from a tck file"""
         path = "tests/tckfilereadertests/testfile2.tck"
         tckFileReader = TCKFileReader()
-
         solutionPoints = Points()
         solutionPoints.addPoint(Point(1,6,11,16))
         solutionPoints.addPoint(Point(2,7,12,17))
         solutionPoints.addPoint(Point(3,8,13,18))
         solutionPoints.addPoint(Point(4,9,14,19))
         solutionPoints.addPoint(Point(5,10,15,20))
-        
-        self.assertEquals(str(tckFileReader.get_points(path)), str(solutionPoints))
+        testPoints = tckFileReader.get_points(path)
+        self.assertEquals(testPoints, solutionPoints)
 

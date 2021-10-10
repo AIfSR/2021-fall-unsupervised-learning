@@ -6,6 +6,12 @@ class Point(object):
         self.z = float(z)
         self.t = float(t)
 
+    def __eq__(self, other):
+        return self.x == other.x and \
+               self.y == other.y and \
+               self.z == other.z and \
+               self.t == other.t
+
     def __iter__(self):
         pass
 
@@ -28,3 +34,4 @@ class Point(object):
     def get_t(self) -> float:
         """Defines t variables"""
         return self.t
+
