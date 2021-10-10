@@ -7,14 +7,15 @@ class TCKFileReaderTest (unittest.TestCase):
 
     def test_get_points(self):
         """Tests getting points from a tck file"""
-        path = "tests/tckfilereadertests/testfile.tck"
+        path = "tests/tckfilereadertests/testfile2.tck"
         tckFileReader = TCKFileReader()
 
         solutionPoints = Points()
-        solutionPoints.addPoint(Point(1,6,11,15))
-        solutionPoints.addPoint(Point(2,7,12,16))
-        solutionPoints.addPoint(Point(3,8,13,17))
-        solutionPoints.addPoint(Point(4,9,14,18))
-        solutionPoints.addPoint(Point(5,10,15,19))
+        solutionPoints.addPoint(Point(1,6,11,16))
+        solutionPoints.addPoint(Point(2,7,12,17))
+        solutionPoints.addPoint(Point(3,8,13,18))
+        solutionPoints.addPoint(Point(4,9,14,19))
+        solutionPoints.addPoint(Point(5,10,15,20))
         
-        self.assertEquals(tckFileReader.get_points(path), solutionPoints)
+        self.assertEquals(str(tckFileReader.get_points(path)), str(solutionPoints))
+

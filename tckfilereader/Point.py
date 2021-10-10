@@ -1,10 +1,10 @@
 class Point(object):
     def __init__(self, x: float, y: float, z: float, t: float) -> None:
         """Creates a point with the specified x, y, z, and t coordinates"""
-        self.x = x
-        self.y = y
-        self.z = z
-        self.t = t
+        self.x = float(x)
+        self.y = float(y)
+        self.z = float(z)
+        self.t = float(t)
 
     def __iter__(self):
         pass
