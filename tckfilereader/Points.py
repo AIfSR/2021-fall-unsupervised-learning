@@ -40,6 +40,14 @@ class Points:
     def __eq__(self, other):
         return self.pointsList == other.pointsList
 
+    def __getitem__(self, index:int) -> Point:
+        """Gets the Point at the specified index"""
+        return self.pointsList[index]
+
+    def __len__(self) -> int:
+        """Gets the number of points in this Points object"""
+        return len(self.pointsList)
+
 
 
 

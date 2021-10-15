@@ -24,6 +24,8 @@ class RateOfChangeFeatureCreator (FeatureCreatorBase):
         for val, time in zip(otherFeature, timeFeature):
             if firstVal:
                 self._features.add_feature_val(0.0)
+                # this line needs to be here so that there are an equal amount 
+                # of feature values as points passed in
                 firstVal = False
             else:
                 valChange = val - prevVal

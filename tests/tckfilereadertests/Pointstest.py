@@ -37,3 +37,22 @@ class TestPointsMethods(unittest.TestCase):
         a_list.addPoint(point1)
         b_list.addPoint(point2)
         self.assertEquals(a_list,b_list)
+
+    def test_inexing(self):
+        """Tests indexing methods within Points"""
+        a_list=Points()
+        point1 = Point(1,2,3,4)
+        point2 = Point(1,2,3,4)
+        a_list.addPoint(point1)
+        a_list.addPoint(point2)
+        self.assertEquals(a_list[0], point1)
+        self.assertEquals(a_list[1], point2)
+
+    def test_length(self):
+        a_list=Points()
+        point1 = Point(1,2,3,4)
+        point2 = Point(1,2,3,4)
+        a_list.addPoint(point1)
+        a_list.addPoint(point2)
+        self.assertEquals(len(a_list), 2)
+
