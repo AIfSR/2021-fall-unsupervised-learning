@@ -14,11 +14,11 @@ class TFeatureCreatorTest (unittest.TestCase):
             Point(5,6,7,8),
             Point(9,10,11,12),
         ])
-        xFeatureCreator = TFeatureCreator(points)
+        tFeatureCreator = TFeatureCreator(points)
 
         solutionFeatures = Features()
         solutionFeatures.add_feature_val(4)
         solutionFeatures.add_feature_val(8)
         solutionFeatures.add_feature_val(12)
         
-        self.assertEquals(xFeatureCreator.get_features(), solutionFeatures)
+        self.assertEquals(tFeatureCreator.get_features(), solutionFeatures)
