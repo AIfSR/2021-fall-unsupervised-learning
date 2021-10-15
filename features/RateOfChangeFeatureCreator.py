@@ -9,28 +9,28 @@ from tckfilereader.Points import Points
 class RateOfChangeFeatureCreator (FeatureCreatorBase):
     """Takes a feature and finds the rate of change over all of the values"""
 
-    def __init__(self, points: Points, featureCreator:FeatureCreatorBase) -> None:
-        super().__init__(points)
+    def __init__(self, featureCreator:FeatureCreatorBase) -> None:
+        super().__init__()
         self._featureCreator = featureCreator
 
-    def get_features(self) -> Features:
+    def get_features(self, points: Points) -> Features:
         """Gets the rate of change of all the values in the feature created"""
-        self._features = Features()
+        features = Features()
 
-        timeFeature = TFeatureCreator(self._points).get_features()
-        otherFeature = self._featureCreator.get_features()
+        timeFeature = TFeatureCreator().get_features(points)
+        otherFeature = self._featureCreator.get_features(points)
         firstVal = True
 
         for val, time in zip(otherFeature, timeFeature):
             if firstVal:
-                self._features.add_feature_val(0.0)
+                features.add_feature_val(0.0)
                 # this line needs to be here so that there are an equal amount 
                 # of feature values as points passed in
                 firstVal = False
             else:
                 valChange = val - prevVal
                 tChange = time - prevTime
-                self._features.add_feature_val(valChange / tChange)
+                features.add_feature_val(valChange / tChange)
             prevVal = val
             prevTime = time
-        return self._features
+        return features

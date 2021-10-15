@@ -3,8 +3,13 @@ from features.Features import Features
 from features.PointsDistanceFeatureCreator import PointsDistanceFeatureCreator
 from tckfilereader.Point import Point
 from tckfilereader.Points import Points
+from tests.featurestests.FeatureCreatorTestBase import FeatureCreatorTestBase
 
-class PointsDistanceFeatureCreatorTest (unittest.TestCase):
+class PointsDistanceFeatureCreatorTest (FeatureCreatorTestBase):
+    def get_feature_creator(self):
+        """Gets the XFeatureCreator to test"""
+        return PointsDistanceFeatureCreator()
+
     def test_get_features(self):
         points = Points([
             Point(0,0,0,1),
@@ -13,7 +18,7 @@ class PointsDistanceFeatureCreatorTest (unittest.TestCase):
             Point(0,0,0,4),
             Point(1,1,1,5),
         ])
-        pointsDistanceFeatureCreator = PointsDistanceFeatureCreator(points)
+        pointsDistanceFeatureCreator = PointsDistanceFeatureCreator()
 
         solutionFeatures = Features()
         solutionFeatures.add_feature_val(1)
@@ -22,6 +27,6 @@ class PointsDistanceFeatureCreatorTest (unittest.TestCase):
         solutionFeatures.add_feature_val(3.0**0.5)
         solutionFeatures.add_feature_val(3.0**0.5)
         
-        self.assertEquals(pointsDistanceFeatureCreator.get_features(), solutionFeatures)
+        self.assertEquals(pointsDistanceFeatureCreator.get_features(points), solutionFeatures)
 
 

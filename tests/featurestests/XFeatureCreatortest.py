@@ -4,8 +4,14 @@ from features.XFeatureCreator import XFeatureCreator
 
 from tckfilereader.Point import Point
 from tckfilereader.Points import Points
+from tests.featurestests.FeatureCreatorTestBase import FeatureCreatorTestBase
 
-class XFeatureCreatorTest (unittest.TestCase):
+class XFeatureCreatorTest (FeatureCreatorTestBase):
+
+    def get_feature_creator(self):
+        """Gets the XFeatureCreator to test"""
+        return XFeatureCreator()
+
 
     def test_get_features(self):
         """Tests getting features from the X Feature Creator"""
@@ -14,11 +20,11 @@ class XFeatureCreatorTest (unittest.TestCase):
             Point(5,6,7,8),
             Point(9,10,11,12),
         ])
-        xFeatureCreator = XFeatureCreator(points)
+        xFeatureCreator = XFeatureCreator()
 
         solutionFeatures = Features()
         solutionFeatures.add_feature_val(1)
         solutionFeatures.add_feature_val(5)
         solutionFeatures.add_feature_val(9)
         
-        self.assertEquals(xFeatureCreator.get_features(), solutionFeatures)
+        self.assertEquals(xFeatureCreator.get_features(points), solutionFeatures)
