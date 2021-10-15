@@ -11,6 +11,7 @@ class PointsDistanceFeatureCreatorTest (FeatureCreatorTestBase):
         return PointsDistanceFeatureCreator()
 
     def test_get_features(self):
+        """Tests getting the features from the PointsDistanceFeatureCreator"""
         points = Points([
             Point(0,0,0,1),
             Point(1,0,0,2),

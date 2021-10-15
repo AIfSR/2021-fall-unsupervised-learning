@@ -12,7 +12,6 @@ class XFeatureCreatorTest (FeatureCreatorTestBase):
         """Gets the XFeatureCreator to test"""
         return XFeatureCreator()
 
-
     def test_get_features(self):
         """Tests getting features from the X Feature Creator"""
         points = Points([
