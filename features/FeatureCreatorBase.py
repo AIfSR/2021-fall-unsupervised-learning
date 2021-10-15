@@ -6,7 +6,7 @@ class FeatureCreatorBase (ABC):
 
     def __init__(self, points:Points) -> None:
         """Takes Points and creates Features from them."""
-        self._points = Points
+        self._points = points
         self._features = Features()
 
     @abstractmethod
