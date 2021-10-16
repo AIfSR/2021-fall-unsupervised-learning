@@ -20,4 +20,4 @@ if __name__ == "__main__":
         (PointsDistanceFeatureCreator(), TFeatureCreator())
         
     ]
-    simpleComparePlots = TwoDComparePlots()
+    simpleComparePlots = TwoDComparePlots(plotFeatures)
