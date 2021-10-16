@@ -12,3 +12,7 @@ class YFeatureCreator (FeatureCreatorBase):
             features.add_feature_val(point.get_y())
 
         return features
+
+    def __str__(self) -> str:
+        """This is a feature for Y coords"""
+        return "Y"

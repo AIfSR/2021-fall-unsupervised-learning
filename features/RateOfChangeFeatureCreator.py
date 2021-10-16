@@ -34,3 +34,19 @@ class RateOfChangeFeatureCreator (FeatureCreatorBase):
             prevVal = val
             prevTime = time
         return features
+
+    def __str__(self) -> str:
+        """This is a feature for the Rate of change of another feature"""
+        if not isinstance(self._featureCreator, RateOfChangeFeatureCreator):
+            return "RoC:" + str(self._featureCreator)
+        
+        featureString = str(self._featureCreator)
+        stringWithoutRoc = featureString[3:]
+        if stringWithoutRoc[0] == ":":
+            return "RoC^2" + stringWithoutRoc
+        
+        for i in range(1, len(stringWithoutRoc)):
+            if stringWithoutRoc[i] == ":":
+                break
+        number = stringWithoutRoc[1:i]
+        return "RoC^" + str(int(number) + 1) + stringWithoutRoc[i:]

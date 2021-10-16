@@ -12,3 +12,7 @@ class TFeatureCreator (FeatureCreatorBase):
             features.add_feature_val(point.get_t())
 
         return features
+
+    def __str__(self) -> str:
+        """This is a feature for T coords"""
+        return "T"

@@ -12,3 +12,7 @@ class XFeatureCreator (FeatureCreatorBase):
             features.add_feature_val(point.get_x())
 
         return features
+
+    def __str__(self) -> str:
+        """This is a feature for X coords"""
+        return "X"

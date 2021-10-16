@@ -26,3 +26,7 @@ class YFeatureCreatorTest (FeatureCreatorTestBase):
         solutionFeatures.add_feature_val(10)
         
         self.assertEquals(yFeatureCreator.get_features(points), solutionFeatures)
+
+    def test_string(self):
+        featureCreator = YFeatureCreator()
+        self.assertEquals(str(featureCreator), "Y")

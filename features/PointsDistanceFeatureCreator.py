@@ -27,3 +27,7 @@ class PointsDistanceFeatureCreator (FeatureCreatorBase):
             # this line needs to be here so that there are an equal amount of 
             # feature values as points passed in
         return features
+
+    def __str__(self) -> str:
+        """This is a feature for the distance between points"""
+        return "PointsDistance"

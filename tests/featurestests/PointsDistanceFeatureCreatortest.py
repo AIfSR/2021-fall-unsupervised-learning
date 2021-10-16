@@ -30,4 +30,8 @@ class PointsDistanceFeatureCreatorTest (FeatureCreatorTestBase):
         
         self.assertEquals(pointsDistanceFeatureCreator.get_features(points), solutionFeatures)
 
+    def test_string(self):
+        featureCreator = PointsDistanceFeatureCreator()
+        self.assertEquals(str(featureCreator), "PointsDistance")
+
 

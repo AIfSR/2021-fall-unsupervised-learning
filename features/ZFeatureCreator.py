@@ -12,3 +12,7 @@ class ZFeatureCreator (FeatureCreatorBase):
             features.add_feature_val(point.get_z())
 
         return features
+
+    def __str__(self) -> str:
+        """This is a feature for Z coords"""
+        return "Z"

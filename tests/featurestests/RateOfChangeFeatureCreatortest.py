@@ -27,3 +27,17 @@ class RateOfChangeFeatureCreatorTest (FeatureCreatorTestBase):
         solutionFeatures.add_feature_val((9-5) / (12-8))
         
         self.assertEquals(rateOfChangeFeatureCreator.get_features(points), solutionFeatures)
+    
+    def test_string(self):
+        featureCreator = RateOfChangeFeatureCreator(XFeatureCreator())
+        self.assertEquals(str(featureCreator), "RoC:X")
+        featureCreator = RateOfChangeFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator()))
+        self.assertEquals(str(featureCreator), "RoC^2:X")
+        featureCreator = RateOfChangeFeatureCreator(RateOfChangeFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())))
+        self.assertEquals(str(featureCreator), "RoC^3:X")
+
+        featureCreator = XFeatureCreator()
+        for i in range(200):
+            featureCreator = RateOfChangeFeatureCreator(featureCreator)
+
+        self.assertEquals(str(featureCreator), "RoC^200:X")
