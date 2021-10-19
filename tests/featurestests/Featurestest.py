@@ -46,3 +46,11 @@ class FeaturesTest (unittest.TestCase):
         feature.add_feature_val(2)
 
         self.assertEquals(len(feature), 2)
+
+    def test_string(self):
+        """Tests the str() operator on a Feature instance"""
+        feature = Features()
+        solution = [1,2,3]
+        feature.add_feature_val(solution[0])
+        feature.add_feature_val(solution[1])
+        self.assertEquals(str(feature), "1, 2, ")

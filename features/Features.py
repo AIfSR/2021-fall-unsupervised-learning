@@ -34,3 +34,10 @@ class Features:
     def __len__(self) -> int:
         """Gets the length of this feature"""
         return len(self._featuresList)
+
+    def __str__(self):
+        result = ""
+        for val in self._featuresList:
+            result += str(val)
+            result += ", "
+        return result

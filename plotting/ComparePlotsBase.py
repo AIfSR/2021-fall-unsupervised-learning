@@ -4,6 +4,7 @@ from typing import List, Tuple
 from features.Features import Features
 from tckfilereader.Points import Points
 
+
 class ComparePlotsBase (ABC):
 
     @abstractmethod
