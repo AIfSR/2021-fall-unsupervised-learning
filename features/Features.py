@@ -26,7 +26,7 @@ class Features:
             return False
         
         for val1, val2 in zip(self, o):
-            if not val1 == val2:
+            if abs(val1 - val2) > 1e-6:
                 return False
         
         return True

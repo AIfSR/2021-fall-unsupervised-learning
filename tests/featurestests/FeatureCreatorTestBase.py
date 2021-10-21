@@ -15,7 +15,7 @@ class FeatureCreatorTestBase (unittest.TestCase):
     def test_length_of_feature(self):
         """Tests that the length of the features and length of points are the same"""
         points = Points()
-        for i in range(random.randint(2,10)):
+        for i in range(random.randint(20,30)):
             points.addPoint(Point(random.random()*10,random.random()*10,random.random()*10,i))
 
         feature = self.get_feature_creator().get_features(points)

@@ -1,3 +1,4 @@
+from features.DeltaFromStartFeatureCreator import DeltaFromStartFeatureCreator
 from features.EWAFeatureCreator import EWAFeatureCreator
 from plotting.TwoDComparePlots import TwoDComparePlots
 import numpy
@@ -85,6 +86,7 @@ m2FilePaths = [
 
 if __name__ == "__main__":
     tckFileReader = TCKFileReader()
+    beta = 0.25
     plotFeatures = [
         # (XFeatureCreator(), TFeatureCreator()),
         # (YFeatureCreator(), TFeatureCreator()),
@@ -96,20 +98,26 @@ if __name__ == "__main__":
         # (RateOfChangeFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), TFeatureCreator()),
         # (RateOfChangeFeatureCreator(RateOfChangeFeatureCreator(ZFeatureCreator())), TFeatureCreator()),
         # (PointsDistanceFeatureCreator(), TFeatureCreator()),
-        # (XFeatureCreator(), YFeatureCreator()),
-        # (XFeatureCreator(), ZFeatureCreator()),
-        # (ZFeatureCreator(), YFeatureCreator()),
-        # (RateOfChangeFeatureCreator(XFeatureCreator()), RateOfChangeFeatureCreator(YFeatureCreator())),
-        # (RateOfChangeFeatureCreator(XFeatureCreator()), RateOfChangeFeatureCreator(ZFeatureCreator())),
-        # (RateOfChangeFeatureCreator(ZFeatureCreator()), RateOfChangeFeatureCreator(YFeatureCreator())),
+        # (YFeatureCreator(), XFeatureCreator()),
+        # (ZFeatureCreator(), XFeatureCreator()),
+        # (YFeatureCreator(), ZFeatureCreator()),
+        # (RateOfChangeFeatureCreator(YFeatureCreator()), RateOfChangeFeatureCreator(XFeatureCreator())),
+        # (RateOfChangeFeatureCreator(ZFeatureCreator()), RateOfChangeFeatureCreator(XFeatureCreator())),
+        # (RateOfChangeFeatureCreator(YFeatureCreator()), RateOfChangeFeatureCreator(ZFeatureCreator())),
         # (RateOfChangeFeatureCreator(PointsDistanceFeatureCreator()), TFeatureCreator()),
-        (EWAFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())), TFeatureCreator()),
-        (EWAFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), TFeatureCreator()),
-        (EWAFeatureCreator(RateOfChangeFeatureCreator(ZFeatureCreator())), TFeatureCreator()),
-        (EWAFeatureCreator(RateOfChangeFeatureCreator(PointsDistanceFeatureCreator())), TFeatureCreator()),
-        # (NonZeroFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), NonZeroFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator()))),
-        # (NonZeroFeatureCreator(RateOfChangeFeatureCreator(ZFeatureCreator())), NonZeroFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator()))),
-        # (NonZeroFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), NonZeroFeatureCreator(RateOfChangeFeatureCreator(ZFeatureCreator()))),
+        # (EWAFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())), TFeatureCreator()),
+        # (EWAFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), TFeatureCreator()),
+        # (EWAFeatureCreator(RateOfChangeFeatureCreator(ZFeatureCreator())), TFeatureCreator()),
+        # (EWAFeatureCreator(RateOfChangeFeatureCreator(PointsDistanceFeatureCreator())), TFeatureCreator()),
+        # (EWAFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), EWAFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator()))),
+        # (EWAFeatureCreator(RateOfChangeFeatureCreator(ZFeatureCreator())), EWAFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator()))),
+        # (EWAFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), EWAFeatureCreator(RateOfChangeFeatureCreator(ZFeatureCreator()))),
+        (DeltaFromStartFeatureCreator(EWAFeatureCreator(XFeatureCreator(), beta)), TFeatureCreator()),
+        (DeltaFromStartFeatureCreator(EWAFeatureCreator(YFeatureCreator(), beta)), TFeatureCreator()),
+        (DeltaFromStartFeatureCreator(EWAFeatureCreator(ZFeatureCreator(), beta)), TFeatureCreator()),
+        (DeltaFromStartFeatureCreator(EWAFeatureCreator(YFeatureCreator(), beta)), DeltaFromStartFeatureCreator(EWAFeatureCreator(XFeatureCreator(), beta))),
+        (DeltaFromStartFeatureCreator(EWAFeatureCreator(ZFeatureCreator(), beta)), DeltaFromStartFeatureCreator(EWAFeatureCreator(XFeatureCreator(), beta))),
+        (DeltaFromStartFeatureCreator(EWAFeatureCreator(YFeatureCreator(), beta)), DeltaFromStartFeatureCreator(EWAFeatureCreator(ZFeatureCreator(), beta))),
     ]
 
     m0Points = []
