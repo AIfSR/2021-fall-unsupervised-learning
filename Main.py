@@ -115,5 +115,12 @@ if __name__ == "__main__":
         ("M2", m2Points),
     ]
 
+    files = [
+        ("M0", m0FilePaths),
+        ("M1", m1FilePaths),
+        ("M2", m2FilePaths),
+    ]
+
     twoDComparePlots = TwoDComparePlots()
-    twoDComparePlots.display_plots(plotFeatures, categories)
+    # twoDComparePlots.display_plots(plotFeatures, categories)
+    twoDComparePlots.display_plots(plotFeatures, files)
