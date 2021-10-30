@@ -42,7 +42,14 @@ class SinglePointCompareTrajectories (ComparePlotsBase):
         """Displays plots comparing the average of a feature for each category"""
         for yFeatureGenerator, xFeatureGenerator in featuresList:
             categoryCount = 0
-            xFeatureGenerator = xFeatureGenerator or LineFeatureCreator()
+            if xFeatureGenerator == None:
+                xFeatureGenerator = LineFeatureCreator()
+                plt.tick_params(
+                    axis='x',          # changes apply to the x-axis
+                    which='both',      # both major and minor ticks are affected
+                    bottom=False,      # ticks along the bottom edge are off
+                    top=False,         # ticks along the top edge are off
+                    labelbottom=False)
             for name, allFilesPoints in categories:
                 if(type(xFeatureGenerator) == LineFeatureCreator):
                     xFeatureGenerator.increment()
