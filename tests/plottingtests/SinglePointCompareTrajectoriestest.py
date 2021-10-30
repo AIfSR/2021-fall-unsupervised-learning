@@ -34,6 +34,14 @@ class SinglePointCompareTrajectoriesTest (unittest.TestCase):
         solutionFeature.add_feature_val(0.0)
         
         self.assertEquals(lineFeatureCreator.get_features(points), solutionFeature)
+        lineFeatureCreator.increment()
+        solutionFeature = Features()
+        solutionFeature.add_feature_val(1.0)
+        solutionFeature.add_feature_val(1.0)
+        solutionFeature.add_feature_val(1.0)
+        self.assertEquals(lineFeatureCreator.get_features(points), solutionFeature)
+
+        
         self.assertEquals(str(lineFeatureCreator), "")
 
 

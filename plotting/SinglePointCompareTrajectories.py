@@ -21,8 +21,12 @@ class SinglePointCompareTrajectories (ComparePlotsBase):
     def display_plots(self, featuresList:List[Tuple[Features, Features]], categories:List[Tuple[str,List[Points]]]) -> None:
         """Displays plots comparing the average of a feature for each category"""
         for yFeatureGenerator, xFeatureGenerator in featuresList:
+            categoryCount = 0
             xFeatureGenerator = xFeatureGenerator or LineFeatureCreator()
             for name, allFilesPoints in categories:
+                if(type(xFeatureGenerator) == LineFeatureCreator):
+                    xFeatureGenerator.increment()
+                categoryCount += 1
                 xPointsAverages = []
                 yPointsAverages = []
                 for trajectoryPoints in allFilesPoints:
@@ -50,11 +54,18 @@ class SinglePointCompareTrajectories (ComparePlotsBase):
         
 class LineFeatureCreator (FeatureCreatorBase):
 
+    def __init__(self) -> None:
+        super().__init__()
+        self._val = 0.0
+
+    def increment(self):
+        self._val += 1
+
     def get_features(self, points:Points) -> Features:
         """Creates a feature with only 0s so the scatter plot is a strait line"""
         feature = Features()
         for point in points:
-            feature.add_feature_val(0.0)
+            feature.add_feature_val(self._val)
         return feature
 
     def __str__(self) -> str:

@@ -1,6 +1,7 @@
 from typing import List
 from features.DeltaFromStartFeatureCreator import DeltaFromStartFeatureCreator
 from features.EWAFeatureCreator import EWAFeatureCreator
+from features.XYSpeedFeatureCreator import XYSpeedFeatureCreator
 from plotting.SinglePointCompareTrajectories import SinglePointCompareTrajectories
 from plotting.TwoDComparePlots import TwoDComparePlots
 import numpy
@@ -145,7 +146,9 @@ if __name__ == "__main__":
         # (ZFeatureCreator(), TFeatureCreator()),
         # (DeltaFromStartFeatureCreator(XFeatureCreator()), TFeatureCreator()),
         # (DeltaFromStartFeatureCreator(YFeatureCreator()), TFeatureCreator()),
-        (DeltaFromStartFeatureCreator(XFeatureCreator()), None),
+        # (XYSpeedFeatureCreator(), PointsDistanceFeatureCreator()),
+        (RateOfChangeFeatureCreator(XFeatureCreator()), RateOfChangeFeatureCreator(YFeatureCreator())),
+        (RateOfChangeFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())), RateOfChangeFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator()))),
     ]
     def getPointsFromFilePaths(filePaths:List[str]) -> List[Points]:
         """Gets valid Points from a list of file paths"""
