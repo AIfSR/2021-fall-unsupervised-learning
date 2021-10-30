@@ -26,7 +26,7 @@ class Features:
             return False
         
         for val1, val2 in zip(self, o):
-            if not val1 == val2:
+            if abs(val1 - val2) > 1e-6:
                 return False
         
         return True
@@ -34,3 +34,10 @@ class Features:
     def __len__(self) -> int:
         """Gets the length of this feature"""
         return len(self._featuresList)
+
+    def __str__(self):
+        result = ""
+        for val in self._featuresList:
+            result += str(val)
+            result += ", "
+        return result
