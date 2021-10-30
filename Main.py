@@ -146,9 +146,10 @@ if __name__ == "__main__":
         # (ZFeatureCreator(), TFeatureCreator()),
         # (DeltaFromStartFeatureCreator(XFeatureCreator()), TFeatureCreator()),
         # (DeltaFromStartFeatureCreator(YFeatureCreator()), TFeatureCreator()),
-        # (XYSpeedFeatureCreator(), PointsDistanceFeatureCreator()),
-        (RateOfChangeFeatureCreator(XFeatureCreator()), RateOfChangeFeatureCreator(YFeatureCreator())),
-        (RateOfChangeFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())), RateOfChangeFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator()))),
+        (XYSpeedFeatureCreator(), None),
+        # (RateOfChangeFeatureCreator(XFeatureCreator()), RateOfChangeFeatureCreator(YFeatureCreator())),
+        # (RateOfChangeFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())), RateOfChangeFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator()))),
+
     ]
     def getPointsFromFilePaths(filePaths:List[str]) -> List[Points]:
         """Gets valid Points from a list of file paths"""

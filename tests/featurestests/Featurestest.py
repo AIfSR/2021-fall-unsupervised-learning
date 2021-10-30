@@ -54,3 +54,22 @@ class FeaturesTest (unittest.TestCase):
         feature.add_feature_val(solution[0])
         feature.add_feature_val(solution[1])
         self.assertEquals(str(feature), "1, 2, ")
+
+    def test_max(self):
+        """Tests the max() operator on a Feature instance"""
+        feature = Features()
+        feature.add_feature_val(1)
+        feature.add_feature_val(2)
+        feature.add_feature_val(8)
+        feature.add_feature_val(4)
+        feature.add_feature_val(-2)
+        feature.add_feature_val(-100)
+
+        self.assertEquals(max(feature), 8)
+    def test_to_list(self):
+        """Tests the to_list methood of a Feature"""
+        solution = [1,5,6,2,5,8,9]
+        feature = Features()
+        for val in solution:
+            feature.add_feature_val(val)
+        self.assertEquals(feature.to_list(), solution)

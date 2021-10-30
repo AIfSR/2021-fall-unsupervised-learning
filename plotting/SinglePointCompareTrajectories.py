@@ -18,6 +18,15 @@ class SinglePointCompareTrajectories (ComparePlotsBase):
             count += 1
         return sum / count
 
+    def _get_max_of_feature(self, feature:Features) -> float:
+        """Gets the maximum value of a feature"""
+        return max(feature)
+
+    def _get_median_of_feature(self, feature:Features) -> float:
+        """Gets the median value of a feature"""
+        sortedListFeature = sorted(feature.to_list())
+        return sortedListFeature[len(sortedListFeature) // 2]
+
     def display_plots(self, featuresList:List[Tuple[Features, Features]], categories:List[Tuple[str,List[Points]]]) -> None:
         """Displays plots comparing the average of a feature for each category"""
         for yFeatureGenerator, xFeatureGenerator in featuresList:

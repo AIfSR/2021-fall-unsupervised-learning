@@ -36,8 +36,17 @@ class Features:
         return len(self._featuresList)
 
     def __str__(self):
+        """Gets the string representation of this feature"""
         result = ""
         for val in self._featuresList:
             result += str(val)
             result += ", "
         return result
+
+    def __max__(self):
+        """Gets the maximium falue of this feature"""
+        return max(self._featuresList)
+
+    def to_list(self):
+        """Gets the list version of this feature"""
+        return self._featuresList
