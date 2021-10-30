@@ -8,7 +8,7 @@ from tckfilereader.Points import Points
 
 class SinglePointCompareTrajectories (ComparePlotsBase):
 
-    def getAverageOfFeature(self, feature:Features):
+    def _get_average_of_feature(self, feature:Features) -> float:
         """Gets the average of a feature"""
         count = 0
         sum = 0
@@ -23,7 +23,7 @@ class SinglePointCompareTrajectories (ComparePlotsBase):
             pointsAverages = []
             for trajectoryPoints in allFilesPoints:
                 feature  = featureCreator.get_features(trajectoryPoints)
-                avgOfFeature = self.getAverageOfFeature(feature)
+                avgOfFeature = self._get_average_of_feature(feature)
                 pointsAverages.append(avgOfFeature)
             plt.scatter(range(len(pointsAverages)), pointsAverages, label=name)
         

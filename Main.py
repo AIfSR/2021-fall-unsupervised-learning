@@ -12,6 +12,7 @@ from features.ZFeatureCreator import ZFeatureCreator
 from features.TFeatureCreator import TFeatureCreator
 from features.RateOfChangeFeatureCreator import RateOfChangeFeatureCreator
 from features.PointsDistanceFeatureCreator import PointsDistanceFeatureCreator
+from tckfilereader.Points import Points
 from tckfilereader.TCKFileReader import TCKFileReader
 
 m0FilePaths = [
@@ -145,18 +146,18 @@ if __name__ == "__main__":
         # (DeltaFromStartFeatureCreator(XFeatureCreator()), TFeatureCreator()),
         # (DeltaFromStartFeatureCreator(YFeatureCreator()), TFeatureCreator()),
     ]
+    def getPointsFromFilePaths(filePaths:List[str]) -> List[Points]:
+        """Gets valid Points from a list of file paths"""
+        pointsList = []
+        for file in filePaths:
+            points = tckFileReader.get_points(file)
+            if len(points) > 50:
+                pointsList.append(points)
+        return pointsList
     
-    m0Points = []
-    for file in m0FilePaths[:6]:
-        m0Points.append(tckFileReader.get_points(file))
-
-    m1Points = []
-    for file in m1FilePaths[:6]:
-        m1Points.append(tckFileReader.get_points(file))
-
-    m2Points = []
-    for file in m2FilePaths[:6]:
-        m2Points.append(tckFileReader.get_points(file))
+    m0Points = getPointsFromFilePaths(m0FilePaths)
+    m1Points = getPointsFromFilePaths(m1FilePaths)
+    m2Points = getPointsFromFilePaths(m2FilePaths)
     
     categories = [
         ("M0", m0Points),
