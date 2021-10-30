@@ -145,6 +145,7 @@ if __name__ == "__main__":
         # (ZFeatureCreator(), TFeatureCreator()),
         # (DeltaFromStartFeatureCreator(XFeatureCreator()), TFeatureCreator()),
         # (DeltaFromStartFeatureCreator(YFeatureCreator()), TFeatureCreator()),
+        (DeltaFromStartFeatureCreator(XFeatureCreator()), None),
     ]
     def getPointsFromFilePaths(filePaths:List[str]) -> List[Points]:
         """Gets valid Points from a list of file paths"""
@@ -168,7 +169,7 @@ if __name__ == "__main__":
     # twoDComparePlots = TwoDComparePlots()
     # twoDComparePlots.display_plots(plotFeatures, categories)
     singlePointCompareTrajectories = SinglePointCompareTrajectories()
-    singlePointCompareTrajectories.display_plots((XFeatureCreator(), YFeatureCreator()), categories)
+    singlePointCompareTrajectories.display_plots(plotFeatures, categories)
     # print("M0")
     # printAverageVelocity(m0FilePaths, "M0")
     # print("M1")
