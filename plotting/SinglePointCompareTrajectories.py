@@ -27,6 +27,17 @@ class SinglePointCompareTrajectories (ComparePlotsBase):
         sortedListFeature = sorted(feature.to_list())
         return sortedListFeature[len(sortedListFeature) // 2]
 
+    def _get_std_dev_of_feature(self, feature:Features) -> float:
+        """Gets the standard deviation of a feature"""
+        avg = self._get_average_of_feature(feature)
+        sum = 0
+        count = 0
+        for featureVal in feature:
+            sum += (featureVal - avg)**2
+            count +=1
+        stdDev = (sum/count)**0.5
+        return stdDev
+
     def display_plots(self, featuresList:List[Tuple[Features, Features]], categories:List[Tuple[str,List[Points]]]) -> None:
         """Displays plots comparing the average of a feature for each category"""
         for yFeatureGenerator, xFeatureGenerator in featuresList:

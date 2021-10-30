@@ -147,13 +147,17 @@ if __name__ == "__main__":
         # (ZFeatureCreator(), TFeatureCreator()),
         # (DeltaFromStartFeatureCreator(XFeatureCreator()), TFeatureCreator()),
         # (DeltaFromStartFeatureCreator(YFeatureCreator()), TFeatureCreator()),
-        # (XYSpeedFeatureCreator(), None),
+        (XYSpeedFeatureCreator(), None),
         # (SignChangeFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())), None),
         # (SignChangeFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), None),
         # (SignChangeFeatureCreator(RateOfChangeFeatureCreator(ZFeatureCreator())), None),
-        (SignChangeFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), SignChangeFeatureCreator(RateOfChangeFeatureCreator(ZFeatureCreator()))),
-        (SignChangeFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), SignChangeFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator()))),
-        (SignChangeFeatureCreator(RateOfChangeFeatureCreator(ZFeatureCreator())), SignChangeFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator()))),
+        
+        #(SignChangeFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), SignChangeFeatureCreator(RateOfChangeFeatureCreator(ZFeatureCreator()))),
+        #(SignChangeFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), SignChangeFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator()))),
+        #(SignChangeFeatureCreator(RateOfChangeFeatureCreator(ZFeatureCreator())), SignChangeFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator()))),
+
+        # (XFeatureCreator(), YFeatureCreator()),
+        # (DeltaFromStartFeatureCreator(XFeatureCreator()), DeltaFromStartFeatureCreator(YFeatureCreator())),
     ]
     def getPointsFromFilePaths(filePaths:List[str]) -> List[Points]:
         """Gets valid Points from a list of file paths"""
