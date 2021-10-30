@@ -49,7 +49,7 @@ class TwoDComparePlots (ComparePlotsBase):
             all_graphs.append(graphs_of_feature)
 
         for i in range(len(plotFeatures)):
-            fig, ((ax1, ax2, ax3, ax4, ax5, ax6), (ax7, ax8, ax9, ax10, ax11, ax12), (ax13, ax14, ax15, ax16, ax17, ax18)) = plt.subplots(3, 6, sharex=False, sharey=True)
+            fig, ((ax1, ax2, ax3, ax4, ax5, ax6), (ax7, ax8, ax9, ax10, ax11, ax12), (ax13, ax14, ax15, ax16, ax17, ax18)) = plt.subplots(3, 6, sharex=True, sharey=True)
             fig.suptitle(str(plotFeatures[i][0]) + " / " + str(plotFeatures[i][1]), fontsize=16)
             ax1.plot(all_graphs[i][0][0][1], all_graphs[i][0][0][0])
             ax1.set_title('M0/16-45-01,168', fontsize=7, fontstyle='italic')
