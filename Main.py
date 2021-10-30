@@ -1,6 +1,7 @@
 from typing import List
 from features.DeltaFromStartFeatureCreator import DeltaFromStartFeatureCreator
 from features.EWAFeatureCreator import EWAFeatureCreator
+from plotting.SinglePointCompareTrajectories import SinglePointCompareTrajectories
 from plotting.TwoDComparePlots import TwoDComparePlots
 import numpy
 import matplotlib.pyplot as plt
@@ -85,45 +86,42 @@ m2FilePaths = [
     "data/24h_24h/M2/2020-12-11_19-15-07,942_.tck",
 ]
 
-def printAverageVelocity(files:List):
-    def getAverageOfFeature(feature):
+def printAverageVelocity(files:List, title=""):
+    def getAverageOfAbsFeature(feature):
         count = 0
         sum = 0
         for featureVal in feature:
-            sum += featureVal
+            sum += abs(featureVal)
             count += 1
         return sum / count
     fileCount = 0
-    xSpeedAvgSum = 0
-    ySpeedAvgSum = 0
-    zSpeedAvgSum = 0
+    xSpeedAvgs = []
+    ySpeedAvgs = []
+    zSpeedAvgs = []
     distanceAvgSum = 0
-
     for file in files:
         points = tckFileReader.get_points(file)
+        if len(points) < 50:
+            continue
         xVelocity = RateOfChangeFeatureCreator(XFeatureCreator()).get_features(points)
         yVelocity = RateOfChangeFeatureCreator(YFeatureCreator()).get_features(points)
         zVelocity = RateOfChangeFeatureCreator(ZFeatureCreator()).get_features(points)
         distance = PointsDistanceFeatureCreator().get_features(points)
-        # print(file)
-        # print("Average X Velocity: " + str(getAverageOfFeature(xVelocity)))
-        # print("Average Y Velocity: " + str(getAverageOfFeature(yVelocity)))
-        # print("Average Z Velocity: " + str(getAverageOfFeature(zVelocity)))
-        # print("-----------------------")
         fileCount += 1
-        xSpeedAvgSum += abs(getAverageOfFeature(xVelocity))
-        ySpeedAvgSum += abs(getAverageOfFeature(yVelocity))
-        zSpeedAvgSum += abs(getAverageOfFeature(zVelocity))
-        distanceAvgSum += getAverageOfFeature(distance)
-    xSpeedAvg = xSpeedAvgSum / fileCount
-    ySpeedAvg = ySpeedAvgSum / fileCount
-    zSpeedAvg = zSpeedAvgSum / fileCount
+        xSpeedAvgs.append(getAverageOfAbsFeature(xVelocity))
+        ySpeedAvgs.append(getAverageOfAbsFeature(yVelocity))
+        zSpeedAvgs.append(getAverageOfAbsFeature(zVelocity))
+        distanceAvgSum += getAverageOfAbsFeature(distance)
+    xSpeedAvg = sum(xSpeedAvgs) / fileCount
+    ySpeedAvg = sum(ySpeedAvgs) / fileCount
+    zSpeedAvg = sum(zSpeedAvgs) / fileCount
     distanceAvgSum = distanceAvgSum / fileCount
     print("Average X speed: " + str(xSpeedAvg))
     print("Average Y speed: " + str(ySpeedAvg))
     print("Average Z speed: " + str(zSpeedAvg))
-    print("Average Total Speed: " + str((xSpeedAvg**2 + ySpeedAvg**2 + zSpeedAvg**2)**0.5))
+    print("Average Total Speed (X,Y): " + str((xSpeedAvg**2 + ySpeedAvg**2)**0.5))
     print("Distance Average: " + str(distanceAvgSum / fileCount))
+    
     print("-----------------------")
 
 if __name__ == "__main__":
@@ -140,9 +138,12 @@ if __name__ == "__main__":
         # (DeltaFromStartFeatureCreator(EWAFeatureCreator(XFeatureCreator(), beta)), TFeatureCreator()),
         # (DeltaFromStartFeatureCreator(EWAFeatureCreator(YFeatureCreator(), beta)), TFeatureCreator()),
         # (DeltaFromStartFeatureCreator(EWAFeatureCreator(ZFeatureCreator(), beta)), TFeatureCreator()),
-        (DeltaFromStartFeatureCreator(EWAFeatureCreator(YFeatureCreator(), beta)), DeltaFromStartFeatureCreator(EWAFeatureCreator(XFeatureCreator(), beta))),
-        (DeltaFromStartFeatureCreator(EWAFeatureCreator(ZFeatureCreator(), beta)), DeltaFromStartFeatureCreator(EWAFeatureCreator(XFeatureCreator(), beta))),
-        (DeltaFromStartFeatureCreator(EWAFeatureCreator(YFeatureCreator(), beta)), DeltaFromStartFeatureCreator(EWAFeatureCreator(ZFeatureCreator(), beta))),
+        # (DeltaFromStartFeatureCreator(EWAFeatureCreator(YFeatureCreator(), beta)), DeltaFromStartFeatureCreator(EWAFeatureCreator(XFeatureCreator(), beta))),
+        # (DeltaFromStartFeatureCreator(EWAFeatureCreator(ZFeatureCreator(), beta)), DeltaFromStartFeatureCreator(EWAFeatureCreator(XFeatureCreator(), beta))),
+        # (DeltaFromStartFeatureCreator(EWAFeatureCreator(YFeatureCreator(), beta)), DeltaFromStartFeatureCreator(EWAFeatureCreator(ZFeatureCreator(), beta))),
+        # (ZFeatureCreator(), TFeatureCreator()),
+        # (DeltaFromStartFeatureCreator(XFeatureCreator()), TFeatureCreator()),
+        # (DeltaFromStartFeatureCreator(YFeatureCreator()), TFeatureCreator()),
     ]
     
     m0Points = []
@@ -163,13 +164,15 @@ if __name__ == "__main__":
         ("M2", m2Points),
     ]
 
-    twoDComparePlots = TwoDComparePlots()
-    print(str(len(m0FilePaths) + len(m1FilePaths) + len(m2FilePaths)))
-    #twoDComparePlots.display_plots(plotFeatures, categories)
+    # twoDComparePlots = TwoDComparePlots()
+    # twoDComparePlots.display_plots(plotFeatures, categories)
+    singlePointCompareTrajectories = SinglePointCompareTrajectories()
+    singlePointCompareTrajectories.display_plots(XFeatureCreator(), categories)
     print("M0")
-    printAverageVelocity(m0FilePaths)
+    printAverageVelocity(m0FilePaths, "M0")
     print("M1")
-    printAverageVelocity(m1FilePaths)
+    printAverageVelocity(m1FilePaths, "M1")
     print("M2")
-    printAverageVelocity(m2FilePaths)
+    printAverageVelocity(m2FilePaths, "M2")
+
 
