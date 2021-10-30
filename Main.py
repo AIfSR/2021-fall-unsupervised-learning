@@ -1,6 +1,7 @@
 from typing import List
 from features.DeltaFromStartFeatureCreator import DeltaFromStartFeatureCreator
 from features.EWAFeatureCreator import EWAFeatureCreator
+from features.SignChangeFeatureCreator import SignChangeFeatureCreator
 from features.XYSpeedFeatureCreator import XYSpeedFeatureCreator
 from plotting.SinglePointCompareTrajectories import SinglePointCompareTrajectories
 from plotting.TwoDComparePlots import TwoDComparePlots
@@ -146,10 +147,13 @@ if __name__ == "__main__":
         # (ZFeatureCreator(), TFeatureCreator()),
         # (DeltaFromStartFeatureCreator(XFeatureCreator()), TFeatureCreator()),
         # (DeltaFromStartFeatureCreator(YFeatureCreator()), TFeatureCreator()),
-        (XYSpeedFeatureCreator(), None),
-        # (RateOfChangeFeatureCreator(XFeatureCreator()), RateOfChangeFeatureCreator(YFeatureCreator())),
-        # (RateOfChangeFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())), RateOfChangeFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator()))),
-
+        # (XYSpeedFeatureCreator(), None),
+        # (SignChangeFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())), None),
+        # (SignChangeFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), None),
+        # (SignChangeFeatureCreator(RateOfChangeFeatureCreator(ZFeatureCreator())), None),
+        (SignChangeFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), SignChangeFeatureCreator(RateOfChangeFeatureCreator(ZFeatureCreator()))),
+        (SignChangeFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), SignChangeFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator()))),
+        (SignChangeFeatureCreator(RateOfChangeFeatureCreator(ZFeatureCreator())), SignChangeFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator()))),
     ]
     def getPointsFromFilePaths(filePaths:List[str]) -> List[Points]:
         """Gets valid Points from a list of file paths"""
