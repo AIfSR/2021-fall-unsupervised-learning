@@ -2,6 +2,7 @@ from typing import List
 from features.DeltaFromStartFeatureCreator import DeltaFromStartFeatureCreator 
 from features.ABSFeatureCreator import ABSFeatureCreator
 from features.EWAFeatureCreator import EWAFeatureCreator
+from features.EliminatePointsOutsideRangeFeatureCreator import EliminatePointsOutsideRangeFeatureCreator
 from features.FeatureCreatorBase import FeatureCreatorBase
 from features.PhiFeatureCreator import PhiFeatureCreator
 from features.PointsAngleFeatureCreator import PointsAngleFeatureCreator
@@ -174,44 +175,14 @@ def printAverageVelocity(files:List, title=""):
 
 if __name__ == "__main__":
     tckFileReader = TCKFileReader()
-    beta = 0.25
+    beta = 0.9
     plotFeatures = [
-        # (RateOfChangeFeatureCreator(XFeatureCreator()), TFeatureCreator()),
-        # (RateOfChangeFeatureCreator(YFeatureCreator()), TFeatureCreator()),
-        # (RateOfChangeFeatureCreator(ZFeatureCreator()), TFeatureCreator()),
-        # (EWAFeatureCreator(RateOfChangeFeatureCreator(PointsDistanceFeatureCreator())), TFeatureCreator()),
-        # (EWAFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), EWAFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator()))),
-        # (EWAFeatureCreator(RateOfChangeFeatureCreator(ZFeatureCreator())), EWAFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator()))),
-        # (EWAFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), EWAFeatureCreator(RateOfChangeFeatureCreator(ZFeatureCreator()))),
-        # (DeltaFromStartFeatureCreator(EWAFeatureCreator(XFeatureCreator(), beta)), TFeatureCreator()),
-        # (DeltaFromStartFeatureCreator(EWAFeatureCreator(YFeatureCreator(), beta)), TFeatureCreator()),
-        # (DeltaFromStartFeatureCreator(EWAFeatureCreator(ZFeatureCreator(), beta)), TFeatureCreator()),
-        # (DeltaFromStartFeatureCreator(EWAFeatureCreator(YFeatureCreator(), beta)), DeltaFromStartFeatureCreator(EWAFeatureCreator(XFeatureCreator(), beta))),
-        # (DeltaFromStartFeatureCreator(EWAFeatureCreator(ZFeatureCreator(), beta)), DeltaFromStartFeatureCreator(EWAFeatureCreator(XFeatureCreator(), beta))),
-        # (DeltaFromStartFeatureCreator(EWAFeatureCreator(YFeatureCreator(), beta)), DeltaFromStartFeatureCreator(EWAFeatureCreator(ZFeatureCreator(), beta))),
-        # (ZFeatureCreator(), TFeatureCreator()),
-        # (DeltaFromStartFeatureCreator(XFeatureCreator()), TFeatureCreator()),
-        # (DeltaFromStartFeatureCreator(YFeatureCreator()), TFeatureCreator()),
-        # (XYSpeedFeatureCreator(), None),
-        # (SignChangeFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())), None),
-        # (SignChangeFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), None),
-        # (SignChangeFeatureCreator(RateOfChangeFeatureCreator(ZFeatureCreator())), None),
-        
-        # (SignChangeFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), SignChangeFeatureCreator(RateOfChangeFeatureCreator(ZFeatureCreator()))),
-        # (SignChangeFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), SignChangeFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator()))),
-        # (SignChangeFeatureCreator(RateOfChangeFeatureCreator(ZFeatureCreator())), SignChangeFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator()))),
+        # (PointsAngleFeatureCreator(), None),
+        # (PointsAngleFeatureCreator(), RateOfChangeFeatureCreator(XFeatureCreator())),
+        # (PointsAngleFeatureCreator(), RateOfChangeFeatureCreator(RateOfChangeFeatureCreator(PhiFeatureCreator()))),
 
         
-        # (PointsDistanceFeatureCreator(), None)
-        # (XFeatureCreator(), YFeatureCreator()),
-        # (DeltaFromStartFeatureCreator(XFeatureCreator()), DeltaFromStartFeatureCreator(YFeatureCreator())),
         
-        # (ThetaFeatureCreator(), None),
-        # (PhiFeatureCreator(), None),
-        # (PhiFeatureCreator(), ThetaFeatureCreator()),
-
-        (PointsAngleFeatureCreator(), None),
-        (SpreadFeatureCreator(), PointsAngleFeatureCreator()),
     ]
     def getPointsFromFilePaths(filePaths:List[str]) -> List[Points]:
         """Gets valid Points from a list of file paths"""
@@ -243,12 +214,29 @@ if __name__ == "__main__":
         ("24_4", points24h_4h),
         ("24_24", points24h_24h),
     ]
+    allCategories = [
+        ("M0_0_4", getPointsFromFilePaths(m0_0h_4hFilePaths)),
+        ("M0_0_24", getPointsFromFilePaths(m0_0h_24hFilePaths)),
+        ("M0_24_4", getPointsFromFilePaths(m0_24h_4hFilePaths)),
+        ("M0_24_24", getPointsFromFilePaths(m0_24h_24hFilePaths)),
+
+        ("M1_0_4", getPointsFromFilePaths(m1_0h_4hFilePaths)),
+        ("M1_0_24", getPointsFromFilePaths(m1_0h_24hFilePaths)),
+        ("M1_24_4", getPointsFromFilePaths(m1_24h_4hFilePaths)),
+        ("M1_24_24", getPointsFromFilePaths(m1_24h_24hFilePaths)),
+
+        ("M2_0_4", getPointsFromFilePaths(m2_0h_4hFilePaths)),
+        ("M2_0_24", getPointsFromFilePaths(m2_0h_24hFilePaths)),
+        ("M2_24_4", getPointsFromFilePaths(m2_24h_4hFilePaths)),
+        ("M2_24_24", getPointsFromFilePaths(m2_24h_24hFilePaths)),
+    ]
 
     # twoDComparePlots = TwoDComparePlots()
     # twoDComparePlots.display_plots(plotFeatures, categories)
     singlePointCompareTrajectories = SinglePointCompareTrajectories()
-    #singlePointCompareTrajectories.display_plots(plotFeatures, stageCategories)
-    singlePointCompareTrajectories.display_plots(plotFeatures, treatmentCategories)
+    singlePointCompareTrajectories.display_plots(plotFeatures, stageCategories)
+    # singlePointCompareTrajectories.display_plots(plotFeatures, allCategories)
+    # singlePointCompareTrajectories.display_plots(plotFeatures, treatmentCategories)
     # print("M0")
     # printAverageVelocity(m0FilePaths, "M0")
     # print("M1")
