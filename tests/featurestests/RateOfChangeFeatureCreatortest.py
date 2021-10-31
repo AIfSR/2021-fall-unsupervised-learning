@@ -5,9 +5,9 @@ from features.XFeatureCreator import XFeatureCreator
 
 from tckfilereader.Point import Point
 from tckfilereader.Points import Points
-from tests.featurestests.FeatureCreatorTestBase import FeatureCreatorTestBase
+# from tests.featurestests.FeatureCreatorTestBase import FeatureCreatorTestBase
 
-class RateOfChangeFeatureCreatorTest (FeatureCreatorTestBase):
+class RateOfChangeFeatureCreatorTest (unittest.TestCase):
     def get_feature_creator(self):
         """Gets the XFeatureCreator to test"""
         return RateOfChangeFeatureCreator(XFeatureCreator())
@@ -22,7 +22,7 @@ class RateOfChangeFeatureCreatorTest (FeatureCreatorTestBase):
         rateOfChangeFeatureCreator = RateOfChangeFeatureCreator(XFeatureCreator())
 
         solutionFeatures = Features()
-        solutionFeatures.add_feature_val(0)
+        # solutionFeatures.add_feature_val(0)
         solutionFeatures.add_feature_val((5-1) / (8-4))
         solutionFeatures.add_feature_val((9-5) / (12-8))
         

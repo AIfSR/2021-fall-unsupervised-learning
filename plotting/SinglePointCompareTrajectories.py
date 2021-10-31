@@ -27,11 +27,29 @@ class SinglePointCompareTrajectories (ComparePlotsBase):
         sortedListFeature = sorted(feature.to_list())
         return sortedListFeature[len(sortedListFeature) // 2]
 
+    def _get_std_dev_of_feature(self, feature:Features) -> float:
+        """Gets the standard deviation of a feature"""
+        avg = self._get_average_of_feature(feature)
+        sum = 0
+        count = 0
+        for featureVal in feature:
+            sum += (featureVal - avg)**2
+            count +=1
+        stdDev = (sum/count)**0.5
+        return stdDev
+
     def display_plots(self, featuresList:List[Tuple[Features, Features]], categories:List[Tuple[str,List[Points]]]) -> None:
         """Displays plots comparing the average of a feature for each category"""
         for yFeatureGenerator, xFeatureGenerator in featuresList:
             categoryCount = 0
-            xFeatureGenerator = xFeatureGenerator or LineFeatureCreator()
+            if xFeatureGenerator == None:
+                xFeatureGenerator = LineFeatureCreator()
+                plt.tick_params(
+                    axis='x',          # changes apply to the x-axis
+                    which='both',      # both major and minor ticks are affected
+                    bottom=False,      # ticks along the bottom edge are off
+                    top=False,         # ticks along the top edge are off
+                    labelbottom=False)
             for name, allFilesPoints in categories:
                 if(type(xFeatureGenerator) == LineFeatureCreator):
                     xFeatureGenerator.increment()
@@ -46,7 +64,7 @@ class SinglePointCompareTrajectories (ComparePlotsBase):
                     xPointsAverages.append(xAvgOfFeature)
                     yPointsAverages.append(yAvgOfFeature)
                 plt.scatter(xPointsAverages, yPointsAverages, label=name)
-            
+
             title = ""
             for name, allFilesPoints in categories:
                 title += name + ", "
@@ -55,12 +73,12 @@ class SinglePointCompareTrajectories (ComparePlotsBase):
                 title += str(yFeatureGenerator) + " vs. " + str(xFeatureGenerator) + " comparison"
             else:
                 title += str(yFeatureGenerator)
-                
+
             plt.ylabel("Average: " + str(yFeatureGenerator))
             plt.title(title)
             plt.legend()
             plt.show()
-        
+
 class LineFeatureCreator (FeatureCreatorBase):
 
     def __init__(self) -> None:
@@ -79,4 +97,3 @@ class LineFeatureCreator (FeatureCreatorBase):
 
     def __str__(self) -> str:
         return ""
-

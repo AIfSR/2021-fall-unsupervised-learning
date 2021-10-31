@@ -14,6 +14,7 @@ from features.ZFeatureCreator import ZFeatureCreator
 from features.TFeatureCreator import TFeatureCreator
 from features.RateOfChangeFeatureCreator import RateOfChangeFeatureCreator
 from features.PointsDistanceFeatureCreator import PointsDistanceFeatureCreator
+from features.PointsDisplacementFeatureCreator import PointsDisplacementFeatureCreator
 from tckfilereader.Points import Points
 from tckfilereader.TCKFileReader import TCKFileReader
 
@@ -102,6 +103,7 @@ def printAverageVelocity(files:List, title=""):
     ySpeedAvgs = []
     zSpeedAvgs = []
     distanceAvgSum = 0
+    displacementAvgSum = 0
     for file in files:
         points = tckFileReader.get_points(file)
         if len(points) < 50:
@@ -110,20 +112,23 @@ def printAverageVelocity(files:List, title=""):
         yVelocity = RateOfChangeFeatureCreator(YFeatureCreator()).get_features(points)
         zVelocity = RateOfChangeFeatureCreator(ZFeatureCreator()).get_features(points)
         distance = PointsDistanceFeatureCreator().get_features(points)
+        displacement = PointsDisplacementFeatureCreator().get_features(points)
         fileCount += 1
         xSpeedAvgs.append(getAverageOfAbsFeature(xVelocity))
         ySpeedAvgs.append(getAverageOfAbsFeature(yVelocity))
         zSpeedAvgs.append(getAverageOfAbsFeature(zVelocity))
         distanceAvgSum += getAverageOfAbsFeature(distance)
+        displacementAvgSum += getAverageOfAbsFeature(displacement)
     xSpeedAvg = sum(xSpeedAvgs) / fileCount
     ySpeedAvg = sum(ySpeedAvgs) / fileCount
     zSpeedAvg = sum(zSpeedAvgs) / fileCount
-    distanceAvgSum = distanceAvgSum / fileCount
+    # distanceAvgSum = distanceAvgSum / fileCount
     print("Average X speed: " + str(xSpeedAvg))
     print("Average Y speed: " + str(ySpeedAvg))
     print("Average Z speed: " + str(zSpeedAvg))
     print("Average Total Speed (X,Y): " + str((xSpeedAvg**2 + ySpeedAvg**2)**0.5))
     print("Distance Average: " + str(distanceAvgSum / fileCount))
+    print("Displacement Average: " + str(displacementAvgSum / fileCount))
     
     print("-----------------------")
 
@@ -131,6 +136,7 @@ if __name__ == "__main__":
     tckFileReader = TCKFileReader()
     beta = 0.25
     plotFeatures = [
+        (PointsDistanceFeatureCreator(), None),
         # (RateOfChangeFeatureCreator(XFeatureCreator()), TFeatureCreator()),
         # (RateOfChangeFeatureCreator(YFeatureCreator()), TFeatureCreator()),
         # (RateOfChangeFeatureCreator(ZFeatureCreator()), TFeatureCreator()),
@@ -151,9 +157,9 @@ if __name__ == "__main__":
         # (SignChangeFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())), None),
         # (SignChangeFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), None),
         # (SignChangeFeatureCreator(RateOfChangeFeatureCreator(ZFeatureCreator())), None),
-        (SignChangeFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), SignChangeFeatureCreator(RateOfChangeFeatureCreator(ZFeatureCreator()))),
-        (SignChangeFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), SignChangeFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator()))),
-        (SignChangeFeatureCreator(RateOfChangeFeatureCreator(ZFeatureCreator())), SignChangeFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator()))),
+        # (SignChangeFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), SignChangeFeatureCreator(RateOfChangeFeatureCreator(ZFeatureCreator()))),
+        # (SignChangeFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), SignChangeFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator()))),
+        # (SignChangeFeatureCreator(RateOfChangeFeatureCreator(ZFeatureCreator())), SignChangeFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator()))),
     ]
     def getPointsFromFilePaths(filePaths:List[str]) -> List[Points]:
         """Gets valid Points from a list of file paths"""
@@ -175,9 +181,10 @@ if __name__ == "__main__":
     ]
 
     # twoDComparePlots = TwoDComparePlots()
-    # twoDComparePlots.display_plots(plotFeatures, categories)
+    # TwoDComparePlots.display_plots(plotFeatures, categories)
     singlePointCompareTrajectories = SinglePointCompareTrajectories()
     singlePointCompareTrajectories.display_plots(plotFeatures, categories)
+    printAverageVelocity(m2FilePaths, title="")
     # print("M0")
     # printAverageVelocity(m0FilePaths, "M0")
     # print("M1")

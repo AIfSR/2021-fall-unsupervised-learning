@@ -22,8 +22,8 @@ class PointsDistanceFeatureCreator (FeatureCreatorBase):
             distance = (xdifference**2 + ydifference**2 + zdifference**2)**0.5
 
             features.add_feature_val(distance) 
-        if len(points) > 1:
-            features.add_feature_val(distance) 
+        # if len(points) > 1:
+        #     features.add_feature_val(distance)
             # this line needs to be here so that there are an equal amount of 
             # feature values as points passed in
         return features

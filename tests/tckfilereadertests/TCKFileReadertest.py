@@ -7,7 +7,7 @@ class TCKFileReaderTest (unittest.TestCase):
 
     def test_get_points(self):
         """Tests getting points from a tck file"""
-        path = "tests/tckfilereadertests/testfile2.tck"
+        path = "tests/tckfilereadertests/testfile2.txt"
         tckFileReader = TCKFileReader()
         solutionPoints = Points()
         solutionPoints.addPoint(Point(1,6,11,16))
