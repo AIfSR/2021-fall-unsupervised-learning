@@ -1,6 +1,7 @@
 from typing import List
 from features.DeltaFromStartFeatureCreator import DeltaFromStartFeatureCreator 
 from features.ABSFeatureCreator import ABSFeatureCreator
+from features.DeviationsFromMeanFeatureCreator import DeviationsFromMeanFeatureCreator
 from features.EWAFeatureCreator import EWAFeatureCreator
 from features.EliminatePointsOutsideRangeFeatureCreator import EliminatePointsOutsideRangeFeatureCreator
 from features.FeatureCreatorBase import FeatureCreatorBase
@@ -9,6 +10,7 @@ from features.PointsAngleFeatureCreator import PointsAngleFeatureCreator
 from features.SignChangeFeatureCreator import SignChangeFeatureCreator
 from features.SpreadFeatureCreator import SpreadFeatureCreator
 from features.ThetaFeatureCreator import ThetaFeatureCreator
+from features.XYCurvatureFeatureCreator import XYCurvatureFeatureCreator
 from features.XYSpeedFeatureCreator import XYSpeedFeatureCreator
 from plotting.SinglePointCompareTrajectories import SinglePointCompareTrajectories
 from plotting.TwoDComparePlots import TwoDComparePlots
@@ -180,10 +182,16 @@ if __name__ == "__main__":
         # (PointsAngleFeatureCreator(), None),
         # (PointsAngleFeatureCreator(), RateOfChangeFeatureCreator(XFeatureCreator())),
         # (PointsAngleFeatureCreator(), RateOfChangeFeatureCreator(RateOfChangeFeatureCreator(PhiFeatureCreator()))),
+        (DeviationsFromMeanFeatureCreator(PointsAngleFeatureCreator()), None),
 
-        
-        
     ]
+
+    twoDPlotFeatures = [
+        (EliminatePointsOutsideRangeFeatureCreator(0, 0.5, DeltaFromStartFeatureCreator(YFeatureCreator())), EliminatePointsOutsideRangeFeatureCreator(0, 0.5, DeltaFromStartFeatureCreator(XFeatureCreator()))),
+        (EliminatePointsOutsideRangeFeatureCreator(0.5, 1.0, DeltaFromStartFeatureCreator(YFeatureCreator())), EliminatePointsOutsideRangeFeatureCreator(0.5, 1.0, DeltaFromStartFeatureCreator(XFeatureCreator()))),
+        (EliminatePointsOutsideRangeFeatureCreator(0.25, 0.75, DeltaFromStartFeatureCreator(YFeatureCreator())), EliminatePointsOutsideRangeFeatureCreator(0.25, 0.75, DeltaFromStartFeatureCreator(XFeatureCreator()))),
+    ]
+    
     def getPointsFromFilePaths(filePaths:List[str]) -> List[Points]:
         """Gets valid Points from a list of file paths"""
         pointsList = []
@@ -231,8 +239,8 @@ if __name__ == "__main__":
         ("M2_24_24", getPointsFromFilePaths(m2_24h_24hFilePaths)),
     ]
 
-    # twoDComparePlots = TwoDComparePlots()
-    # twoDComparePlots.display_plots(plotFeatures, categories)
+    twoDComparePlots = TwoDComparePlots()
+    # twoDComparePlots.display_plots(twoDPlotFeatures, stageCategories)
     singlePointCompareTrajectories = SinglePointCompareTrajectories()
     singlePointCompareTrajectories.display_plots(plotFeatures, stageCategories)
     # singlePointCompareTrajectories.display_plots(plotFeatures, allCategories)
