@@ -20,7 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d10fb0f2-3bc6-46de-9e03-7b62648ecbe5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/features/PointsDisplacementFeatureCreator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/featurestests/PointsDisplacementFeatureCreatortest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/tckfilereadertests/testfile2.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/features/PointsDistanceFeatureCreator.py" beforeDir="false" afterPath="$PROJECT_DIR$/features/PointsDistanceFeatureCreator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/features/RateOfChangeFeatureCreator.py" beforeDir="false" afterPath="$PROJECT_DIR$/features/RateOfChangeFeatureCreator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plotting/SinglePointCompareTrajectories.py" beforeDir="false" afterPath="$PROJECT_DIR$/plotting/SinglePointCompareTrajectories.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/featurestests/PointsDistanceFeatureCreatortest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/featurestests/PointsDistanceFeatureCreatortest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/featurestests/RateOfChangeFeatureCreatortest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/featurestests/RateOfChangeFeatureCreatortest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/featurestests/XYSpeedFeatureCreatortest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/featurestests/XYSpeedFeatureCreatortest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tckfilereadertests/TCKFileReadertest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tckfilereadertests/TCKFileReadertest.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +59,11 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/features" />
+    </key>
   </component>
   <component name="RunManager" selected="Python.Main">
     <configuration name="ComparePlotsBase" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -134,7 +150,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for XFeatureCreatortest.XFeatureCreatorTest.test_get_features" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for PointsDistanceFeatureCreatortest.PointsDistanceFeatureCreatorTest.test_get_features" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="2021-fall-unsupervised-learning" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -146,17 +162,17 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;XFeatureCreatortest.XFeatureCreatorTest.test_get_features&quot;" />
+      <option name="_new_target" value="&quot;PointsDistanceFeatureCreatortest.PointsDistanceFeatureCreatorTest.test_get_features&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.Main" />
+        <item itemvalue="Python tests.pytest for PointsDistanceFeatureCreatortest.PointsDistanceFeatureCreatorTest.test_get_features" />
         <item itemvalue="Python.TwoDComparePlots" />
         <item itemvalue="Python.TCKFileReader" />
         <item itemvalue="Python.ComparePlotsBase" />
-        <item itemvalue="Python tests.pytest for XFeatureCreatortest.XFeatureCreatorTest.test_get_features" />
       </list>
     </recent_temporary>
   </component>
@@ -178,22 +194,22 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="440" y="270" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.877@0.23.1440.877" timestamp="1633810461888" />
-    <state width="1419" height="231" key="GridCell.Tab.0.bottom" timestamp="1634673905959">
+    <state width="1419" height="229" key="GridCell.Tab.0.bottom" timestamp="1635695179626">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1419" height="231" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1634673905959" />
-    <state width="1419" height="231" key="GridCell.Tab.0.center" timestamp="1634673905958">
+    <state width="1419" height="229" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1635695179626" />
+    <state width="1419" height="229" key="GridCell.Tab.0.center" timestamp="1635695179625">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1419" height="231" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1634673905958" />
-    <state width="1419" height="231" key="GridCell.Tab.0.left" timestamp="1634673905957">
+    <state width="1419" height="229" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1635695179625" />
+    <state width="1419" height="229" key="GridCell.Tab.0.left" timestamp="1635695179625">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1419" height="231" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1634673905957" />
-    <state width="1419" height="231" key="GridCell.Tab.0.right" timestamp="1634673905958">
+    <state width="1419" height="229" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1635695179625" />
+    <state width="1419" height="229" key="GridCell.Tab.0.right" timestamp="1635695179625">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1419" height="231" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1634673905958" />
+    <state width="1419" height="229" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1635695179625" />
     <state width="1419" height="286" key="GridCell.Tab.1.bottom" timestamp="1634671848416">
       <screen x="0" y="23" width="1440" height="877" />
     </state>

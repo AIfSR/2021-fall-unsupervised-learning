@@ -64,7 +64,7 @@ class SinglePointCompareTrajectories (ComparePlotsBase):
                     xPointsAverages.append(xAvgOfFeature)
                     yPointsAverages.append(yAvgOfFeature)
                 plt.scatter(xPointsAverages, yPointsAverages, label=name)
-            
+
             title = ""
             for name, allFilesPoints in categories:
                 title += name + ", "
@@ -73,12 +73,12 @@ class SinglePointCompareTrajectories (ComparePlotsBase):
                 title += str(yFeatureGenerator) + " vs. " + str(xFeatureGenerator) + " comparison"
             else:
                 title += str(yFeatureGenerator)
-                
+
             plt.ylabel("Average: " + str(yFeatureGenerator))
             plt.title(title)
             plt.legend()
             plt.show()
-        
+
 class LineFeatureCreator (FeatureCreatorBase):
 
     def __init__(self) -> None:
@@ -97,4 +97,3 @@ class LineFeatureCreator (FeatureCreatorBase):
 
     def __str__(self) -> str:
         return ""
-

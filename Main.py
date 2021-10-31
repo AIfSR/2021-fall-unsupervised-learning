@@ -23,6 +23,7 @@ from features.ZFeatureCreator import ZFeatureCreator
 from features.TFeatureCreator import TFeatureCreator
 from features.RateOfChangeFeatureCreator import RateOfChangeFeatureCreator
 from features.PointsDistanceFeatureCreator import PointsDistanceFeatureCreator
+from features.PointsDisplacementFeatureCreator import PointsDisplacementFeatureCreator
 from tckfilereader.Points import Points
 from tckfilereader.TCKFileReader import TCKFileReader
 m0_0h_4hFilePaths = [
@@ -151,6 +152,7 @@ def printAverageVelocity(files:List, title=""):
     ySpeedAvgs = []
     zSpeedAvgs = []
     distanceAvgSum = 0
+    displacementAvgSum = 0
     for file in files:
         points = tckFileReader.get_points(file)
         if len(points) < 50:
@@ -159,11 +161,13 @@ def printAverageVelocity(files:List, title=""):
         yVelocity = RateOfChangeFeatureCreator(YFeatureCreator()).get_features(points)
         zVelocity = RateOfChangeFeatureCreator(ZFeatureCreator()).get_features(points)
         distance = PointsDistanceFeatureCreator().get_features(points)
+        displacement = PointsDisplacementFeatureCreator().get_features(points)
         fileCount += 1
         xSpeedAvgs.append(getAverageOfAbsFeature(xVelocity))
         ySpeedAvgs.append(getAverageOfAbsFeature(yVelocity))
         zSpeedAvgs.append(getAverageOfAbsFeature(zVelocity))
         distanceAvgSum += getAverageOfAbsFeature(distance)
+        displacementAvgSum += getAverageOfAbsFeature(displacement)
     xSpeedAvg = sum(xSpeedAvgs) / fileCount
     ySpeedAvg = sum(ySpeedAvgs) / fileCount
     zSpeedAvg = sum(zSpeedAvgs) / fileCount
@@ -172,6 +176,7 @@ def printAverageVelocity(files:List, title=""):
     print("Average Z speed: " + str(zSpeedAvg))
     print("Average Total Speed (X,Y): " + str((xSpeedAvg**2 + ySpeedAvg**2)**0.5))
     print("Distance Average: " + str(distanceAvgSum / fileCount))
+    print("Displacement Average: " + str(displacementAvgSum / fileCount))
     
     print("-----------------------")
 
