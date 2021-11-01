@@ -19,8 +19,6 @@ class EliminatePointsOutsideRangeFeatureCreator (FeatureCreatorBase):
         for featureVal in origFeatures:
             if(count / len(origFeatures) <= self._rangeMax and count / len(origFeatures) >= self._rangeMin):
                 features.add_feature_val(featureVal)
-            else:
-                features.add_feature_val(0.0)
             
             count+= 1
 

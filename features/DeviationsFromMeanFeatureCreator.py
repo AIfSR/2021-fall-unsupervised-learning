@@ -10,22 +10,20 @@ class DeviationsFromMeanFeatureCreator (FeatureCreatorBase):
         super().__init__()
         self._origFeatureCreator = origFeatureCreator
 
-    def _get_mean(self, points) -> float:
+    def get_mean(features:Features) -> float:
         """Gets the mean of all of the feature values"""
         sum = 0
         count = 0
-        features = self._origFeatureCreator.get_features(points)
         for featureVal in features:
             sum += featureVal
             count += 1
         return sum / count
     
-    def _get_std_dev(self, points) -> float:
+    def get_std_dev(features:Features) -> float:
         """Gets the standard deviation of all the feature values"""
         sum = 0
         count =0
-        mean = self._get_mean(points)
-        features = self._origFeatureCreator.get_features(points)
+        mean = DeviationsFromMeanFeatureCreator.get_mean(features)
         for featureVal in features:
             sum += (featureVal - mean)**2
             count += 1
@@ -35,8 +33,8 @@ class DeviationsFromMeanFeatureCreator (FeatureCreatorBase):
         """Gets all the Y values as features"""
         origFeatures = self._origFeatureCreator.get_features(points)
         features = Features()
-        mean = self._get_mean(points)
-        std_dev = self._get_std_dev(points)
+        mean = DeviationsFromMeanFeatureCreator.get_mean(origFeatures)
+        std_dev = DeviationsFromMeanFeatureCreator.get_std_dev(origFeatures)
         for featureVal in origFeatures:
             z = (featureVal - mean) / std_dev
             features.add_feature_val(z)

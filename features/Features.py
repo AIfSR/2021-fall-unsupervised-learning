@@ -50,3 +50,7 @@ class Features:
     def to_list(self):
         """Gets the list version of this feature"""
         return self._featuresList
+
+    def __getitem__(self, index:int) -> float:
+        """Gets the FeatureValue at the specified index"""
+        return self._featuresList[index]

@@ -41,6 +41,7 @@ class SinglePointCompareTrajectories (ComparePlotsBase):
     def display_plots(self, featuresList:List[Tuple[Features, Features]], categories:List[Tuple[str,List[Points]]]) -> None:
         """Displays plots comparing the average of a feature for each category"""
         for yFeatureGenerator, xFeatureGenerator in featuresList:
+            plt.close()
             categoryCount = 0
             if xFeatureGenerator == None:
                 xFeatureGenerator = LineFeatureCreator()

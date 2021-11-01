@@ -1,4 +1,9 @@
 from typing import List
+from features.DisplacementDirectionContribution import DisplacementDirectionContribution
+from features.EAnotherFeatureCreator import EAnotherFeatureCreator
+from features.MarkWhenFeatureValuesChange import MarkWhenFeatureValuesChange
+from features.MaxMinDifferenceOfFeature import MaxMinDifferenceOfFeature
+from features.OutlierFeatureCreator import OutlierFeatureCreator
 from features.DeltaFromStartFeatureCreator import DeltaFromStartFeatureCreator 
 from features.ABSFeatureCreator import ABSFeatureCreator
 from features.DeviationsFromMeanFeatureCreator import DeviationsFromMeanFeatureCreator
@@ -7,11 +12,14 @@ from features.EliminatePointsOutsideRangeFeatureCreator import EliminatePointsOu
 from features.FeatureCreatorBase import FeatureCreatorBase
 from features.PhiFeatureCreator import PhiFeatureCreator
 from features.PointsAngleFeatureCreator import PointsAngleFeatureCreator
+from features.RaiseToPowerFeatureCreator import RaiseToPowerFeatureCreator
 from features.SignChangeFeatureCreator import SignChangeFeatureCreator
+from features.SpeedOverDistanceFeatureCreator import SpeedOverDistanceFeatureCreator
 from features.SpreadFeatureCreator import SpreadFeatureCreator
 from features.ThetaFeatureCreator import ThetaFeatureCreator
 from features.XYCurvatureFeatureCreator import XYCurvatureFeatureCreator
 from features.XYSpeedFeatureCreator import XYSpeedFeatureCreator
+from features.XYZSpeedFeatureCreator import XYZSpeedFeatureCreator
 from plotting.SinglePointCompareTrajectories import SinglePointCompareTrajectories
 from plotting.TwoDComparePlots import TwoDComparePlots
 import numpy
@@ -123,7 +131,7 @@ m2FilePaths.extend(m2_0h_24hFilePaths[:])
 m2FilePaths.extend(m2_24h_4hFilePaths[:])
 m2FilePaths.extend(m2_24h_24hFilePaths[:])
 
-filePaths0h_4h = m1_0h_4hFilePaths[:]
+filePaths0h_4h = m0_0h_4hFilePaths[:]
 filePaths0h_4h.extend(m1_0h_4hFilePaths[:])
 filePaths0h_4h.extend(m2_0h_4hFilePaths[:])
 
@@ -183,12 +191,25 @@ def printAverageVelocity(files:List, title=""):
 if __name__ == "__main__":
     tckFileReader = TCKFileReader()
     beta = 0.9
+    outlier = 2.0
+    power = 3
     plotFeatures = [
-        # (PointsAngleFeatureCreator(), None),
-        # (PointsAngleFeatureCreator(), RateOfChangeFeatureCreator(XFeatureCreator())),
-        # (PointsAngleFeatureCreator(), RateOfChangeFeatureCreator(RateOfChangeFeatureCreator(PhiFeatureCreator()))),
-        (DeviationsFromMeanFeatureCreator(PointsAngleFeatureCreator()), None),
-
+        (PointsAngleFeatureCreator(), None),
+        (PointsAngleFeatureCreator(), RateOfChangeFeatureCreator(XFeatureCreator())),
+        (PointsAngleFeatureCreator(), RateOfChangeFeatureCreator(RateOfChangeFeatureCreator(PhiFeatureCreator()))),
+        (OutlierFeatureCreator(ZFeatureCreator(), 1.5), PointsAngleFeatureCreator()),
+        (OutlierFeatureCreator(RateOfChangeFeatureCreator(ThetaFeatureCreator()), 1.5), PointsAngleFeatureCreator()),
+        (MarkWhenFeatureValuesChange(YFeatureCreator()), PointsAngleFeatureCreator()),
+        (RaiseToPowerFeatureCreator(XFeatureCreator(), 2.0), PointsAngleFeatureCreator()),
+        (RaiseToPowerFeatureCreator(XFeatureCreator(), 0.5), PointsAngleFeatureCreator()),
+        (RaiseToPowerFeatureCreator(RateOfChangeFeatureCreator(PhiFeatureCreator()), power), PointsAngleFeatureCreator()),
+        (RaiseToPowerFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator()), 0.5), PointsAngleFeatureCreator()),
+        (RaiseToPowerFeatureCreator(DeltaFromStartFeatureCreator(XFeatureCreator()), 3), PointsAngleFeatureCreator()),
+        (RaiseToPowerFeatureCreator(DeltaFromStartFeatureCreator(ZFeatureCreator()), 3), PointsAngleFeatureCreator()),
+        (RaiseToPowerFeatureCreator(ThetaFeatureCreator(), 3), PointsAngleFeatureCreator()),
+        (RaiseToPowerFeatureCreator(RateOfChangeFeatureCreator(ZFeatureCreator()), 3), PointsAngleFeatureCreator()),
+        (EAnotherFeatureCreator(DeltaFromStartFeatureCreator(ZFeatureCreator())), PointsAngleFeatureCreator()),
+        
     ]
 
     twoDPlotFeatures = [
