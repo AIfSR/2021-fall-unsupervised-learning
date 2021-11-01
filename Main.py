@@ -188,8 +188,56 @@ def printAverageVelocity(files:List, title=""):
     
     print("-----------------------")
 
+tckFileReader = TCKFileReader()
+
+def getPointsFromFilePaths(filePaths:List[str]) -> List[Points]:
+    """Gets valid Points from a list of file paths"""
+    pointsList = []
+    for file in filePaths:
+        points = tckFileReader.get_points(file)
+        if len(points) > 50:
+            pointsList.append(points)
+    return pointsList
+    
+m0Points = getPointsFromFilePaths(m0FilePaths)
+m1Points = getPointsFromFilePaths(m1FilePaths)
+m2Points = getPointsFromFilePaths(m2FilePaths)
+
+points0h_4h = getPointsFromFilePaths(filePaths0h_4h)
+points0h_24h = getPointsFromFilePaths(filePaths0h_24h)
+points24h_4h = getPointsFromFilePaths(filePaths24h_4h)
+points24h_24h = getPointsFromFilePaths(filePaths24h_24h)
+
+stageCategories = [
+    ("M0", m0Points),
+    ("M1", m1Points),
+    ("M2", m2Points),
+]
+
+treatmentCategories = [
+    ("0_4", points0h_4h),
+    ("0_24", points0h_24h),
+    ("24_4", points24h_4h),
+    ("24_24", points24h_24h),
+]
+allCategories = [
+    ("M0_0_4", getPointsFromFilePaths(m0_0h_4hFilePaths)),
+    ("M0_0_24", getPointsFromFilePaths(m0_0h_24hFilePaths)),
+    ("M0_24_4", getPointsFromFilePaths(m0_24h_4hFilePaths)),
+    ("M0_24_24", getPointsFromFilePaths(m0_24h_24hFilePaths)),
+
+    ("M1_0_4", getPointsFromFilePaths(m1_0h_4hFilePaths)),
+    ("M1_0_24", getPointsFromFilePaths(m1_0h_24hFilePaths)),
+    ("M1_24_4", getPointsFromFilePaths(m1_24h_4hFilePaths)),
+    ("M1_24_24", getPointsFromFilePaths(m1_24h_24hFilePaths)),
+
+    ("M2_0_4", getPointsFromFilePaths(m2_0h_4hFilePaths)),
+    ("M2_0_24", getPointsFromFilePaths(m2_0h_24hFilePaths)),
+    ("M2_24_4", getPointsFromFilePaths(m2_24h_4hFilePaths)),
+    ("M2_24_24", getPointsFromFilePaths(m2_24h_24hFilePaths)),
+]
+
 if __name__ == "__main__":
-    tckFileReader = TCKFileReader()
     beta = 0.9
     outlier = 2.0
     power = 3
@@ -211,53 +259,6 @@ if __name__ == "__main__":
         (EliminatePointsOutsideRangeFeatureCreator(0, 0.5, DeltaFromStartFeatureCreator(YFeatureCreator())), EliminatePointsOutsideRangeFeatureCreator(0, 0.5, DeltaFromStartFeatureCreator(XFeatureCreator()))),
         (EliminatePointsOutsideRangeFeatureCreator(0.5, 1.0, DeltaFromStartFeatureCreator(YFeatureCreator())), EliminatePointsOutsideRangeFeatureCreator(0.5, 1.0, DeltaFromStartFeatureCreator(XFeatureCreator()))),
         (EliminatePointsOutsideRangeFeatureCreator(0.25, 0.75, DeltaFromStartFeatureCreator(YFeatureCreator())), EliminatePointsOutsideRangeFeatureCreator(0.25, 0.75, DeltaFromStartFeatureCreator(XFeatureCreator()))),
-    ]
-    
-    def getPointsFromFilePaths(filePaths:List[str]) -> List[Points]:
-        """Gets valid Points from a list of file paths"""
-        pointsList = []
-        for file in filePaths:
-            points = tckFileReader.get_points(file)
-            if len(points) > 50:
-                pointsList.append(points)
-        return pointsList
-    
-    m0Points = getPointsFromFilePaths(m0FilePaths)
-    m1Points = getPointsFromFilePaths(m1FilePaths)
-    m2Points = getPointsFromFilePaths(m2FilePaths)
-
-    points0h_4h = getPointsFromFilePaths(filePaths0h_4h)
-    points0h_24h = getPointsFromFilePaths(filePaths0h_24h)
-    points24h_4h = getPointsFromFilePaths(filePaths24h_4h)
-    points24h_24h = getPointsFromFilePaths(filePaths24h_24h)
-    
-    stageCategories = [
-        ("M0", m0Points),
-        ("M1", m1Points),
-        ("M2", m2Points),
-    ]
-
-    treatmentCategories = [
-        ("0_4", points0h_4h),
-        ("0_24", points0h_24h),
-        ("24_4", points24h_4h),
-        ("24_24", points24h_24h),
-    ]
-    allCategories = [
-        ("M0_0_4", getPointsFromFilePaths(m0_0h_4hFilePaths)),
-        ("M0_0_24", getPointsFromFilePaths(m0_0h_24hFilePaths)),
-        ("M0_24_4", getPointsFromFilePaths(m0_24h_4hFilePaths)),
-        ("M0_24_24", getPointsFromFilePaths(m0_24h_24hFilePaths)),
-
-        ("M1_0_4", getPointsFromFilePaths(m1_0h_4hFilePaths)),
-        ("M1_0_24", getPointsFromFilePaths(m1_0h_24hFilePaths)),
-        ("M1_24_4", getPointsFromFilePaths(m1_24h_4hFilePaths)),
-        ("M1_24_24", getPointsFromFilePaths(m1_24h_24hFilePaths)),
-
-        ("M2_0_4", getPointsFromFilePaths(m2_0h_4hFilePaths)),
-        ("M2_0_24", getPointsFromFilePaths(m2_0h_24hFilePaths)),
-        ("M2_24_4", getPointsFromFilePaths(m2_24h_4hFilePaths)),
-        ("M2_24_24", getPointsFromFilePaths(m2_24h_24hFilePaths)),
     ]
 
     twoDComparePlots = TwoDComparePlots()
