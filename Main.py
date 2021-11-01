@@ -204,11 +204,6 @@ if __name__ == "__main__":
         (RaiseToPowerFeatureCreator(XFeatureCreator(), 0.5), PointsAngleFeatureCreator()),
         (RaiseToPowerFeatureCreator(RateOfChangeFeatureCreator(PhiFeatureCreator()), power), PointsAngleFeatureCreator()),
         (RaiseToPowerFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator()), 0.5), PointsAngleFeatureCreator()),
-        (RaiseToPowerFeatureCreator(DeltaFromStartFeatureCreator(XFeatureCreator()), 3), PointsAngleFeatureCreator()),
-        (RaiseToPowerFeatureCreator(DeltaFromStartFeatureCreator(ZFeatureCreator()), 3), PointsAngleFeatureCreator()),
-        (RaiseToPowerFeatureCreator(ThetaFeatureCreator(), 3), PointsAngleFeatureCreator()),
-        (RaiseToPowerFeatureCreator(RateOfChangeFeatureCreator(ZFeatureCreator()), 3), PointsAngleFeatureCreator()),
-        (EAnotherFeatureCreator(DeltaFromStartFeatureCreator(ZFeatureCreator())), PointsAngleFeatureCreator()),
         
     ]
 
