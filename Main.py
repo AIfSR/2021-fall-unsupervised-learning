@@ -1,4 +1,6 @@
 from typing import List
+
+from _pytest.mark.structures import Mark
 from features.DisplacementDirectionContribution import DisplacementDirectionContribution
 from features.EAnotherFeatureCreator import EAnotherFeatureCreator
 from features.MarkWhenFeatureValuesChange import MarkWhenFeatureValuesChange
@@ -253,6 +255,7 @@ if __name__ == "__main__":
         # (RaiseToPowerFeatureCreator(RateOfChangeFeatureCreator(PhiFeatureCreator()), power), PointsAngleFeatureCreator()),
         # (RaiseToPowerFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator()), 0.5), PointsAngleFeatureCreator()),
         (PointsAngleFeatureCreator(), OutlierFeatureCreator(XYCurvatureFeatureCreator(), 1.5)),
+        (PointsAngleFeatureCreator(), MarkWhenFeatureValuesChange(PointsDistanceFeatureCreator())),
     ]
 
     twoDPlotFeatures = [

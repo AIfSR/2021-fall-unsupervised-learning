@@ -29,6 +29,8 @@ from features.YFeatureCreator import YFeatureCreator
 from features.ZFeatureCreator import ZFeatureCreator
 import csv
 
+from tckfilereader.TCKFileReader import TCKFileReader
+
 independentFeatureCreators = [
     XFeatureCreator(),
     YFeatureCreator(),
@@ -107,18 +109,45 @@ class LabeledVector:
 def get_list_of_all_combinations_of_i_creators(i):
     return list(itertools.combinations(allFeatureCreators, i))
 
+
+tckFileReader = TCKFileReader()
+
+def is_valid_file(fileName):
+    points = tckFileReader.get_points(fileName)
+    return len(points) >= 50
+
+stageCategoriesWithNames = [
+    ("M0", [filePath for filePath in Main.m0FilePaths if is_valid_file(filePath)]),
+    ("M1", [filePath for filePath in Main.m1FilePaths if is_valid_file(filePath)]),
+    ("M2", [filePath for filePath in Main.m2FilePaths if is_valid_file(filePath)]),
+]
+
 def createTrajectoriesDictionary():
     #TODO: Need to implement this to speed up creating the labeled vectors.
-    pass
+    trajectoriesDict = {}
+    files = []
+    for stageName, fileNames in stageCategoriesWithNames:
+        files.extend(fileNames)
+    for file in files:
+        fileDict = {}
+        points = tckFileReader.get_points(file)
+        for featureCreator in allFeatureCreators:
+            feature = featureCreator.get_features(points)
+            average = _get_average_of_feature(feature)
+            fileDict[str(featureCreator)] = average
+        trajectoriesDict[file] = fileDict
+    return trajectoriesDict
 
-def create_labeled_vector(combinationOfCreators, name, points):
+trajectoriesDict = createTrajectoriesDictionary()
+
+def create_labeled_vector(combinationOfCreators, stageName, fileName):
     lst = []
+    featuresDict = trajectoriesDict[fileName]
     for featureCreator in combinationOfCreators:
-        features = featureCreator.get_features(points)
-        pointAverage = _get_average_of_feature(features)
+        pointAverage = featuresDict[str(featureCreator)]
         lst.append(pointAverage)
     vector = np.array(lst)
-    return LabeledVector(name, vector)
+    return LabeledVector(stageName, vector)
 
 def contents_of_lists_the_same(list1, list2):
     if not len(list1) == len(list2):
@@ -236,11 +265,11 @@ def addScoreToMemo(name, score):
 def getScoreRecorded(name):
     for score in scoreMemo:
         if score[0] == name:
-            return score[1]
+            return float(score[1])
     return None
 
 if __name__ == "__main__":
-    for index in range(1, 3):
+    for index in range(1, 4):
         listOfAllCombinationsOfICreators = get_list_of_all_combinations_of_i_creators(index)
         scoresDict = {}
         count = 0 
@@ -254,9 +283,9 @@ if __name__ == "__main__":
             allLabeledVectors = []
             memoedScore = getScoreRecorded(name)
             if memoedScore == None:
-                for stageName, listOfPoint in Main.stageCategories:
-                    for points in listOfPoint:
-                        allLabeledVectors.append(create_labeled_vector(combinationOfCreators, stageName, points))
+                for stageName, listOfFileNames in stageCategoriesWithNames:
+                    for fileName in listOfFileNames:
+                        allLabeledVectors.append(create_labeled_vector(combinationOfCreators, stageName, fileName))
                 bestProportionCorrect = 0.0
                 for j in range(3):
                     trajectoryGroups = predictTrajectoryGroupsUsingKMeans(allLabeledVectors, name)
@@ -272,14 +301,12 @@ if __name__ == "__main__":
             if count % printCount == 0:
                 print(str(count) + "/" + str(total))
             count +=1
-        maxScore = scoresDict[name]
-        maxScoreName = name
-        for comboName in scoresDict:
-            if scoresDict[comboName] > maxScore:
-                maxScoreName = comboName
-                maxScore = scoresDict[comboName]
-        
+        sortedDict = dict(sorted(scoresDict.items(), key=lambda item: item[1]))
+        maxScoresPrinted = 5
+
         print("For i = " + str(index))
-        print("The best combo was: " + maxScoreName)
-        print("with a percent correct of: " + str(maxScore))
+        for i in range(maxScoresPrinted):
+            featureGeneratorName = list(sortedDict.keys())[-(i+1)]
+            print(str(i) + ": " + featureGeneratorName)
+            print("Score: " + str(scoresDict[featureGeneratorName]))
         print("----------------")
