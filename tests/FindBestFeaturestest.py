@@ -2,6 +2,13 @@ import unittest
 import FindBestFeatures
 from FindBestFeatures import LabeledVector
 import numpy as np
+import Main
+from features.SpeedOverDistanceFeatureCreator import SpeedOverDistanceFeatureCreator
+from features.DeviationsFromMeanFeatureCreator import DeviationsFromMeanFeatureCreator
+from features.MaxMinDifferenceOfFeature import MaxMinDifferenceOfFeature
+from features.PhiFeatureCreator import PhiFeatureCreator
+from features.YFeatureCreator import YFeatureCreator
+import pytest
 
 class FindBestFeaturesTest (unittest.TestCase):
     def test_5(self):
@@ -21,3 +28,19 @@ class FindBestFeaturesTest (unittest.TestCase):
         ]
 
         self.assertTrue(FindBestFeatures.contents_of_lists_the_same(lst1, lst2))
+
+    def test_predictTrajectoryGroupsUsingKMeans(self):
+        allLabeledVectors = []
+        combinationOfCreators = (DeviationsFromMeanFeatureCreator(SpeedOverDistanceFeatureCreator()), MaxMinDifferenceOfFeature((PhiFeatureCreator())))
+        for stageName, listOfPoint in Main.stageCategories:
+            for points in listOfPoint:
+                allLabeledVectors.append(FindBestFeatures.create_labeled_vector(combinationOfCreators, stageName, points))
+        nameList = [str(featureCreator) for featureCreator in combinationOfCreators]
+        name = ""
+        for elem in nameList:
+            name += elem + ", "
+        for i in range(5):
+            FindBestFeatures.predictTrajectoryGroupsUsingKMeans(allLabeledVectors, name)
+        
+        self.assertEquals(name, "std_dev:SpeedOverDistance, Range:Phi, ")
+

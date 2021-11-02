@@ -27,6 +27,7 @@ from features.XYSpeedFeatureCreator import XYSpeedFeatureCreator
 from features.XYZSpeedFeatureCreator import XYZSpeedFeatureCreator
 from features.YFeatureCreator import YFeatureCreator
 from features.ZFeatureCreator import ZFeatureCreator
+import csv
 
 independentFeatureCreators = [
     XFeatureCreator(),
@@ -106,6 +107,10 @@ class LabeledVector:
 def get_list_of_all_combinations_of_i_creators(i):
     return list(itertools.combinations(allFeatureCreators, i))
 
+def createTrajectoriesDictionary():
+    #TODO: Need to implement this to speed up creating the labeled vectors.
+    pass
+
 def create_labeled_vector(combinationOfCreators, name, points):
     lst = []
     for featureCreator in combinationOfCreators:
@@ -177,13 +182,14 @@ def predictTrajectoryGroupsUsingKMeans(allLabeledVectors, name=""):
             centerOneDistance = np.linalg.norm(labeledVector.vector - centerOne)
             centerTwoDistance = np.linalg.norm(labeledVector.vector - centerTwo)
             centerThreeDistance = np.linalg.norm(labeledVector.vector - centerThree)
-            if centerOneDistance <= centerTwoDistance and centerOneDistance <= centerThreeDistance:
+            small = 1.0e-9
+            if centerOneDistance <= (centerTwoDistance + small) and centerOneDistance <= (centerThreeDistance + small):
                 newGroupOne.append(labeledVector)
-            elif centerTwoDistance <= centerOneDistance and centerTwoDistance <= centerThreeDistance:
+            elif centerTwoDistance <= (centerOneDistance + small) and centerTwoDistance <= (centerThreeDistance + small):
                 newGroupTwo.append(labeledVector)
             else:
                 newGroupThree.append(labeledVector)
-        if(contents_of_lists_the_same(groupOne, newGroupOne) and contents_of_lists_the_same(newGroupTwo, groupTwo) and contents_of_lists_the_same(newGroupThree, groupThree)):
+        if(contents_of_lists_the_same(groupOne, newGroupOne) and contents_of_lists_the_same(groupTwo, newGroupTwo) and contents_of_lists_the_same(groupThree, newGroupThree)):
             done = True
         groupOne = newGroupOne
         groupTwo = newGroupTwo
@@ -208,16 +214,33 @@ def predictTrajectoryGroupsUsingKMeans(allLabeledVectors, name=""):
             centerThree = centerOne
 
         loops += 1
-        if(loops % 500 == 0):
+        if(loops >= 500):
             print(name)
-            print("Loops: " + str(loops))
+            raise Exception("Probably should not take 500 iterations to find clusters")
     
     m0group, m1group, m2group = get_stage_groups(groupOne, groupTwo, groupThree)
     return m0group, m1group, m2group
+scoreMemo = []
+with open('KMeansScores.csv', 'r') as f:
+    reader = csv.reader(f)
+    for row in reader:
+        scoreMemo.append(row)
 
+def addScoreToMemo(name, score):
+    with open('KMeansScores.csv', 'a') as f:
+        writer = csv.writer(f)
+        row = [name, score]
+        writer.writerow(row)
+        f.close()
+
+def getScoreRecorded(name):
+    for score in scoreMemo:
+        if score[0] == name:
+            return score[1]
+    return None
 
 if __name__ == "__main__":
-    for index in range(1, 6):
+    for index in range(1, 3):
         listOfAllCombinationsOfICreators = get_list_of_all_combinations_of_i_creators(index)
         scoresDict = {}
         count = 0 
@@ -229,15 +252,21 @@ if __name__ == "__main__":
             for elem in nameList:
                 name += elem + ", "
             allLabeledVectors = []
-            for stageName, listOfPoint in Main.stageCategories:
-                for points in listOfPoint:
-                    allLabeledVectors.append(create_labeled_vector(combinationOfCreators, stageName, points))
-            bestProportionCorrect = 0.0
-            for j in range(3):
-                trajectoryGroups = predictTrajectoryGroupsUsingKMeans(allLabeledVectors, name)
-                proportionCorrect = get_m0_m1_m2_score(trajectoryGroups)
-                if proportionCorrect > bestProportionCorrect:
-                    bestProportionCorrect = proportionCorrect
+            memoedScore = getScoreRecorded(name)
+            if memoedScore == None:
+                for stageName, listOfPoint in Main.stageCategories:
+                    for points in listOfPoint:
+                        allLabeledVectors.append(create_labeled_vector(combinationOfCreators, stageName, points))
+                bestProportionCorrect = 0.0
+                for j in range(3):
+                    trajectoryGroups = predictTrajectoryGroupsUsingKMeans(allLabeledVectors, name)
+                    proportionCorrect = get_m0_m1_m2_score(trajectoryGroups)
+                    if proportionCorrect > bestProportionCorrect:
+                        bestProportionCorrect = proportionCorrect
+                
+                addScoreToMemo(name, bestProportionCorrect)
+            else:
+                bestProportionCorrect = memoedScore
             
             scoresDict[name] = bestProportionCorrect
             if count % printCount == 0:

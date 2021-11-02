@@ -29,4 +29,4 @@ class XYCurvatureFeatureCreator (FeatureCreatorBase):
 
     def __str__(self) -> str:
         """This is a feature for curvature"""
-        return "Curvature"
+        return "XYCurvature"
