@@ -2,6 +2,7 @@
 from features.FeatureCreatorBase import FeatureCreatorBase
 from features.Features import Features
 from tckfilereader.Points import Points
+import math
 
 
 class PointsAngleFeatureCreator (FeatureCreatorBase):

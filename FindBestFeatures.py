@@ -269,7 +269,7 @@ def getScoreRecorded(name):
     return None
 
 if __name__ == "__main__":
-    for index in range(1, 4):
+    for index in range(2, 3):
         listOfAllCombinationsOfICreators = get_list_of_all_combinations_of_i_creators(index)
         scoresDict = {}
         count = 0 

@@ -244,7 +244,7 @@ if __name__ == "__main__":
     outlier = 2.0
     power = 3
     plotFeatures = [
-        # (PointsAngleFeatureCreator(), None),
+        (PointsAngleFeatureCreator(), None),
         # (PointsAngleFeatureCreator(), RateOfChangeFeatureCreator(XFeatureCreator())),
         # (PointsAngleFeatureCreator(), RateOfChangeFeatureCreator(RateOfChangeFeatureCreator(PhiFeatureCreator()))),
         # (OutlierFeatureCreator(ZFeatureCreator(), 1.5), PointsAngleFeatureCreator()),
@@ -254,8 +254,12 @@ if __name__ == "__main__":
         # (RaiseToPowerFeatureCreator(XFeatureCreator(), 0.5), PointsAngleFeatureCreator()),
         # (RaiseToPowerFeatureCreator(RateOfChangeFeatureCreator(PhiFeatureCreator()), power), PointsAngleFeatureCreator()),
         # (RaiseToPowerFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator()), 0.5), PointsAngleFeatureCreator()),
-        (PointsAngleFeatureCreator(), OutlierFeatureCreator(XYCurvatureFeatureCreator(), 1.5)),
-        (PointsAngleFeatureCreator(), MarkWhenFeatureValuesChange(PointsDistanceFeatureCreator())),
+        # (PointsAngleFeatureCreator(), OutlierFeatureCreator(XYCurvatureFeatureCreator(), 1.5)),
+        # (PointsAngleFeatureCreator(), MarkWhenFeatureValuesChange(PointsDistanceFeatureCreator())),
+        
+        # (ABSFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())), ABSFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator()))),
+        (RateOfChangeFeatureCreator(PointsAngleFeatureCreator()), None),
+        # (PointsAngleFeatureCreator(), OutlierFeatureCreator(XYSpeedFeatureCreator(), 1.5)),
     ]
 
     twoDPlotFeatures = [
