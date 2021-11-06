@@ -258,7 +258,8 @@ if __name__ == "__main__":
         # (PointsAngleFeatureCreator(), MarkWhenFeatureValuesChange(PointsDistanceFeatureCreator())),
         
         # (ABSFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())), ABSFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator()))),
-        (RateOfChangeFeatureCreator(PointsAngleFeatureCreator()), None),
+        (RateOfChangeFeatureCreator(PointsDistanceFeatureCreator()), PointsAngleFeatureCreator()),
+        (PointsAngleFeatureCreator(), RateOfChangeFeatureCreator(PointsDistanceFeatureCreator())),
         # (PointsAngleFeatureCreator(), OutlierFeatureCreator(XYSpeedFeatureCreator(), 1.5)),
     ]
 

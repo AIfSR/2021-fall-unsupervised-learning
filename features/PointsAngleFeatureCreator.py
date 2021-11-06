@@ -28,12 +28,6 @@ class PointsAngleFeatureCreator (FeatureCreatorBase):
 
             angle = (xdifference*nextxdifference + ydifference*nextydifference + zdifference*nextzdifference)/(distance*nextdistance)
             # angle in cosine
-            
-            if angle > 1.0:
-                angle = 1.0
-            elif angle < -1.0:
-                angle = 1.0
-            angle = math.acos(angle)
 
             features.add_feature_val(angle)
         if len(points) > 1:
