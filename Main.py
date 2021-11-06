@@ -196,14 +196,15 @@ if __name__ == "__main__":
     plotFeatures = [
         (PointsAngleFeatureCreator(), None),
         (PointsAngleFeatureCreator(), RateOfChangeFeatureCreator(XFeatureCreator())),
-        (PointsAngleFeatureCreator(), RateOfChangeFeatureCreator(RateOfChangeFeatureCreator(PhiFeatureCreator()))),
-        (OutlierFeatureCreator(ZFeatureCreator(), 1.5), PointsAngleFeatureCreator()),
-        (OutlierFeatureCreator(RateOfChangeFeatureCreator(ThetaFeatureCreator()), 1.5), PointsAngleFeatureCreator()),
-        (MarkWhenFeatureValuesChange(YFeatureCreator()), PointsAngleFeatureCreator()),
-        (RaiseToPowerFeatureCreator(XFeatureCreator(), 2.0), PointsAngleFeatureCreator()),
-        (RaiseToPowerFeatureCreator(XFeatureCreator(), 0.5), PointsAngleFeatureCreator()),
-        (RaiseToPowerFeatureCreator(RateOfChangeFeatureCreator(PhiFeatureCreator()), power), PointsAngleFeatureCreator()),
-        (RaiseToPowerFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator()), 0.5), PointsAngleFeatureCreator()),
+        (PointsAngleFeatureCreator(), RateOfChangeFeatureCreator(XFeatureCreator()), "This", "That"),
+        # (PointsAngleFeatureCreator(), RateOfChangeFeatureCreator(RateOfChangeFeatureCreator(PhiFeatureCreator()))),
+        # (OutlierFeatureCreator(ZFeatureCreator(), 1.5), PointsAngleFeatureCreator()),
+        # (OutlierFeatureCreator(RateOfChangeFeatureCreator(ThetaFeatureCreator()), 1.5), PointsAngleFeatureCreator()),
+        # (MarkWhenFeatureValuesChange(YFeatureCreator()), PointsAngleFeatureCreator()),
+        # (RaiseToPowerFeatureCreator(XFeatureCreator(), 2.0), PointsAngleFeatureCreator()),
+        # (RaiseToPowerFeatureCreator(XFeatureCreator(), 0.5), PointsAngleFeatureCreator()),
+        # (RaiseToPowerFeatureCreator(RateOfChangeFeatureCreator(PhiFeatureCreator()), power), PointsAngleFeatureCreator()),
+        # (RaiseToPowerFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator()), 0.5), PointsAngleFeatureCreator()),
         
     ]
 
