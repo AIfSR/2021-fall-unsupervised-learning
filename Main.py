@@ -195,8 +195,8 @@ if __name__ == "__main__":
     power = 3
     plotFeatures = [
         # (PointsAngleFeatureCreator(), None),
-        (PointsAngleFeatureCreator(), RateOfChangeFeatureCreator(XFeatureCreator())),
-        (PointsAngleFeatureCreator(), RateOfChangeFeatureCreator(XFeatureCreator()), "This", "That"),
+        # (PointsAngleFeatureCreator(), RateOfChangeFeatureCreator(XFeatureCreator())),
+        # (PointsAngleFeatureCreator(), RateOfChangeFeatureCreator(XFeatureCreator()), "This", "That"),
         # (PointsAngleFeatureCreator(), RateOfChangeFeatureCreator(RateOfChangeFeatureCreator(PhiFeatureCreator()))),
         # (OutlierFeatureCreator(ZFeatureCreator(), 1.5), PointsAngleFeatureCreator()),
         # (OutlierFeatureCreator(RateOfChangeFeatureCreator(ThetaFeatureCreator()), 1.5), PointsAngleFeatureCreator()),
@@ -205,6 +205,8 @@ if __name__ == "__main__":
         # (RaiseToPowerFeatureCreator(XFeatureCreator(), 0.5), PointsAngleFeatureCreator()),
         # (RaiseToPowerFeatureCreator(RateOfChangeFeatureCreator(PhiFeatureCreator()), power), PointsAngleFeatureCreator()),
         # (RaiseToPowerFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator()), 0.5), PointsAngleFeatureCreator()),
+        (ABSFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), ABSFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())), "Average: Y Speed", "Average: X Speed"),
+        (PointsAngleFeatureCreator(), RateOfChangeFeatureCreator(PointsDistanceFeatureCreator()), "Average: Cosine Angle", "Average: Acceleration")
         
     ]
 
