@@ -7,6 +7,8 @@ from plotting.SinglePointCompareTrajectories import SinglePointCompareTrajectori
 from plotting.TwoDComparePlots import TwoDComparePlots
 import numpy
 import matplotlib.pyplot as plt
+from statistics import stdev
+from statistics import median
 
 from features.XFeatureCreator import XFeatureCreator
 from features.YFeatureCreator import YFeatureCreator
@@ -15,6 +17,13 @@ from features.TFeatureCreator import TFeatureCreator
 from features.RateOfChangeFeatureCreator import RateOfChangeFeatureCreator
 from features.PointsDistanceFeatureCreator import PointsDistanceFeatureCreator
 from features.PointsDisplacementFeatureCreator import PointsDisplacementFeatureCreator
+from features.XDistanceFeatureCreator import XDistanceFeatureCreator
+from features.XDisplacementFeatureCreator import XDisplacementFeatureCreator
+from features.YDistanceFeatureCreator import YDistanceFeatureCreator
+from features.YDisplacementFeatureCreator import YDisplacementFeatureCreator
+from features.ZDistanceFeatureCreator import ZDistanceFeatureCreator
+from features.ZDisplacementFeatureCreator import ZDisplacementFeatureCreator
+from features.TimeFrameFeatureCreator import TimeFrameFeatureCreator
 from tckfilereader.Points import Points
 from tckfilereader.TCKFileReader import TCKFileReader
 
@@ -89,6 +98,19 @@ m2FilePaths = [
     "data/24h_24h/M2/2020-12-11_18-41-12,360_.tck",
     "data/24h_24h/M2/2020-12-11_19-15-07,942_.tck",
 ]
+def find_median(featureCreator, points:Points):
+    feature = featureCreator.get_features(points)
+    values = []
+    for featureVal in feature:
+        values.append(featureVal)
+    return median(values)
+
+def standard_deviation(featureCreator, points:Points):
+    feature = featureCreator.get_features(points)
+    values = []
+    for featureVal in feature:
+        values.append(featureVal)
+    return stdev(values)
 
 def printAverageVelocity(files:List, title=""):
     def getAverageOfAbsFeature(feature):
@@ -99,9 +121,21 @@ def printAverageVelocity(files:List, title=""):
             count += 1
         return sum / count
     fileCount = 0
+    x_medians = []
+    x_stdevs = []
     xSpeedAvgs = []
     ySpeedAvgs = []
     zSpeedAvgs = []
+    xAccelAvgs = []
+    yAccelAvgs = []
+    zAccelAvgs= []
+    x_distanceAvgSum = 0
+    x_displacementAvgSum = 0
+    y_distanceAvgSum = 0
+    y_displacementAvgSum = 0
+    z_distanceAvgSum = 0
+    z_displacementAvgSum = 0
+    timeAvgSum = 0
     distanceAvgSum = 0
     displacementAvgSum = 0
     for file in files:
@@ -111,36 +145,86 @@ def printAverageVelocity(files:List, title=""):
         xVelocity = RateOfChangeFeatureCreator(XFeatureCreator()).get_features(points)
         yVelocity = RateOfChangeFeatureCreator(YFeatureCreator()).get_features(points)
         zVelocity = RateOfChangeFeatureCreator(ZFeatureCreator()).get_features(points)
+        xAcceleration = RateOfChangeFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())).get_features(points)
+        yAcceleration = RateOfChangeFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())).get_features(points)
+        zAcceleration= RateOfChangeFeatureCreator(RateOfChangeFeatureCreator(ZFeatureCreator())).get_features(points)
+        x_medians.append(find_median(XFeatureCreator(),points))
+        x_stdevs.append(standard_deviation(XFeatureCreator(),points))
+        x_distance = XDistanceFeatureCreator().get_features(points)
+        x_displacement = XDisplacementFeatureCreator().get_features(points)
+        y_distance = YDistanceFeatureCreator().get_features(points)
+        y_displacement = YDisplacementFeatureCreator().get_features(points)
+        z_distance = ZDistanceFeatureCreator().get_features(points)
+        z_displacement = ZDisplacementFeatureCreator().get_features(points)
+        time_frame = TimeFrameFeatureCreator().get_features(points)
         distance = PointsDistanceFeatureCreator().get_features(points)
         displacement = PointsDisplacementFeatureCreator().get_features(points)
         fileCount += 1
         xSpeedAvgs.append(getAverageOfAbsFeature(xVelocity))
         ySpeedAvgs.append(getAverageOfAbsFeature(yVelocity))
         zSpeedAvgs.append(getAverageOfAbsFeature(zVelocity))
+        xAccelAvgs.append(getAverageOfAbsFeature(xAcceleration))
+        yAccelAvgs.append(getAverageOfAbsFeature(yAcceleration))
+        zAccelAvgs.append(getAverageOfAbsFeature(zAcceleration))
         distanceAvgSum += getAverageOfAbsFeature(distance)
         displacementAvgSum += getAverageOfAbsFeature(displacement)
+        x_distanceAvgSum += getAverageOfAbsFeature(x_distance)
+        x_displacementAvgSum += getAverageOfAbsFeature(x_displacement)
+        y_distanceAvgSum += getAverageOfAbsFeature(y_distance)
+        y_displacementAvgSum += getAverageOfAbsFeature(y_displacement)
+        z_distanceAvgSum += getAverageOfAbsFeature(z_distance)
+        z_displacementAvgSum += getAverageOfAbsFeature(z_displacement)
+        timeAvgSum = getAverageOfAbsFeature(time_frame)
+
     xSpeedAvg = sum(xSpeedAvgs) / fileCount
     ySpeedAvg = sum(ySpeedAvgs) / fileCount
     zSpeedAvg = sum(zSpeedAvgs) / fileCount
+    xAccelAvg = sum(xAccelAvgs) / fileCount
+    yAccelAvg = sum(yAccelAvgs) / fileCount
+    zAccelAvg = sum(zAccelAvgs) / fileCount
     # distanceAvgSum = distanceAvgSum / fileCount
+    for i in x_stdevs:
+        print(i)
+    print("Average Time Duration: " + str(timeAvgSum / fileCount))
+    print("")
+    print("X Displacement Average: " + str(x_displacementAvgSum / fileCount))
+    print("Y Displacement Average: " + str(y_displacementAvgSum / fileCount))
+    print("Z Displacement Average: " + str(z_displacementAvgSum / fileCount))
+    print("")
+    print("X Distance Average: " + str(x_distanceAvgSum / fileCount))
+    print("Y Distance Average: " + str(y_distanceAvgSum / fileCount))
+    print("Z Distance Average: " + str(z_distanceAvgSum / fileCount))
+    print("")
     print("Average X speed: " + str(xSpeedAvg))
     print("Average Y speed: " + str(ySpeedAvg))
     print("Average Z speed: " + str(zSpeedAvg))
-    print("Average Total Speed (X,Y): " + str((xSpeedAvg**2 + ySpeedAvg**2)**0.5))
-    print("Distance Average: " + str(distanceAvgSum / fileCount))
+    print("")
+    print("Average X acceleration: " + str(xAccelAvg))
+    print("Average Y acceleration: " + str(yAccelAvg))
+    print("Average Z acceleration: " + str(zAccelAvg))
+    print("")
     print("Displacement Average: " + str(displacementAvgSum / fileCount))
+    print("Distance Average: " + str(distanceAvgSum / fileCount))
+    print("Average Total Speed (X,Y): " + str((xSpeedAvg**2 + ySpeedAvg**2)**0.5))
+    print("Average Total Acceleration (X,Y): " + str((xAccelAvg**2 + yAccelAvg**2)**0.5))
+
     
     print("-----------------------")
+
 
 if __name__ == "__main__":
     tckFileReader = TCKFileReader()
     beta = 0.25
     plotFeatures = [
-        (PointsDistanceFeatureCreator(), None),
+        (XFeatureCreator(), None),
+        (XFeatureCreator(), TFeatureCreator()),
+        (RateOfChangeFeatureCreator(XFeatureCreator()), TFeatureCreator()),
+        # (RateOfChangeFeatureCreator(XFeatureCreator()), TFeatureCreator()),
+        # (PointsDistanceFeatureCreator(), None),
         # (RateOfChangeFeatureCreator(XFeatureCreator()), TFeatureCreator()),
         # (RateOfChangeFeatureCreator(YFeatureCreator()), TFeatureCreator()),
         # (RateOfChangeFeatureCreator(ZFeatureCreator()), TFeatureCreator()),
-        # (EWAFeatureCreator(RateOfChangeFeatureCreator(PointsDistanceFeatureCreator())), TFeatureCreator()),
+        (EWAFeatureCreator(RateOfChangeFeatureCreator(PointsDistanceFeatureCreator())), TFeatureCreator()),
         # (EWAFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), EWAFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator()))),
         # (EWAFeatureCreator(RateOfChangeFeatureCreator(ZFeatureCreator())), EWAFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator()))),
         # (EWAFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), EWAFeatureCreator(RateOfChangeFeatureCreator(ZFeatureCreator()))),

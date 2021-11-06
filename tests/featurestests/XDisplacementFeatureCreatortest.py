@@ -1,15 +1,15 @@
 import unittest
 from features.Features import Features
-from features.PointsDisplacementFeatureCreator import PointsDisplacementFeatureCreator
+from features.XDisplacementFeatureCreator import XDisplacementFeatureCreator
 from tckfilereader.Point import Point
 from tckfilereader.Points import Points
 # from tests.featurestests.FeatureCreatorTestBase import FeatureCreatorTestBase
 
 
-class PointsDisplacementFeatureCreatorTest (unittest.TestCase):
+class XDisplacementFeatureCreatorTest (unittest.TestCase):
     def get_feature_creator(self):
         """Gets the XFeatureCreator to test"""
-        return PointsDisplacementFeatureCreator()
+        return XDisplacementFeatureCreator()
 
     def test_get_features(self):
         """Tests getting the features from the PointsDistanceFeatureCreator"""
@@ -20,15 +20,15 @@ class PointsDisplacementFeatureCreatorTest (unittest.TestCase):
             Point(0,0,0,4),
             Point(1,1,1,5),
         ])
-        pointsDisplacementFeatureCreator = PointsDisplacementFeatureCreator()
+        xDisplacementFeatureCreator = XDisplacementFeatureCreator()
         solutionFeatures = Features()
-        solutionFeatures.add_feature_val(3.0**0.5)
+        solutionFeatures.add_feature_val(1)
         # solutionFeatures.add_feature_val(3.0**0.5)
 
-        self.assertEquals(pointsDisplacementFeatureCreator.get_features(points), solutionFeatures)
+        self.assertEquals(xDisplacementFeatureCreator.get_features(points), solutionFeatures)
 
     def test_string(self):
-        featureCreator = PointsDisplacementFeatureCreator()
+        featureCreator = XDisplacementFeatureCreator()
         self.assertEquals(str(featureCreator), "PointsDistance")
 
 
