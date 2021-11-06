@@ -194,7 +194,7 @@ if __name__ == "__main__":
     outlier = 2.0
     power = 3
     plotFeatures = [
-        (PointsAngleFeatureCreator(), None),
+        # (PointsAngleFeatureCreator(), None),
         (PointsAngleFeatureCreator(), RateOfChangeFeatureCreator(XFeatureCreator())),
         (PointsAngleFeatureCreator(), RateOfChangeFeatureCreator(XFeatureCreator()), "This", "That"),
         # (PointsAngleFeatureCreator(), RateOfChangeFeatureCreator(RateOfChangeFeatureCreator(PhiFeatureCreator()))),

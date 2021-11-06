@@ -20,18 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d10fb0f2-3bc6-46de-9e03-7b62648ecbe5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/features/PointsDisplacementFeatureCreator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/featurestests/PointsDisplacementFeatureCreatortest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/tckfilereadertests/testfile2.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/features/PointsDistanceFeatureCreator.py" beforeDir="false" afterPath="$PROJECT_DIR$/features/PointsDistanceFeatureCreator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/features/RateOfChangeFeatureCreator.py" beforeDir="false" afterPath="$PROJECT_DIR$/features/RateOfChangeFeatureCreator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/plotting/SinglePointCompareTrajectories.py" beforeDir="false" afterPath="$PROJECT_DIR$/plotting/SinglePointCompareTrajectories.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/featurestests/PointsDistanceFeatureCreatortest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/featurestests/PointsDistanceFeatureCreatortest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/featurestests/RateOfChangeFeatureCreatortest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/featurestests/RateOfChangeFeatureCreatortest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/featurestests/XYSpeedFeatureCreatortest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/featurestests/XYSpeedFeatureCreatortest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/tckfilereadertests/TCKFileReadertest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tckfilereadertests/TCKFileReadertest.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,22 +185,22 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="440" y="270" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.877@0.23.1440.877" timestamp="1633810461888" />
-    <state width="1419" height="229" key="GridCell.Tab.0.bottom" timestamp="1635695179626">
+    <state width="1419" height="229" key="GridCell.Tab.0.bottom" timestamp="1636232415057">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1419" height="229" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1635695179626" />
-    <state width="1419" height="229" key="GridCell.Tab.0.center" timestamp="1635695179625">
+    <state width="1419" height="229" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1636232415057" />
+    <state width="1419" height="229" key="GridCell.Tab.0.center" timestamp="1636232415057">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1419" height="229" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1635695179625" />
-    <state width="1419" height="229" key="GridCell.Tab.0.left" timestamp="1635695179625">
+    <state width="1419" height="229" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1636232415057" />
+    <state width="1419" height="229" key="GridCell.Tab.0.left" timestamp="1636232415056">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1419" height="229" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1635695179625" />
-    <state width="1419" height="229" key="GridCell.Tab.0.right" timestamp="1635695179625">
+    <state width="1419" height="229" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1636232415056" />
+    <state width="1419" height="229" key="GridCell.Tab.0.right" timestamp="1636232415057">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1419" height="229" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1635695179625" />
+    <state width="1419" height="229" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1636232415057" />
     <state width="1419" height="286" key="GridCell.Tab.1.bottom" timestamp="1634671848416">
       <screen x="0" y="23" width="1440" height="877" />
     </state>

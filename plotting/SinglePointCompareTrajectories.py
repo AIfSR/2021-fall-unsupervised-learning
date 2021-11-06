@@ -1,5 +1,5 @@
 from typing import List, Tuple
-
+import numpy as np
 from matplotlib import pyplot as plt
 from features.FeatureCreatorBase import FeatureCreatorBase
 from features.Features import Features
@@ -57,6 +57,20 @@ class SinglePointCompareTrajectories (ComparePlotsBase):
                     bottom=False,      # ticks along the bottom edge are off
                     top=False,         # ticks along the top edge are off
                     labelbottom=False)
+            left, width = 0.1, 0.65
+            bottom, height = 0.1, 0.65
+            spacing = 0.005
+            rect_scatter = [left, bottom, width, height]
+            rect_histx = [left, bottom + height + spacing, width, 0.2]
+            rect_histy = [left + width + spacing, bottom, 0.2, height]
+            fig = plt.figure()
+            ax_scatter = plt.axes(rect_scatter)
+            ax_scatter.tick_params(direction='in', top=True, right=True)
+            ax_histx = plt.axes(rect_histx)
+            ax_histx.tick_params(direction='in', labelbottom=False)
+            ax_histy = plt.axes(rect_histy)
+            ax_histy.tick_params(direction='in', labelleft=False)
+                  
             for name, allFilesPoints in categories:
                 if(type(xFeatureGenerator) == LineFeatureCreator):
                     xFeatureGenerator.increment()
@@ -70,20 +84,38 @@ class SinglePointCompareTrajectories (ComparePlotsBase):
                     yAvgOfFeature = self._get_average_of_feature(yFeature)
                     xPointsAverages.append(xAvgOfFeature)
                     yPointsAverages.append(yAvgOfFeature)
-                plt.scatter(xPointsAverages, yPointsAverages, label=name)
+            
+                # plt.scatter(xPointsAverages, yPointsAverages, label=name)
+                ax_scatter.scatter(xPointsAverages, yPointsAverages, label=name)
+                
+                binwidth = 0.25
+                lim = np.ceil(np.abs([xPointsAverages, yPointsAverages]).max() / binwidth) * binwidth
+                # ax_scatter.set_xlim((-lim, lim))
+                # ax_scatter.set_ylim((-lim, lim))
+
+                # bins = np.arange(-lim, lim + binwidth, binwidth)
+                ax_histx.hist(xPointsAverages)
+                ax_histy.hist(yPointsAverages, orientation='horizontal')
+                ax_histx.set_ylabel("Number of Trajectories", fontsize = 8)
+                ax_histy.set_xlabel("Number of Trajectories", fontsize = 8)
+
+                # ax_histx.set_xlim(ax_scatter.get_xlim())
+                # ax_histy.set_ylim(ax_scatter.get_ylim())
 
             title = ""
             for name, allFilesPoints in categories:
                 title += name + ", "
             if not type(xFeatureGenerator) == LineFeatureCreator:
-                plt.xlabel(xLabel)
+                # plt.xlabel(xLabel)
+                ax_scatter.set_xlabel(xLabel)
                 title += str(yFeatureGenerator) + " vs. " + str(xFeatureGenerator) + " comparison"
             else:
                 title += str(yFeatureGenerator)
 
-            plt.ylabel(yLabel)
-            plt.title(title)
-            plt.legend()
+            # plt.ylabel(yLabel)
+            ax_scatter.set_ylabel(yLabel)
+            fig.suptitle(title)
+            fig.legend()
             plt.show()
 
 class LineFeatureCreator (FeatureCreatorBase):
