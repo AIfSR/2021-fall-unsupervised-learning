@@ -36,7 +36,10 @@ class DeviationsFromMeanFeatureCreator (FeatureCreatorBase):
         mean = DeviationsFromMeanFeatureCreator.get_mean(origFeatures)
         std_dev = DeviationsFromMeanFeatureCreator.get_std_dev(origFeatures)
         for featureVal in origFeatures:
-            z = (featureVal - mean) / std_dev
+            if std_dev != 0:
+                z = (featureVal - mean) / std_dev
+            else:
+                z = 0
             features.add_feature_val(z)
 
         return features

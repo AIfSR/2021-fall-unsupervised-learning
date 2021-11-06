@@ -9,7 +9,7 @@ class SpeedOverDistanceFeatureCreator (FeatureCreatorBase):
     traveled"""
 
     def get_features(self, points:Points) -> Features:
-        """Gets all the Y values as features"""
+        """Gets all the SpeedOverDistance values as features"""
         pointsDistance = PointsDistanceFeatureCreator().get_features(points)
         speeds = XYSpeedFeatureCreator().get_features(points)
         features = Features()
@@ -19,5 +19,5 @@ class SpeedOverDistanceFeatureCreator (FeatureCreatorBase):
         return features
 
     def __str__(self) -> str:
-        """This is a feature for Y coords"""
-        return "Y"
+        """This is a feature for SpeedOverDistance coords"""
+        return "SpeedOverDistance"

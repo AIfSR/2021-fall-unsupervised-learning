@@ -26,4 +26,4 @@ class PointsDisplacementFeatureCreator (FeatureCreatorBase):
 
     def __str__(self) -> str:
         """This is a feature for the distance between points"""
-        return "PointsDistance"
+        return "PointsDisplacement"
