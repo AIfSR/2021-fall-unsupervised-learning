@@ -65,8 +65,8 @@ class SinglePointCompareTrajectories (ComparePlotsBase):
         of there features against one another for every trajectory"""
         fig = plt.figure(figsize=(16, 7.5))
         ax_scatter, histogramDict = self.create_graph_and_histogram_sections(categories)
-        self.plot_2D_data_and_hists(categories, ax_scatter, histogramDict, xFeatureCreator, yFeatureCreator)
-        self.set_hist_size_and_labels(histogramDict, ax_scatter)
+        histBinsDict = self.plot_2D_data_and_hists(categories, ax_scatter, histogramDict, xFeatureCreator, yFeatureCreator)
+        self.set_hist_size_and_labels(histBinsDict, histogramDict, ax_scatter)
         ax_scatter.set_ylabel(yLabel)
         ax_scatter.set_xlabel(xLabel)
         fig.suptitle(self.get_graph_title(categories, yLabel, xLabel))
@@ -114,8 +114,9 @@ class SinglePointCompareTrajectories (ComparePlotsBase):
         return height
 
 
-    def plot_2D_data_and_hists(self, categories:List[Tuple[str,List[Points]]], ax_scatter:Axes, histogramDict:Dict,  xFeatureCreator:FeatureCreatorBase, yFeatureCreator:FeatureCreatorBase) -> None:
+    def plot_2D_data_and_hists(self, categories:List[Tuple[str,List[Points]]], ax_scatter:Axes, histogramDict:Dict,  xFeatureCreator:FeatureCreatorBase, yFeatureCreator:FeatureCreatorBase) -> Dict:
         """Plots the data passed in in two dimensions on the scatterplot, and the histograms"""
+        histBinsDict = {}
         for name, allFilesPoints in categories:
             xPointsAverages = []
             yPointsAverages = []
@@ -129,20 +130,32 @@ class SinglePointCompareTrajectories (ComparePlotsBase):
             
             s = ax_scatter.scatter(xPointsAverages, yPointsAverages, label=name)
             
-            histogramDict[name + " X"].hist(xPointsAverages, color = s.get_ec())
-            histogramDict[name + " Y"].hist(yPointsAverages, orientation='horizontal', color = s.get_ec())
+            histBinsDict[name + " X"] = histogramDict[name + " X"].hist(xPointsAverages, color = s.get_ec())
+            histBinsDict[name + " Y"] = histogramDict[name + " Y"].hist(yPointsAverages, orientation='horizontal', color = s.get_ec())
+        return histBinsDict
 
-    def set_hist_size_and_labels(self, histogramDict:Dict, ax_scatter:Axes) -> None:
+    def set_hist_size_and_labels(self, histBinsDict:Dict, histogramDict:Dict, ax_scatter:Axes) -> None:
         """Sets the labels for each of the histograms"""
+        xRanges = []
+        yRanges = []
+        for histName in histBinsDict:
+            binHeights, _, _ = histBinsDict[histName]
+            maxBinVal = max(binHeights)
+            if(histName[-1:] == "X"):
+                xRanges.append(maxBinVal) 
+            else:
+                yRanges.append(maxBinVal)
+        xRange = max(xRanges)
+        yRange = max(yRanges)
         for histName in histogramDict:
             hist = histogramDict[histName]
             if(histName[-1:] == "X"):
                 hist.set_ylabel("Trajectories", fontsize = 8)
-                hist.set_ylim([0,8])
+                hist.set_ylim([0,xRange + 1])
                 hist.set_xlim(ax_scatter.get_xlim())
             else:
                 hist.set_xlabel("Trajectories", fontsize = 8)
-                hist.set_xlim([0,8])
+                hist.set_xlim([0,yRange + 1])
                 hist.set_ylim(ax_scatter.get_ylim())
 
     def get_graph_title(self, categories:List[Tuple[str,List[Points]]], yLabel:str, xLabel:str) -> str:
