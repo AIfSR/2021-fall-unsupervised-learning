@@ -5,40 +5,16 @@ from matplotlib.axes import Axes
 from features.FeatureCreatorBase import FeatureCreatorBase
 from features.Features import Features
 from features.XFeatureCreator import XFeatureCreator
+from featuretosingleval.FeatureToSingleValBase import FeatureToSingleValBase
 from plotting.ComparePlotsBase import ComparePlotsBase
 from tckfilereader.Points import Points
 from plotting.singlepointcomparetrajectories.LineFeatureCreator import LineFeatureCreator
 
 class SinglePointCompareTrajectories (ComparePlotsBase):
 
-    def _get_average_of_feature(self, feature:Features) -> float:
-        """Gets the average of a feature"""
-        count = 0
-        sum = 0
-        for featureVal in feature:
-            sum += featureVal
-            count += 1
-        return sum / count
-
-    def _get_max_of_feature(self, feature:Features) -> float:
-        """Gets the maximum value of a feature"""
-        return max(feature)
-
-    def _get_median_of_feature(self, feature:Features) -> float:
-        """Gets the median value of a feature"""
-        sortedListFeature = sorted(feature.to_list())
-        return sortedListFeature[len(sortedListFeature) // 2]
-
-    def _get_std_dev_of_feature(self, feature:Features) -> float:
-        """Gets the standard deviation of a feature"""
-        avg = self._get_average_of_feature(feature)
-        sum = 0
-        count = 0
-        for featureVal in feature:
-            sum += (featureVal - avg)**2
-            count +=1
-        stdDev = (sum/count)**0.5
-        return stdDev
+    def __init__(self, featureToSingleVal:FeatureToSingleValBase) -> None:
+        super().__init__()
+        self._featureToSingleVal = featureToSingleVal
 
     def display_plots(self, featuresList:List[Tuple[Features, Features]], categories:List[Tuple[str,List[Points]]]) -> None:
         """Displays plots comparing the average of a feature for each category"""
