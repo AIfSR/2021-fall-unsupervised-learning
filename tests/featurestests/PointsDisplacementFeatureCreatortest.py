@@ -29,6 +29,6 @@ class PointsDistanceFeatureCreatorTest (unittest.TestCase):
 
     def test_string(self):
         featureCreator = PointsDisplacementFeatureCreator()
-        self.assertEquals(str(featureCreator), "PointsDistance")
+        self.assertEquals(str(featureCreator), "PointsDisplacement")
 
 

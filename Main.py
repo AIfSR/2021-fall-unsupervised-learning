@@ -20,7 +20,7 @@ from features.ThetaFeatureCreator import ThetaFeatureCreator
 from features.XYCurvatureFeatureCreator import XYCurvatureFeatureCreator
 from features.XYSpeedFeatureCreator import XYSpeedFeatureCreator
 from features.XYZSpeedFeatureCreator import XYZSpeedFeatureCreator
-from plotting.SinglePointCompareTrajectories import SinglePointCompareTrajectories
+from plotting.singlepointcomparetrajectories.SinglePointCompareTrajectories import SinglePointCompareTrajectories
 from plotting.TwoDComparePlots import TwoDComparePlots
 import numpy
 import matplotlib.pyplot as plt
@@ -206,7 +206,7 @@ if __name__ == "__main__":
         # (RaiseToPowerFeatureCreator(RateOfChangeFeatureCreator(PhiFeatureCreator()), power), PointsAngleFeatureCreator()),
         # (RaiseToPowerFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator()), 0.5), PointsAngleFeatureCreator()),
         (ABSFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), ABSFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())), "Average: Y Speed", "Average: X Speed"),
-        (PointsAngleFeatureCreator(), RateOfChangeFeatureCreator(PointsDistanceFeatureCreator()), "Average: Cosine Angle", "Average: Acceleration")
+        (PointsAngleFeatureCreator(), None)
         
     ]
 
