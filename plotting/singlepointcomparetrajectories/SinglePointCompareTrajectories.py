@@ -12,6 +12,12 @@ from plotting.singlepointcomparetrajectories.LineFeatureCreator import LineFeatu
 
 class SinglePointCompareTrajectories (ComparePlotsBase):
 
+    LEFT = 0.065
+    WIDTH = 0.615
+    BOTTOM = 0.05
+    HEIGHT = 0.6
+    SPACING = 0.005
+
     def __init__(self, featureToSingleVal:FeatureToSingleValBase) -> None:
         super().__init__()
         self._featureToSingleVal = featureToSingleVal
@@ -72,46 +78,41 @@ class SinglePointCompareTrajectories (ComparePlotsBase):
         Returns the scatter plot axis and a dictionary with all of the histograms created"""
 
         histDict = {}
-        left, width = 0.05, 0.6
-        bottom, height = 0.05, 0.6
-        spacing = 0.005
+        left = SinglePointCompareTrajectories.LEFT
+        bottom = SinglePointCompareTrajectories.BOTTOM
+        width = SinglePointCompareTrajectories.WIDTH
+        height = SinglePointCompareTrajectories.HEIGHT
+        spacing = SinglePointCompareTrajectories.SPACING
+        
         rect_scatter = [left, bottom, width, height]
-
-        # rect_histx = [left, bottom + height + spacing, width, 0.095]
-        rect_hist_m0_x = [left, bottom + height + spacing, width, 0.095]
-        rect_hist_m1_x = [left, bottom + height + spacing + spacing + 0.095, width, 0.095]
-        rect_hist_m2_x = [left, bottom + height + spacing + spacing + 0.095 + spacing + 0.095, width, 0.095]
-
-        # rect_histy = [left + width + spacing, bottom, 0.095, height]
-        rect_hist_m0_y = [left + width + spacing, bottom, 0.095, height]
-        rect_hist_m1_y = [left + width + spacing + spacing + 0.095, bottom, 0.095, height]
-        rect_hist_m2_y = [left + width + spacing + spacing + 0.095 + spacing + 0.095 , bottom, 0.095, height]
-
         ax_scatter = plt.axes(rect_scatter)
         ax_scatter.tick_params(direction='in', top=True, right=True)
 
-        ax_hist_m0_x = plt.axes(rect_hist_m0_x)
-        ax_hist_m0_x.tick_params(direction='in', labelbottom=False)
-        ax_hist_m1_x = plt.axes(rect_hist_m1_x)
-        ax_hist_m1_x.tick_params(direction='in', labelbottom=False)
-        ax_hist_m2_x = plt.axes(rect_hist_m2_x)
-        ax_hist_m2_x.tick_params(direction='in', labelbottom=False)
-
-        ax_hist_m0_y = plt.axes(rect_hist_m0_y)
-        ax_hist_m0_y.tick_params(direction='in', labelleft=False)
-        ax_hist_m1_y = plt.axes(rect_hist_m1_y)
-        ax_hist_m1_y.tick_params(direction='in', labelleft=False)
-        ax_hist_m2_y = plt.axes(rect_hist_m2_y)
-        ax_hist_m2_y.tick_params(direction='in', labelleft=False)
-
-        histDict["M0 X"] = ax_hist_m0_x
-        histDict["M0 Y"] = ax_hist_m0_y
-        histDict["M1 X"] = ax_hist_m1_x
-        histDict["M1 Y"] = ax_hist_m1_y
-        histDict["M2 X"] = ax_hist_m2_x
-        histDict["M2 Y"] = ax_hist_m2_y
+        numberOfHistsPerAxis = len(categories)
+        i = 0
+        histHeight = self.calculate_hist_height(numberOfHistsPerAxis)
+        for name, _ in categories:
+            rect_hist_x = [left, bottom + height + (spacing * (i + 1)) + (histHeight * i), width, histHeight]
+            rect_hist_y = [left + width + (spacing * (i + 1)) + (histHeight * i), bottom, histHeight, height]
+            ax_hist_x = plt.axes(rect_hist_x)
+            ax_hist_x.tick_params(direction='in', labelbottom=False)
+            ax_hist_y = plt.axes(rect_hist_y)
+            ax_hist_y.tick_params(direction='in', labelleft=False)
+            histDict[name + " X"] = ax_hist_x
+            histDict[name + " Y"] = ax_hist_y
+            i += 1
 
         return ax_scatter, histDict
+
+    def calculate_hist_height(self, numberOfHistsPerAxis):
+        bottom = SinglePointCompareTrajectories.BOTTOM
+        height = SinglePointCompareTrajectories.HEIGHT
+        spacing = SinglePointCompareTrajectories.SPACING
+        spaceForHists = 1.0 - bottom * 2 - height
+        spaceForSingleHist = spaceForHists / numberOfHistsPerAxis
+        height = spaceForSingleHist - spacing
+        return height
+
 
     def plot_2D_data_and_hists(self, categories:List[Tuple[str,List[Points]]], ax_scatter:Axes, histogramDict:Dict,  xFeatureCreator:FeatureCreatorBase, yFeatureCreator:FeatureCreatorBase) -> None:
         """Plots the data passed in in two dimensions on the scatterplot, and the histograms"""
@@ -121,8 +122,8 @@ class SinglePointCompareTrajectories (ComparePlotsBase):
             for trajectoryPoints in allFilesPoints:
                 xFeature = xFeatureCreator.get_features(trajectoryPoints)
                 yFeature = yFeatureCreator.get_features(trajectoryPoints)
-                xAvgOfFeature = self._get_average_of_feature(xFeature)
-                yAvgOfFeature = self._get_average_of_feature(yFeature)
+                xAvgOfFeature = self._featureToSingleVal.get_val(xFeature)
+                yAvgOfFeature = self._featureToSingleVal.get_val(yFeature)
                 xPointsAverages.append(xAvgOfFeature)
                 yPointsAverages.append(yAvgOfFeature)
             

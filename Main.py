@@ -20,6 +20,7 @@ from features.ThetaFeatureCreator import ThetaFeatureCreator
 from features.XYCurvatureFeatureCreator import XYCurvatureFeatureCreator
 from features.XYSpeedFeatureCreator import XYSpeedFeatureCreator
 from features.XYZSpeedFeatureCreator import XYZSpeedFeatureCreator
+from featuretosingleval.AverageOfFeature import AverageOfFeature
 from plotting.singlepointcomparetrajectories.SinglePointCompareTrajectories import SinglePointCompareTrajectories
 from plotting.TwoDComparePlots import TwoDComparePlots
 import numpy
@@ -265,7 +266,7 @@ if __name__ == "__main__":
 
     twoDComparePlots = TwoDComparePlots()
     # twoDComparePlots.display_plots(twoDPlotFeatures, stageCategories)
-    singlePointCompareTrajectories = SinglePointCompareTrajectories()
+    singlePointCompareTrajectories = SinglePointCompareTrajectories(AverageOfFeature())
     singlePointCompareTrajectories.display_plots(plotFeatures, stageCategories)
     # singlePointCompareTrajectories.display_plots(plotFeatures, allCategories)
     # singlePointCompareTrajectories.display_plots(plotFeatures, treatmentCategories)
