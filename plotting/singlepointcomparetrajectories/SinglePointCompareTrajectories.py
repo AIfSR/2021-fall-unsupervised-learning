@@ -82,7 +82,6 @@ class SinglePointCompareTrajectories (ComparePlotsBase):
         bottom = SinglePointCompareTrajectories.BOTTOM
         width = SinglePointCompareTrajectories.WIDTH
         height = SinglePointCompareTrajectories.HEIGHT
-        spacing = SinglePointCompareTrajectories.SPACING
         
         rect_scatter = [left, bottom, width, height]
         ax_scatter = plt.axes(rect_scatter)
@@ -92,17 +91,29 @@ class SinglePointCompareTrajectories (ComparePlotsBase):
         i = 0
         histHeight = self.calculate_hist_height(numberOfHistsPerAxis)
         for name, _ in categories:
-            rect_hist_x = [left, bottom + height + (spacing * (i + 1)) + (histHeight * i), width, histHeight]
-            rect_hist_y = [left + width + (spacing * (i + 1)) + (histHeight * i), bottom, histHeight, height]
-            ax_hist_x = plt.axes(rect_hist_x)
-            ax_hist_x.tick_params(direction='in', labelbottom=False)
-            ax_hist_y = plt.axes(rect_hist_y)
-            ax_hist_y.tick_params(direction='in', labelleft=False)
-            histDict[name + " X"] = ax_hist_x
-            histDict[name + " Y"] = ax_hist_y
+            histDict[name + " X"] = self.create_hist_section("X", i, histHeight)
+            histDict[name + " Y"] = self.create_hist_section("Y", i, histHeight)
             i += 1
 
         return ax_scatter, histDict
+
+    def create_hist_section(self, axis:str, i:int, histHeight:float) -> Axes:
+        """Creates the section of the figure for the histogram"""
+        left = SinglePointCompareTrajectories.LEFT
+        bottom = SinglePointCompareTrajectories.BOTTOM
+        width = SinglePointCompareTrajectories.WIDTH
+        height = SinglePointCompareTrajectories.HEIGHT
+        spacing = SinglePointCompareTrajectories.SPACING
+        if axis == "X":
+            rect_hist = [left, bottom + height + (spacing * (i + 1)) + (histHeight * i), width, histHeight]
+            ax_hist = plt.axes(rect_hist)
+            ax_hist.tick_params(direction='in', labelbottom=False)
+        else:
+            rect_hist = [left + width + (spacing * (i + 1)) + (histHeight * i), bottom, histHeight, height]
+            ax_hist = plt.axes(rect_hist)
+            ax_hist.tick_params(direction='in', labelleft=False)
+        return ax_hist
+        
 
     def calculate_hist_height(self, numberOfHistsPerAxis):
         bottom = SinglePointCompareTrajectories.BOTTOM
@@ -112,7 +123,6 @@ class SinglePointCompareTrajectories (ComparePlotsBase):
         spaceForSingleHist = spaceForHists / numberOfHistsPerAxis
         height = spaceForSingleHist - spacing
         return height
-
 
     def plot_2D_data_and_hists(self, categories:List[Tuple[str,List[Points]]], ax_scatter:Axes, histogramDict:Dict,  xFeatureCreator:FeatureCreatorBase, yFeatureCreator:FeatureCreatorBase) -> Dict:
         """Plots the data passed in in two dimensions on the scatterplot, and the histograms"""
@@ -136,6 +146,11 @@ class SinglePointCompareTrajectories (ComparePlotsBase):
 
     def set_hist_size_and_labels(self, histBinsDict:Dict, histogramDict:Dict, ax_scatter:Axes) -> None:
         """Sets the labels for each of the histograms"""
+        xRange, yRange = self.get_max_hist_bin_heights(histBinsDict)
+        self._set_max_hist_bin_heights_and_labels(histogramDict, ax_scatter, xRange, yRange)
+
+    def get_max_hist_bin_heights(self, histBinsDict:Dict) -> Tuple[float, float]:
+        """Get the maximum bin heights for the x and y bins"""
         xRanges = []
         yRanges = []
         for histName in histBinsDict:
@@ -145,17 +160,19 @@ class SinglePointCompareTrajectories (ComparePlotsBase):
                 xRanges.append(maxBinVal) 
             else:
                 yRanges.append(maxBinVal)
-        xRange = max(xRanges)
-        yRange = max(yRanges)
+        return (max(xRanges), max(yRanges))
+
+    def _set_max_hist_bin_heights_and_labels(self, histogramDict:Dict, ax_scatter:Axes, xRange:float, yRange:float) -> None:
+        """Sets all of the histogram bin heights so that they fit comfortably within the graph"""
         for histName in histogramDict:
             hist = histogramDict[histName]
             if(histName[-1:] == "X"):
                 hist.set_ylabel("Trajectories", fontsize = 8)
-                hist.set_ylim([0,xRange + 1])
+                hist.set_ylim([0, xRange + 1])
                 hist.set_xlim(ax_scatter.get_xlim())
             else:
                 hist.set_xlabel("Trajectories", fontsize = 8)
-                hist.set_xlim([0,yRange + 1])
+                hist.set_xlim([0, yRange + 1])
                 hist.set_ylim(ax_scatter.get_ylim())
 
     def get_graph_title(self, categories:List[Tuple[str,List[Points]]], yLabel:str, xLabel:str) -> str:
