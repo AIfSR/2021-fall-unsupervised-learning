@@ -21,6 +21,7 @@ from features.XYCurvatureFeatureCreator import XYCurvatureFeatureCreator
 from features.XYSpeedFeatureCreator import XYSpeedFeatureCreator
 from features.XYZSpeedFeatureCreator import XYZSpeedFeatureCreator
 from featuretosingleval.AverageOfFeature import AverageOfFeature
+from plotting.GraphParameters import GraphParameters
 from plotting.singlepointcomparetrajectories.SinglePoint2DCompareTrajectories import SinglePoint2DCompareTrajectories
 from plotting.TwoDComparePlots import TwoDComparePlots
 from plotting.singlepointcomparetrajectories.SinglePointCompareTrajectoriesFactory import SinglePointCompareTrajectoriesFactory
@@ -196,20 +197,13 @@ if __name__ == "__main__":
     outlier = 2.0
     power = 3
     plotFeatures = [
-        # (PointsAngleFeatureCreator(), None),
-        # (PointsAngleFeatureCreator(), RateOfChangeFeatureCreator(XFeatureCreator())),
-        # (PointsAngleFeatureCreator(), RateOfChangeFeatureCreator(XFeatureCreator()), "This", "That"),
-        # (PointsAngleFeatureCreator(), RateOfChangeFeatureCreator(RateOfChangeFeatureCreator(PhiFeatureCreator()))),
-        # (OutlierFeatureCreator(ZFeatureCreator(), 1.5), PointsAngleFeatureCreator()),
-        # (OutlierFeatureCreator(RateOfChangeFeatureCreator(ThetaFeatureCreator()), 1.5), PointsAngleFeatureCreator()),
-        # (MarkWhenFeatureValuesChange(YFeatureCreator()), PointsAngleFeatureCreator()),
-        # (RaiseToPowerFeatureCreator(XFeatureCreator(), 2.0), PointsAngleFeatureCreator()),
-        # (RaiseToPowerFeatureCreator(XFeatureCreator(), 0.5), PointsAngleFeatureCreator()),
-        # (RaiseToPowerFeatureCreator(RateOfChangeFeatureCreator(PhiFeatureCreator()), power), PointsAngleFeatureCreator()),
-        # (RaiseToPowerFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator()), 0.5), PointsAngleFeatureCreator()),
-        (ABSFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), ABSFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())), "Average: Y Speed", "Average: X Speed"),
-        (PointsAngleFeatureCreator(), None)
-        
+        GraphParameters(
+            xFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())), 
+            yFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), 
+            yLabel = "Average: Y Speed",
+            xLabel = "Average: X Speed"),
+        GraphParameters(
+            xFeatureCreator=PointsAngleFeatureCreator()),
     ]
 
     twoDPlotFeatures = [
@@ -268,7 +262,7 @@ if __name__ == "__main__":
     twoDComparePlots = TwoDComparePlots()
     # twoDComparePlots.display_plots(twoDPlotFeatures, stageCategories)
     singlePoint2DCompareTrajectoriesFactory = SinglePointCompareTrajectoriesFactory()
-    SinglePointCompareTrajectoriesFactory.display_plots(plotFeatures, stageCategories)
+    singlePoint2DCompareTrajectoriesFactory.display_plots(plotFeatures, stageCategories)
     # singlePointCompareTrajectories.display_plots(plotFeatures, allCategories)
     # singlePointCompareTrajectories.display_plots(plotFeatures, treatmentCategories)
     # print("M0")

@@ -16,7 +16,7 @@ class SinglePointCompareTrajectoriesFactory (ComparePlotsBase):
         for graphParameter in graphParameters:
             self._update_graph_parameters(graphParameter)
             singlePointCompareTrajectory = self._get_single_point_compare_trajectory(graphParameter)
-            singlePointCompareTrajectory.display_plots(graphParameter, categories)
+            singlePointCompareTrajectory.display_plots([graphParameter], categories)
 
     def _get_single_point_compare_trajectory(self, graphParameter:GraphParameters) -> ComparePlotsBase:
         """Gets the right object to display the plots passed in."""

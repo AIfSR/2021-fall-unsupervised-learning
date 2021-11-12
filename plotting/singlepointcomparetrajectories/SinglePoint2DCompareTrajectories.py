@@ -30,7 +30,7 @@ class SinglePoint2DCompareTrajectories (ComparePlotsBase):
         of there features against one another for every trajectory"""
         fig = plt.figure(figsize=(16, 7.5))
         ax_scatter, histogramDict = self._create_graph_and_histogram_sections(categories)
-        histBinsDict = self._plot_2D_data_and_hists(categories, ax_scatter, histogramDict, xFeatureCreator, yFeatureCreator)
+        histBinsDict = self._plot_2D_data_and_hists(categories, ax_scatter, histogramDict, xFeatureCreator, yFeatureCreator, featuresToSingleVal)
         self._set_hist_size_and_labels(histBinsDict, histogramDict, ax_scatter)
         ax_scatter.set_ylabel(yLabel)
         ax_scatter.set_xlabel(xLabel)
