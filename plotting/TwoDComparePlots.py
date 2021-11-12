@@ -3,6 +3,7 @@ from features.Features import Features
 from plotting.ComparePlotsBase import ComparePlotsBase
 import matplotlib.pyplot as plt
 import numpy
+from plotting.GraphParameters import GraphParameters
 from tckfilereader.Points import Points
 
 
@@ -11,13 +12,14 @@ class TwoDComparePlots (ComparePlotsBase):
     def __init__(self) -> None:
         super().__init__()
 
-    def display_plots(self, plotFeatures: List[Tuple[Features, Features]], categories: List[Tuple[str, List[Points]]]) -> None:
+    def display_plots(self, graphParameters:List[GraphParameters], categories: List[Tuple[str, List[Points]]]) -> None:
         """Displays all of the plots passed in in two dimensions"""
+
         all_graphs = []
-        for featureCreators in plotFeatures:
+        for graphParameter in graphParameters:
             graphs_of_feature = []
-            xFeatureCreator = featureCreators[0]
-            yFeatureCreator = featureCreators[1]
+            xFeatureCreator = graphParameter.xFeatureCreator
+            yFeatureCreator = graphParameter.yFeatureCreator
             for category in categories:
                 # xValues = []
                 # yValues = []
@@ -48,9 +50,9 @@ class TwoDComparePlots (ComparePlotsBase):
                 graphs_of_feature.append(graphs_of_category)
             all_graphs.append(graphs_of_feature)
 
-        for i in range(len(plotFeatures)):
+        for i in range(len(graphParameters)):
             fig, ((ax1, ax2, ax3, ax4, ax5, ax6), (ax7, ax8, ax9, ax10, ax11, ax12), (ax13, ax14, ax15, ax16, ax17, ax18)) = plt.subplots(3, 6, sharex=True, sharey=True)
-            fig.suptitle(str(plotFeatures[i][0]) + " / " + str(plotFeatures[i][1]), fontsize=16)
+            fig.suptitle(graphParameters[i].xLabel + " / " + graphParameters[i].yLabel, fontsize=16)
             ax1.plot(all_graphs[i][0][0][1], all_graphs[i][0][0][0])
             ax1.set_title('M0/16-45-01,168', fontsize=7, fontstyle='italic')
             ax2.plot(all_graphs[i][0][1][1], all_graphs[i][0][1][0])

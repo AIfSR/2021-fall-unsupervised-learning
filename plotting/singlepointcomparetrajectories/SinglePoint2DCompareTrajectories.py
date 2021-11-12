@@ -7,10 +7,11 @@ from features.Features import Features
 from features.XFeatureCreator import XFeatureCreator
 from featuretosingleval.FeatureToSingleValBase import FeatureToSingleValBase
 from plotting.ComparePlotsBase import ComparePlotsBase
+from plotting.GraphParameters import GraphParameters
 from tckfilereader.Points import Points
 from plotting.singlepointcomparetrajectories.LineFeatureCreator import LineFeatureCreator
 
-class SinglePointCompareTrajectories (ComparePlotsBase):
+class SinglePoint2DCompareTrajectories (ComparePlotsBase):
 
     LEFT = 0.065
     WIDTH = 0.615
@@ -18,49 +19,13 @@ class SinglePointCompareTrajectories (ComparePlotsBase):
     HEIGHT = 0.6
     SPACING = 0.025
 
-    def __init__(self, featureToSingleVal:FeatureToSingleValBase) -> None:
-        super().__init__()
-        self._featureToSingleVal = featureToSingleVal
-
-    def display_plots(self, featuresList:List[Tuple[Features, Features]], categories:List[Tuple[str,List[Points]]]) -> None:
+    def display_plots(self, graphParameters:List[GraphParameters], categories:List[Tuple[str,List[Points]]]) -> None:
         """Displays plots comparing the average of a feature for each category"""
-        for features in featuresList:
+        for graphParameter in graphParameters:
             plt.close()
-            if not self._is_labels_included(features):
-                yFeatureGenerator, xFeatureGenerator = features
-                yLabel = "Average: " + str(yFeatureGenerator)
-                xLabel = "Average: " + str(xFeatureGenerator)
-            else:
-                yFeatureGenerator, xFeatureGenerator, yLabel, xLabel = features
-            
-            if self._is_data_one_dimension(xFeatureGenerator):
-                self._plot_one_dimention_feature(categories, yFeatureGenerator, yLabel)
-            else:
-                self._plot_two_dimention_features(categories, yFeatureGenerator, xFeatureGenerator, yLabel, xLabel)
+            self._plot_features(categories, graphParameter.yFeatureCreator, graphParameter.xFeatureCreator, graphParameter.yLabel, graphParameter.xLabel, graphParameter.featuresToSingleVal)
 
-    def _is_labels_included(self, features:Tuple):
-        """Gets whether the labels for each feature are included in the tuple"""
-        return len(features) == 4
-    
-    def _is_data_one_dimension(self, xFeatureGenerator:FeatureCreatorBase):
-        """If the xFeature generator is not None that means that the data is two dimensional"""
-        return xFeatureGenerator is None or type(xFeatureGenerator) == LineFeatureCreator
-    
-    def _get_rid_of_x_ticks(self) -> None:
-        """Gets rid of the ticks along the x Axis for graphs that are not two dimensional"""
-        plt.tick_params(
-            axis='x',          # changes apply to the x-axis
-            which='both',      # both major and minor ticks are affected
-            bottom=False,      # ticks along the bottom edge are off
-            top=False,         # ticks along the top edge are off
-            labelbottom=False
-        )
-    def _plot_one_dimention_feature(self, categories:List[Tuple[str,List[Points]]], featureCreator:FeatureCreatorBase, label:str) -> None:
-        """Takes the feature creator base and plots the averages of 
-        this feature for every trajectory"""
-
-
-    def _plot_two_dimention_features(self, categories:List[Tuple[str,List[Points]]], yFeatureCreator:FeatureCreatorBase, xFeatureCreator:FeatureCreatorBase, yLabel:str, xLabel:str) -> None:
+    def _plot_features(self, categories:List[Tuple[str,List[Points]]], yFeatureCreator:FeatureCreatorBase, xFeatureCreator:FeatureCreatorBase, yLabel:str, xLabel:str, featuresToSingleVal:FeatureToSingleValBase) -> None:
         """Takes the two feature creator bases and plots the averages 
         of there features against one another for every trajectory"""
         fig = plt.figure(figsize=(16, 7.5))
@@ -78,10 +43,10 @@ class SinglePointCompareTrajectories (ComparePlotsBase):
         Returns the scatter plot axis and a dictionary with all of the histograms created"""
 
         histDict = {}
-        left = SinglePointCompareTrajectories.LEFT
-        bottom = SinglePointCompareTrajectories.BOTTOM
-        width = SinglePointCompareTrajectories.WIDTH
-        height = SinglePointCompareTrajectories.HEIGHT
+        left = SinglePoint2DCompareTrajectories.LEFT
+        bottom = SinglePoint2DCompareTrajectories.BOTTOM
+        width = SinglePoint2DCompareTrajectories.WIDTH
+        height = SinglePoint2DCompareTrajectories.HEIGHT
         
         rect_scatter = [left, bottom, width, height]
         ax_scatter = plt.axes(rect_scatter)
@@ -99,11 +64,11 @@ class SinglePointCompareTrajectories (ComparePlotsBase):
 
     def _create_hist_section(self, axis:str, i:int, histHeight:float) -> Axes:
         """Creates the section of the figure for the histogram"""
-        left = SinglePointCompareTrajectories.LEFT
-        bottom = SinglePointCompareTrajectories.BOTTOM
-        width = SinglePointCompareTrajectories.WIDTH
-        height = SinglePointCompareTrajectories.HEIGHT
-        spacing = SinglePointCompareTrajectories.SPACING
+        left = SinglePoint2DCompareTrajectories.LEFT
+        bottom = SinglePoint2DCompareTrajectories.BOTTOM
+        width = SinglePoint2DCompareTrajectories.WIDTH
+        height = SinglePoint2DCompareTrajectories.HEIGHT
+        spacing = SinglePoint2DCompareTrajectories.SPACING
         if axis == "X":
             rect_hist = [left, bottom + height + (spacing * (i + 1)) + (histHeight * i), width, histHeight]
             ax_hist = plt.axes(rect_hist)
@@ -116,15 +81,15 @@ class SinglePointCompareTrajectories (ComparePlotsBase):
 
     def _calculate_hist_height(self, numberOfHistsPerAxis:int) -> float:
         """Calculated the height of each histogram so that they fit within the figure."""
-        bottom = SinglePointCompareTrajectories.BOTTOM
-        height = SinglePointCompareTrajectories.HEIGHT
-        spacing = SinglePointCompareTrajectories.SPACING
+        bottom = SinglePoint2DCompareTrajectories.BOTTOM
+        height = SinglePoint2DCompareTrajectories.HEIGHT
+        spacing = SinglePoint2DCompareTrajectories.SPACING
         spaceForHists = 1.0 - bottom * 2 - height
         spaceForSingleHist = spaceForHists / numberOfHistsPerAxis
         height = spaceForSingleHist - spacing
         return height
 
-    def _plot_2D_data_and_hists(self, categories:List[Tuple[str,List[Points]]], ax_scatter:Axes, histogramDict:Dict,  xFeatureCreator:FeatureCreatorBase, yFeatureCreator:FeatureCreatorBase) -> Dict:
+    def _plot_2D_data_and_hists(self, categories:List[Tuple[str,List[Points]]], ax_scatter:Axes, histogramDict:Dict,  xFeatureCreator:FeatureCreatorBase, yFeatureCreator:FeatureCreatorBase, featuresToSingleVal) -> Dict:
         """Plots the data passed in in two dimensions on the scatterplot, and the histograms"""
         histBinsDict = {}
         for name, allFilesPoints in categories:
@@ -133,8 +98,8 @@ class SinglePointCompareTrajectories (ComparePlotsBase):
             for trajectoryPoints in allFilesPoints:
                 xFeature = xFeatureCreator.get_features(trajectoryPoints)
                 yFeature = yFeatureCreator.get_features(trajectoryPoints)
-                xAvgOfFeature = self._featureToSingleVal.get_val(xFeature)
-                yAvgOfFeature = self._featureToSingleVal.get_val(yFeature)
+                xAvgOfFeature = featuresToSingleVal.get_val(xFeature)
+                yAvgOfFeature = featuresToSingleVal.get_val(yFeature)
                 xPointsAverages.append(xAvgOfFeature)
                 yPointsAverages.append(yAvgOfFeature)
             

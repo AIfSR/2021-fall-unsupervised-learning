@@ -21,8 +21,9 @@ from features.XYCurvatureFeatureCreator import XYCurvatureFeatureCreator
 from features.XYSpeedFeatureCreator import XYSpeedFeatureCreator
 from features.XYZSpeedFeatureCreator import XYZSpeedFeatureCreator
 from featuretosingleval.AverageOfFeature import AverageOfFeature
-from plotting.singlepointcomparetrajectories.SinglePointCompareTrajectories import SinglePointCompareTrajectories
+from plotting.singlepointcomparetrajectories.SinglePoint2DCompareTrajectories import SinglePoint2DCompareTrajectories
 from plotting.TwoDComparePlots import TwoDComparePlots
+from plotting.singlepointcomparetrajectories.SinglePointCompareTrajectoriesFactory import SinglePointCompareTrajectoriesFactory
 import numpy
 import matplotlib.pyplot as plt
 
@@ -266,8 +267,8 @@ if __name__ == "__main__":
 
     twoDComparePlots = TwoDComparePlots()
     # twoDComparePlots.display_plots(twoDPlotFeatures, stageCategories)
-    singlePointCompareTrajectories = SinglePointCompareTrajectories(AverageOfFeature())
-    singlePointCompareTrajectories.display_plots(plotFeatures, stageCategories)
+    singlePoint2DCompareTrajectoriesFactory = SinglePointCompareTrajectoriesFactory()
+    SinglePointCompareTrajectoriesFactory.display_plots(plotFeatures, stageCategories)
     # singlePointCompareTrajectories.display_plots(plotFeatures, allCategories)
     # singlePointCompareTrajectories.display_plots(plotFeatures, treatmentCategories)
     # print("M0")
