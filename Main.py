@@ -21,6 +21,8 @@ from features.XYCurvatureFeatureCreator import XYCurvatureFeatureCreator
 from features.XYSpeedFeatureCreator import XYSpeedFeatureCreator
 from features.XYZSpeedFeatureCreator import XYZSpeedFeatureCreator
 from featuretosingleval.AverageOfFeature import AverageOfFeature
+from featuretosingleval.FeatureToSingleValBase import FeatureToSingleValBase
+from featuretosingleval.MedianOfFeature import MedianOfFeature
 from plotting.GraphParameters import GraphParameters
 from plotting.singlepointcomparetrajectories.SinglePoint2DCompareTrajectories import SinglePoint2DCompareTrajectories
 from plotting.TwoDComparePlots import TwoDComparePlots
@@ -203,7 +205,14 @@ if __name__ == "__main__":
             yLabel = "Average: Y Speed",
             xLabel = "Average: X Speed"),
         GraphParameters(
+            xFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())), 
+            yFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), 
+            featuresToSingleVal=MedianOfFeature()),
+        GraphParameters(
             xFeatureCreator=PointsAngleFeatureCreator()),
+        GraphParameters(
+            xFeatureCreator=PointsAngleFeatureCreator(),
+            featuresToSingleVal=MedianOfFeature()),
     ]
 
     twoDPlotFeatures = [
@@ -262,7 +271,7 @@ if __name__ == "__main__":
     twoDComparePlots = TwoDComparePlots()
     # twoDComparePlots.display_plots(twoDPlotFeatures, stageCategories)
     singlePoint2DCompareTrajectoriesFactory = SinglePointCompareTrajectoriesFactory()
-    singlePoint2DCompareTrajectoriesFactory.display_plots(plotFeatures, stageCategories)
+    singlePoint2DCompareTrajectoriesFactory.display_plots(plotFeatures, treatmentCategories)
     # singlePointCompareTrajectories.display_plots(plotFeatures, allCategories)
     # singlePointCompareTrajectories.display_plots(plotFeatures, treatmentCategories)
     # print("M0")

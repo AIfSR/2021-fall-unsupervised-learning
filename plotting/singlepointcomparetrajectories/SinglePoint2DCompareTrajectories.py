@@ -20,14 +20,14 @@ class SinglePoint2DCompareTrajectories (ComparePlotsBase):
     SPACING = 0.025
 
     def display_plots(self, graphParameters:List[GraphParameters], categories:List[Tuple[str,List[Points]]]) -> None:
-        """Displays plots comparing the average of a feature for each category"""
+        """Displays plots comparing single point values of a feature for each category"""
         for graphParameter in graphParameters:
             plt.close()
             self._plot_features(categories, graphParameter.yFeatureCreator, graphParameter.xFeatureCreator, graphParameter.yLabel, graphParameter.xLabel, graphParameter.featuresToSingleVal)
 
     def _plot_features(self, categories:List[Tuple[str,List[Points]]], yFeatureCreator:FeatureCreatorBase, xFeatureCreator:FeatureCreatorBase, yLabel:str, xLabel:str, featuresToSingleVal:FeatureToSingleValBase) -> None:
-        """Takes the two feature creator bases and plots the averages 
-        of there features against one another for every trajectory"""
+        """Takes the two feature creator bases and plots the single point values 
+        of their features against one another for every trajectory"""
         fig = plt.figure(figsize=(16, 7.5))
         ax_scatter, histogramDict = self._create_graph_and_histogram_sections(categories)
         histBinsDict = self._plot_2D_data_and_hists(categories, ax_scatter, histogramDict, xFeatureCreator, yFeatureCreator, featuresToSingleVal)

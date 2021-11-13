@@ -11,3 +11,6 @@ class AverageOfFeature (FeatureToSingleValBase):
             sum += featureVal
             count += 1
         return sum / count
+
+    def __str__(self) -> str:
+        return "Average"

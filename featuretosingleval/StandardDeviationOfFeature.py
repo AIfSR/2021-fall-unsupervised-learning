@@ -17,3 +17,6 @@ class StandardDeviationOfFeature (FeatureToSingleValBase):
             count +=1
         stdDev = (sum/count)**0.5
         return stdDev
+
+    def __str__(self) -> str:
+        return "Standard Deviation"

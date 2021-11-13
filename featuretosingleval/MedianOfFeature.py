@@ -11,3 +11,6 @@ class MedianOfFeature (FeatureToSingleValBase):
             val2 = sortedListFeature[len(sortedListFeature) // 2 - 1]
             return (val1 + val2) / 2
         return sortedListFeature[len(sortedListFeature) // 2]
+
+    def __str__(self) -> str:
+        return "Median"
