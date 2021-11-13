@@ -16,6 +16,7 @@ class MarkWhenFeatureValuesChange (FeatureCreatorBase):
         origFeatures = self._origFeatureCreator.get_features(points)
         features = Features()
         prevVal = origFeatures[0]
+        features.add_feature_val(1.0)
         for i in range(1, len(origFeatures)):
             currentVal = origFeatures[i]
             if currentVal == prevVal:

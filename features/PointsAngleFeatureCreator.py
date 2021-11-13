@@ -29,11 +29,6 @@ class PointsAngleFeatureCreator (FeatureCreatorBase):
             # angle in cosine
 
             features.add_feature_val(angle)
-        if len(points) > 1:
-            features.add_feature_val(angle)
-            features.add_feature_val(angle)
-            # this line needs to be here so that there are an equal amount of
-            # feature values as points passed in
         return features
 
     def __str__(self) -> str:
