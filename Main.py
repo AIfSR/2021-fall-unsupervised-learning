@@ -208,11 +208,14 @@ if __name__ == "__main__":
             xFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())), 
             yFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), 
             featuresToSingleVal=MedianOfFeature()),
-        # GraphParameters(
-        #     xFeatureCreator=PointsAngleFeatureCreator()),
-        # GraphParameters(
-        #     xFeatureCreator=PointsAngleFeatureCreator(),
-        #     featuresToSingleVal=MedianOfFeature()),
+        GraphParameters(
+            xFeatureCreator=PointsAngleFeatureCreator(),
+            yFeatureCreator=RateOfChangeFeatureCreator(PointsDistanceFeatureCreator())),    
+        GraphParameters(
+            xFeatureCreator=PointsAngleFeatureCreator()),
+        GraphParameters(
+            xFeatureCreator=PointsAngleFeatureCreator(),
+            featuresToSingleVal=MedianOfFeature()),
     ]
 
     twoDPlotFeatures = [
@@ -271,7 +274,7 @@ if __name__ == "__main__":
     twoDComparePlots = TwoDComparePlots()
     # twoDComparePlots.display_plots(twoDPlotFeatures, stageCategories)
     singlePoint2DCompareTrajectoriesFactory = SinglePointCompareTrajectoriesFactory()
-    singlePoint2DCompareTrajectoriesFactory.display_plots(plotFeatures, treatmentCategories)
+    singlePoint2DCompareTrajectoriesFactory.display_plots(plotFeatures, stageCategories)
     # singlePointCompareTrajectories.display_plots(plotFeatures, allCategories)
     # singlePointCompareTrajectories.display_plots(plotFeatures, treatmentCategories)
     # print("M0")
