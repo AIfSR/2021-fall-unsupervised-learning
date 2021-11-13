@@ -72,11 +72,11 @@ class SinglePoint2DCompareTrajectories (ComparePlotsBase):
         spacing = SinglePoint2DCompareTrajectories.SPACING
         if axis == "X":
             rect_hist = [left, bottom + height + (spacing * (i + 1)) + (histHeight * i), width, histHeight]
-            ax_hist = plt.axes(rect_hist, sharex=ax_scatter)
+            ax_hist = plt.axes(rect_hist, sharex = ax_scatter)
             ax_hist.tick_params(direction='in', labelbottom=False)
         else:
             rect_hist = [left + width + (spacing * (i + 1)) + (histHeight * i), bottom, histHeight, height]
-            ax_hist = plt.axes(rect_hist, sharey=ax_scatter)
+            ax_hist = plt.axes(rect_hist, sharey = ax_scatter)
             ax_hist.tick_params(direction='in', labelleft=False)
         return ax_hist
 
@@ -107,12 +107,17 @@ class SinglePoint2DCompareTrajectories (ComparePlotsBase):
             
             s = ax_scatter.scatter(xPointsAverages, yPointsAverages, label=name)
             pointsPlotted.append((name, xPointsAverages, yPointsAverages, s.get_ec()))
+
+        print("X: " + str(list(ax_scatter.get_xticks())))
+        print("Y: " + str(list(ax_scatter.get_yticks())))
+        ax_scatter.set_xticks(ax_scatter.get_xticks())
+        ax_scatter.set_yticks(ax_scatter.get_yticks())
         
         for name, xPointsAverages, yPointsAverages, color in pointsPlotted:
             xHistAxis = histogramDict[name + " X"]
             yHistAxis = histogramDict[name + " Y"]
-            histBinsDict[name + " X"] = xHistAxis.hist(xPointsAverages, color = color, bins=ax_scatter.get_xticks()[1:-1])
-            histBinsDict[name + " Y"] = yHistAxis.hist(yPointsAverages, orientation='horizontal', color = color,bins=ax_scatter.get_yticks()[1:-1])
+            histBinsDict[name + " X"] = xHistAxis.hist(xPointsAverages, color = color, bins=ax_scatter.get_xticks(), range=ax_scatter.get_xlim())
+            histBinsDict[name + " Y"] = yHistAxis.hist(yPointsAverages, orientation='horizontal', color = color, bins=ax_scatter.get_yticks(), range=ax_scatter.get_ylim())
 
         return histBinsDict
 
