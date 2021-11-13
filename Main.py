@@ -199,20 +199,20 @@ if __name__ == "__main__":
     outlier = 2.0
     power = 3
     plotFeatures = [
-        GraphParameters(
-            xFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())), 
-            yFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), 
-            yLabel = "Average: Y Speed",
-            xLabel = "Average: X Speed"),
+        # GraphParameters(
+        #     xFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())), 
+        #     yFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), 
+        #     yLabel = "Average: Y Speed",
+        #     xLabel = "Average: X Speed"),
         GraphParameters(
             xFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())), 
             yFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), 
             featuresToSingleVal=MedianOfFeature()),
-        GraphParameters(
-            xFeatureCreator=PointsAngleFeatureCreator()),
-        GraphParameters(
-            xFeatureCreator=PointsAngleFeatureCreator(),
-            featuresToSingleVal=MedianOfFeature()),
+        # GraphParameters(
+        #     xFeatureCreator=PointsAngleFeatureCreator()),
+        # GraphParameters(
+        #     xFeatureCreator=PointsAngleFeatureCreator(),
+        #     featuresToSingleVal=MedianOfFeature()),
     ]
 
     twoDPlotFeatures = [

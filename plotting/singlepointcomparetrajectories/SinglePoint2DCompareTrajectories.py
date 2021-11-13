@@ -24,6 +24,7 @@ class SinglePoint2DCompareTrajectories (ComparePlotsBase):
         for graphParameter in graphParameters:
             plt.close()
             self._plot_features(categories, graphParameter.yFeatureCreator, graphParameter.xFeatureCreator, graphParameter.yLabel, graphParameter.xLabel, graphParameter.featuresToSingleVal)
+            plt.show()
 
     def _plot_features(self, categories:List[Tuple[str,List[Points]]], yFeatureCreator:FeatureCreatorBase, xFeatureCreator:FeatureCreatorBase, yLabel:str, xLabel:str, featuresToSingleVal:FeatureToSingleValBase) -> None:
         """Takes the two feature creator bases and plots the single point values 
@@ -36,7 +37,7 @@ class SinglePoint2DCompareTrajectories (ComparePlotsBase):
         ax_scatter.set_xlabel(xLabel)
         fig.suptitle(self._get_graph_title(categories, yLabel, xLabel))
         fig.legend(prop={"size":20})
-        plt.show()
+        
 
     def _create_graph_and_histogram_sections(self, categories:List[Tuple[str,List[Points]]]) -> Tuple[Axes, Dict]:
         """Creates the sections of the figure for the graphs and for the histograms. 
@@ -56,13 +57,13 @@ class SinglePoint2DCompareTrajectories (ComparePlotsBase):
         i = 0
         histHeight = self._calculate_hist_height(numberOfHistsPerAxis)
         for name, _ in categories:
-            histDict[name + " X"] = self._create_hist_section("X", i, histHeight)
-            histDict[name + " Y"] = self._create_hist_section("Y", i, histHeight)
+            histDict[name + " X"] = self._create_hist_section("X", i, histHeight, ax_scatter)
+            histDict[name + " Y"] = self._create_hist_section("Y", i, histHeight, ax_scatter)
             i += 1
 
         return ax_scatter, histDict
 
-    def _create_hist_section(self, axis:str, i:int, histHeight:float) -> Axes:
+    def _create_hist_section(self, axis:str, i:int, histHeight:float, ax_scatter:Axes) -> Axes:
         """Creates the section of the figure for the histogram"""
         left = SinglePoint2DCompareTrajectories.LEFT
         bottom = SinglePoint2DCompareTrajectories.BOTTOM
@@ -71,11 +72,11 @@ class SinglePoint2DCompareTrajectories (ComparePlotsBase):
         spacing = SinglePoint2DCompareTrajectories.SPACING
         if axis == "X":
             rect_hist = [left, bottom + height + (spacing * (i + 1)) + (histHeight * i), width, histHeight]
-            ax_hist = plt.axes(rect_hist)
+            ax_hist = plt.axes(rect_hist, sharex=ax_scatter)
             ax_hist.tick_params(direction='in', labelbottom=False)
         else:
             rect_hist = [left + width + (spacing * (i + 1)) + (histHeight * i), bottom, histHeight, height]
-            ax_hist = plt.axes(rect_hist)
+            ax_hist = plt.axes(rect_hist, sharey=ax_scatter)
             ax_hist.tick_params(direction='in', labelleft=False)
         return ax_hist
 
@@ -92,6 +93,7 @@ class SinglePoint2DCompareTrajectories (ComparePlotsBase):
     def _plot_2D_data_and_hists(self, categories:List[Tuple[str,List[Points]]], ax_scatter:Axes, histogramDict:Dict,  xFeatureCreator:FeatureCreatorBase, yFeatureCreator:FeatureCreatorBase, featuresToSingleVal) -> Dict:
         """Plots the data passed in in two dimensions on the scatterplot, and the histograms"""
         histBinsDict = {}
+        pointsPlotted = []
         for name, allFilesPoints in categories:
             xPointsAverages = []
             yPointsAverages = []
@@ -104,9 +106,14 @@ class SinglePoint2DCompareTrajectories (ComparePlotsBase):
                 yPointsAverages.append(yAvgOfFeature)
             
             s = ax_scatter.scatter(xPointsAverages, yPointsAverages, label=name)
-            
-            histBinsDict[name + " X"] = histogramDict[name + " X"].hist(xPointsAverages, color = s.get_ec())
-            histBinsDict[name + " Y"] = histogramDict[name + " Y"].hist(yPointsAverages, orientation='horizontal', color = s.get_ec())
+            pointsPlotted.append((name, xPointsAverages, yPointsAverages, s.get_ec()))
+        
+        for name, xPointsAverages, yPointsAverages, color in pointsPlotted:
+            xHistAxis = histogramDict[name + " X"]
+            yHistAxis = histogramDict[name + " Y"]
+            histBinsDict[name + " X"] = xHistAxis.hist(xPointsAverages, color = color, bins=ax_scatter.get_xticks()[1:-1])
+            histBinsDict[name + " Y"] = yHistAxis.hist(yPointsAverages, orientation='horizontal', color = color,bins=ax_scatter.get_yticks()[1:-1])
+
         return histBinsDict
 
     def _set_hist_size_and_labels(self, histBinsDict:Dict, histogramDict:Dict, ax_scatter:Axes) -> None:
@@ -134,11 +141,10 @@ class SinglePoint2DCompareTrajectories (ComparePlotsBase):
             if(histName[-1:] == "X"):
                 hist.set_ylabel("Trajectories", fontsize = 8)
                 hist.set_ylim([0, xRange + 1])
-                hist.set_xlim(ax_scatter.get_xlim())
             else:
                 hist.set_xlabel("Trajectories", fontsize = 8)
                 hist.set_xlim([0, yRange + 1])
-                hist.set_ylim(ax_scatter.get_ylim())
+        pass
 
     def _get_graph_title(self, categories:List[Tuple[str,List[Points]]], yLabel:str, xLabel:str) -> str:
         """Gets the name of the graph."""
