@@ -54,3 +54,7 @@ class Features:
     def __getitem__(self, index:int) -> float:
         """Gets the FeatureValue at the specified index"""
         return self._featuresList[index]
+
+    def __repr__(self) -> str:
+        """Gets the string representation of this feature"""
+        return str(self._featuresList)

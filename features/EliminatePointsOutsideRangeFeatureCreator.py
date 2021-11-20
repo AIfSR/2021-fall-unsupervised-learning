@@ -12,7 +12,7 @@ class EliminatePointsOutsideRangeFeatureCreator (FeatureCreatorBase):
         self._featureCreator = featureCreator
 
     def get_features(self, points:Points) -> Features:
-        """Gets all the X values as features"""
+        """Gets all the values within the range specified"""
         origFeatures = self._featureCreator.get_features(points)
         features = Features()
         count = 1
