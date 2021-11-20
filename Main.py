@@ -45,7 +45,6 @@ m0_0h_4hFilePaths = [
     "data/0_4h/M0/2020-08-05_18-11-44,490_.tck",
     "data/0_4h/M0/2020-12-02_14-49-41,154_.tck",
     "data/0_4h/M0/2020-12-02_15-58-23,371_.tck",
-    "data/0_4h/M0/2020-12-02_16-41-18,342_.tck",
 ]
 m0_0h_24hFilePaths = [
     "data/0_24h/M0/2020-12-17_10-20-56,683_.tck",
@@ -78,7 +77,6 @@ m1_0h_4hFilePaths = [
     "data/0_4h/M1/2020-08-05_22-33-50,826_.tck",
 ]
 m1_0h_24hFilePaths = [
-    "data/0_24h/M1/2020-08-06_16-00-42,831_.tck",
     "data/0_24h/M1/2020-08-06_17-07-43,536_.tck",
     "data/0_24h/M1/2020-08-06_16-28-09,982_.tck",
     "data/0_24h/M1/2020-08-06_17-44-38,166_.tck",
@@ -152,6 +150,11 @@ filePaths24h_24h = m0_24h_24hFilePaths[:]
 filePaths24h_24h.extend(m1_24h_24hFilePaths[:])
 filePaths24h_24h.extend(m2_24h_24hFilePaths[:])
 
+allFilePaths = m0FilePaths[:]
+allFilePaths.extend(m1FilePaths[:])
+allFilePaths.extend(m2FilePaths[:])
+
+
 def printAverageVelocity(files:List, title=""):
     def getAverageOfAbsFeature(feature):
         count = 0
@@ -199,23 +202,27 @@ if __name__ == "__main__":
     outlier = 2.0
     power = 3
     plotFeatures = [
+        # GraphParameters(
+            # xFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())),
+            # yFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())),
+            # yLabel = "Average: Y Speed",
+            # xLabel = "Average: X Speed"),
+        # GraphParameters(
+        #     xFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())),
+        #     yFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())),
+        #     featuresToSingleVal=MedianOfFeature()),
+        # GraphParameters(
+        #     xFeatureCreator=PointsAngleFeatureCreator(),
+        #     yFeatureCreator=RateOfChangeFeatureCreator(PointsDistanceFeatureCreator())),
+        # GraphParameters(
+        #     xFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())),
         GraphParameters(
-            xFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())), 
-            yFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), 
-            yLabel = "Average: Y Speed",
-            xLabel = "Average: X Speed"),
+            xFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator()))),
         GraphParameters(
-            xFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())), 
-            yFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), 
-            featuresToSingleVal=MedianOfFeature()),
-        GraphParameters(
-            xFeatureCreator=PointsAngleFeatureCreator(),
-            yFeatureCreator=RateOfChangeFeatureCreator(PointsDistanceFeatureCreator())),    
-        GraphParameters(
-            xFeatureCreator=PointsAngleFeatureCreator()),
-        GraphParameters(
-            xFeatureCreator=PointsAngleFeatureCreator(),
-            featuresToSingleVal=MedianOfFeature()),
+            xFeatureCreator=XYZSpeedFeatureCreator()),
+        # GraphParameters(
+        #     xFeatureCreator=PointsAngleFeatureCreator(),
+        #     featuresToSingleVal=MedianOfFeature()),
     ]
 
     twoDPlotFeatures = [
@@ -270,11 +277,17 @@ if __name__ == "__main__":
         ("M2_24_4", getPointsFromFilePaths(m2_24h_4hFilePaths)),
         ("M2_24_24", getPointsFromFilePaths(m2_24h_24hFilePaths)),
     ]
-
+    allPoints = m0Points+m1Points+m2Points
+    print(len(allPoints))
+    print(len(allFilePaths))
+    allPointsCategory = [
+        ("allPoints",allPoints)
+    ]
     twoDComparePlots = TwoDComparePlots()
     # twoDComparePlots.display_plots(twoDPlotFeatures, stageCategories)
     singlePoint2DCompareTrajectoriesFactory = SinglePointCompareTrajectoriesFactory()
-    singlePoint2DCompareTrajectoriesFactory.display_plots(plotFeatures, stageCategories)
+    singlePoint2DCompareTrajectoriesFactory.display_plots(plotFeatures, allPointsCategory)
+    # singlePoint2DCompareTrajectoriesFactory.display_plots(plotFeatures, stageCategories)
     # singlePointCompareTrajectories.display_plots(plotFeatures, allCategories)
     # singlePointCompareTrajectories.display_plots(plotFeatures, treatmentCategories)
     # print("M0")

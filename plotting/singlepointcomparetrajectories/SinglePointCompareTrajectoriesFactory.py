@@ -5,6 +5,7 @@ from featuretosingleval.AverageOfFeature import AverageOfFeature
 from plotting.ComparePlotsBase import ComparePlotsBase
 from plotting.GraphParameters import GraphParameters
 from plotting.singlepointcomparetrajectories.SinglePoint1DCompareTrajectories import SinglePoint1DCompareTrajectories
+from plotting.singlepointcomparetrajectories.SinglePoint1DCompareTrajectoriesOutliers import SinglePoint1DCompareTrajectoriesOutliers
 from plotting.singlepointcomparetrajectories.SinglePoint2DCompareTrajectories import SinglePoint2DCompareTrajectories
 from tckfilereader.Points import Points
 
@@ -21,7 +22,7 @@ class SinglePointCompareTrajectoriesFactory (ComparePlotsBase):
     def _get_single_point_compare_trajectory(self, graphParameter:GraphParameters) -> ComparePlotsBase:
         """Gets the right object to display the plots passed in."""
         if graphParameter.yFeatureCreator is None:
-            return SinglePoint1DCompareTrajectories()
+            return SinglePoint1DCompareTrajectoriesOutliers()
         return SinglePoint2DCompareTrajectories()
 
     def _update_graph_parameters(self, graphParameter:GraphParameters) -> None:
@@ -33,4 +34,3 @@ class SinglePointCompareTrajectoriesFactory (ComparePlotsBase):
         if graphParameter.featuresToSingleVal is None:
             graphParameter.featuresToSingleVal = AverageOfFeature()
 
-        

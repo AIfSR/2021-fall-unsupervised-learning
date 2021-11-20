@@ -1,5 +1,3 @@
-
-
 from typing import List, Tuple
 from features.Features import Features
 from featuretosingleval.FeatureToSingleValBase import FeatureToSingleValBase
@@ -30,7 +28,7 @@ class SinglePoint1DCompareTrajectories (ComparePlotsBase):
                     singleVal = graphParameter.featuresToSingleVal.get_val(features)
                     pointAverages.append(singleVal)
                 data.append(pointAverages)
-            
+
             ax.boxplot(data, patch_artist = True, vert = 0)
             ax.set_yticklabels(names, fontdict = {'fontsize':16})
             plt.title(self.get_title(graphParameter, categories), fontsize=20)
@@ -38,6 +36,7 @@ class SinglePoint1DCompareTrajectories (ComparePlotsBase):
             ax.get_yaxis().tick_left()
             ax.set_xlabel(graphParameter.xLabel, fontsize=16)
             plt.show()
+
 
     def setup_fig(self) -> Axes:
         """Sets up the figure with the right dimensions."""
