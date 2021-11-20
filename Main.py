@@ -201,6 +201,56 @@ if __name__ == "__main__":
     beta = 0.9
     outlier = 2.0
     power = 3
+    independentFeatureCreators = [
+        XFeatureCreator(),
+        YFeatureCreator(),
+        ZFeatureCreator(),
+        ThetaFeatureCreator(),
+        PhiFeatureCreator(),
+        DisplacementDirectionContribution(),
+        PointsAngleFeatureCreator(),
+        PointsDistanceFeatureCreator(),
+        SpeedOverDistanceFeatureCreator(),
+        SpreadFeatureCreator(),
+        XYCurvatureFeatureCreator(),
+        XYSpeedFeatureCreator(),
+        XYZSpeedFeatureCreator(),
+    ]
+    dependentFeatureCreators = [
+        ABSFeatureCreator,
+        DeltaFromStartFeatureCreator,
+        DeviationsFromMeanFeatureCreator,
+        MarkWhenFeatureValuesChange,
+        MaxMinDifferenceOfFeature,
+        RateOfChangeFeatureCreator,
+        SignChangeFeatureCreator,
+    ]
+    specialFeatureCreators = [
+        OutlierFeatureCreator,
+        EliminatePointsOutsideRangeFeatureCreator,
+        PointsDisplacementFeatureCreator,
+    ]
+    def create_all_feature_creators():
+        allFeatureCreators = independentFeatureCreators[:]
+        for dependentFeatureCreator in dependentFeatureCreators:
+            for nonDependentFeatureCreator in independentFeatureCreators:
+                allFeatureCreators.append(dependentFeatureCreator(nonDependentFeatureCreator))
+        for specialFeatureCreator in specialFeatureCreators:
+            for nonDependentFeatureCreator in independentFeatureCreators:
+                if specialFeatureCreator == OutlierFeatureCreator:
+                    outlierVals = [1.5, 2.0]
+                    for val in outlierVals:
+                        allFeatureCreators.append(OutlierFeatureCreator(nonDependentFeatureCreator, val))
+                if specialFeatureCreator == EliminatePointsOutsideRangeFeatureCreator:
+                    ranges = [(0.0, 0.5), (0.5, 1.0), (0.25, 0.75)]
+                    for range in ranges:
+                        allFeatureCreators.append(EliminatePointsOutsideRangeFeatureCreator(range[0], range[1], nonDependentFeatureCreator))
+                if specialFeatureCreator == PointsDisplacementFeatureCreator:
+                    allFeatureCreators.append(PointsDisplacementFeatureCreator())
+        return allFeatureCreators
+    allFeatureCreators = create_all_feature_creators()
+
+
     plotFeatures = [
         # GraphParameters(
             # xFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())),
@@ -216,20 +266,17 @@ if __name__ == "__main__":
         #     yFeatureCreator=RateOfChangeFeatureCreator(PointsDistanceFeatureCreator())),
         # GraphParameters(
         #     xFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())),
-        GraphParameters(
-            xFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator()))),
-        GraphParameters(
-            xFeatureCreator=XYZSpeedFeatureCreator()),
+        # GraphParameters(
+        #     xFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator()))),
+        # GraphParameters(
+        #     xFeatureCreator=PhiFeatureCreator(),)
         # GraphParameters(
         #     xFeatureCreator=PointsAngleFeatureCreator(),
         #     featuresToSingleVal=MedianOfFeature()),
     ]
 
-    twoDPlotFeatures = [
-        (EliminatePointsOutsideRangeFeatureCreator(0, 0.5, DeltaFromStartFeatureCreator(YFeatureCreator())), EliminatePointsOutsideRangeFeatureCreator(0, 0.5, DeltaFromStartFeatureCreator(XFeatureCreator()))),
-        (EliminatePointsOutsideRangeFeatureCreator(0.5, 1.0, DeltaFromStartFeatureCreator(YFeatureCreator())), EliminatePointsOutsideRangeFeatureCreator(0.5, 1.0, DeltaFromStartFeatureCreator(XFeatureCreator()))),
-        (EliminatePointsOutsideRangeFeatureCreator(0.25, 0.75, DeltaFromStartFeatureCreator(YFeatureCreator())), EliminatePointsOutsideRangeFeatureCreator(0.25, 0.75, DeltaFromStartFeatureCreator(XFeatureCreator()))),
-    ]
+    for i in allFeatureCreators:
+        plotFeatures.append(GraphParameters(xFeatureCreator=i,))
     
     def getPointsFromFilePaths(filePaths:List[str]) -> List[Points]:
         """Gets valid Points from a list of file paths"""
@@ -278,13 +325,13 @@ if __name__ == "__main__":
         ("M2_24_24", getPointsFromFilePaths(m2_24h_24hFilePaths)),
     ]
     allPoints = m0Points+m1Points+m2Points
-    print(len(allPoints))
-    print(len(allFilePaths))
+    # print(len(allPoints))
+    # print(len(allFilePaths))
     allPointsCategory = [
         ("allPoints",allPoints)
     ]
     twoDComparePlots = TwoDComparePlots()
-    # twoDComparePlots.display_plots(twoDPlotFeatures, stageCategories)
+    # twoDComparePlots.display_plots(plotFeatures, allCategories)
     singlePoint2DCompareTrajectoriesFactory = SinglePointCompareTrajectoriesFactory()
     singlePoint2DCompareTrajectoriesFactory.display_plots(plotFeatures, allPointsCategory)
     # singlePoint2DCompareTrajectoriesFactory.display_plots(plotFeatures, stageCategories)

@@ -75,6 +75,7 @@ class SinglePoint1DCompareTrajectoriesOutliers (ComparePlotsBase):
                 names.append(name)
                 for points in pointsList:
                     features = graphParameter.xFeatureCreator.get_features(points)
+                    # feature_creator = str(graphParameter.xFeatureCreator)
                     singleVal = graphParameter.featuresToSingleVal.get_val(features)
                     pointAverages.append(singleVal)
                 data.append(pointAverages)
@@ -98,12 +99,12 @@ class SinglePoint1DCompareTrajectoriesOutliers (ComparePlotsBase):
                             indexes_of_outliers.append(pointAverages.index(i))
             else:
                 indexes_of_outliers.append(None)
-            print(indexes_of_outliers)
+            print(str(graphParameter.xFeatureCreator) + ": " + str(indexes_of_outliers))
             ax3.get_xaxis().tick_bottom()
             ax3.get_yaxis().tick_left()
             ax3.set_ylabel(graphParameter.xLabel, fontsize=16)
             ax3.set_xticklabels(names, fontdict = {'fontsize':16})
-            plt.show()
+            # plt.show()
 
 
     def setup_fig(self) -> Axes:
