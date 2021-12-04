@@ -24,10 +24,14 @@ class Features:
 
         if not len(self) == len(o):
             return False
-        
+
         for val1, val2 in zip(self, o):
-            if abs(val1 - val2) > 1e-6:
-                return False
+            if (type(val1) == int and type(val1) == int) or (type(val1) == float and type(val1) == float):
+                if abs(val1 - val2) > 1e-6:
+                    return False
+            elif type(val1) == str and type(val2) == str:
+                if val1 != val2:
+                    return False
         
         return True
 

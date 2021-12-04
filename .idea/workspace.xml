@@ -20,110 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d10fb0f2-3bc6-46de-9e03-7b62648ecbe5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Control_Dark_post/M1EEGVIII_Dark_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Control_Dark_post/M2EEGII_Dark_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Control_Dark_post/M2EEGIV_Dark_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Control_Dark_post/M2EEGVIII_Dark_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Control_Dark_post/M3EEGIV_Dark_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Control_Dark_post/M4EEGV_Dark_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Control_Dark_post/~$M1EEGVIII_Dark_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Control_Dark_pre/M1EEGI_Dark_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Control_Dark_pre/M1EEGVIII_Dark_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Control_Dark_pre/M2EEGII_Dark_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Control_Dark_pre/M2EEGIV_Dark_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Control_Dark_pre/M2EEGVIII_Dark_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Control_Dark_pre/M3EEGIV_Dark_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Control_Dark_pre/M4EEGV_Dark_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Control_Light_post/M1EEGI_Light_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Control_Light_post/M1EEGVIII_Light_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Control_Light_post/M2EEGII_Light_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Control_Light_post/M2EEGIV_Light_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Control_Light_post/M2EEGVIII_Light_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Control_Light_post/M3EEGIV_Ligtht_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Control_Light_post/M4EEGV_Light_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Control_Light_pre/M1EEGI_Light_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Control_Light_pre/M1EEGVIII_Light_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Control_Light_pre/M2EEGII_Light_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Control_Light_pre/M2EEGIV_Light_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Control_Light_pre/M2EEGVIII_Light_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Control_Light_pre/M3EEGIV_Light_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Control_Light_pre/M4EEGV_Light_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Resilient_Dark_post/EEGVM3_Dark_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Resilient_Dark_post/M1EEGIII_Dark_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Resilient_Dark_post/M2EEGV_Dark_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Resilient_Dark_post/Mouse1EEGVII_Darkpost.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Resilient_Dark_post/Pilot1_Dark_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Resilient_Dark_pre/EEGVM3_Dark_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Resilient_Dark_pre/M1EEGIII_Dark_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Resilient_Dark_pre/M1EEGVII_Dark_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Resilient_Dark_pre/M2EEGI_Dark_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Resilient_Dark_pre/M2EEGV_Dark_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Resilient_Dark_pre/M3EEGI_Dark_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Resilient_Dark_pre/M4EEGI_Dark_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Resilient_Light_post/M1EEGIII_Light_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Resilient_Light_post/M1EEGVII_Light_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Resilient_Light_post/M2EEGI_Light_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Resilient_Light_post/M2EEGV_Light_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Resilient_Light_post/M3EEGI_Light_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Resilient_Light_post/M3EEGV_Light_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Resilient_Light_post/M4EEGI_Light_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Resilient_Light_post/Pilot1_Light_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Resilient_Light_pre/EEGVM3_Light_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Resilient_Light_pre/M1EEGIII_Light_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Resilient_Light_pre/M1EEGVII_Light_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Resilient_Light_pre/M2EEGI_Light_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Resilient_Light_pre/M2EEGV_Light_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Resilient_Light_pre/M3EEGI_LightPre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Resilient_Light_pre/M4EEGI_Light_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Resilient_Light_pre/Pilot1_Light_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Susceptible_Dark_post/M1EEGII_Dark_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Susceptible_Dark_post/M1EEGIV_Dark_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Susceptible_Dark_post/M1EEGVI_Dark_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Susceptible_Dark_post/M2EEGVII_Dark_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Susceptible_Dark_post/M2EEGVI_Dark_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Susceptible_Dark_post/M3EEGII_Dark_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Susceptible_Dark_post/Pilot2_Dark_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Susceptible_Dark_pre/M1EEGII_Dark_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Susceptible_Dark_pre/M1EEGIV_Dark_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Susceptible_Dark_pre/M1EEGVI_Dark_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Susceptible_Dark_pre/M2EEGVII_Dark_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Susceptible_Dark_pre/M2EEGVI_Dark_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Susceptible_Dark_pre/M3EEGII_Dark_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Susceptible_Dark_pre/Pilot2_Dark_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Susceptible_Light_post/M1EEGII_Light_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Susceptible_Light_post/M1EEGIV_Light_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Susceptible_Light_post/M1EEGVI_Light_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Susceptible_Light_post/M2EEGVII_Light_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Susceptible_Light_post/M2EEGVI_Light_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Susceptible_Light_post/M3EEGII_Light_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Susceptible_Light_post/Pilot2_Light_post.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Susceptible_Light_pre/M1EEGII_Light_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Susceptible_Light_pre/M1EEGIV_Light_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Susceptible_Light_pre/M1EEGVI_Light_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Susceptible_Light_pre/M2EEGVII_Light_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Susceptible_Light_pre/M2EEGVI_Light_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Susceptible_Light_pre/M3EEGII_Light_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Data_MS3/Susceptible_Light_pre/Pilot2_Light_pre.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/features/DurationFeatureCreator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/features/EpisodesFeatureCreatorBase.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/features/NFeatureCreator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/features/OccFeatureCreator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/featurestests/DurationFeatureCreatortest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/featurestests/EpisodesFeatureCreatorTestBase.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/featurestests/NFeatureCreatortest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/featurestests/OccFeatureCreatortest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/xlsxfilereadertests/Episodestest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/xlsxfilereadertests/Episodetest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/xlsxfilereadertests/XLSXFileReadertest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/xlsxfilereadertests/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/xlsxfilereadertests/testfile2.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xlsxfilereader/Episode.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xlsxfilereader/Episodes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xlsxfilereader/XLSXFileReader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/2021-fall-unsupervised-learning.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/2021-fall-unsupervised-learning.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/features/TypeFeatureCreator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/featurestests/TypeFeatureCreatortest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/featurestests/FeatureCreatorTestBase.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/featurestests/FeatureCreatorTestBase.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/features/Features.py" beforeDir="false" afterPath="$PROJECT_DIR$/features/Features.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/featurestests/EpisodesFeatureCreatorTestBase.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/featurestests/EpisodesFeatureCreatorTestBase.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
