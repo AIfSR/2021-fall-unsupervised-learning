@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/data/0_24h" />
+      <excludeFolder url="file://$MODULE_DIR$/data/0_4h" />
+      <excludeFolder url="file://$MODULE_DIR$/data/24h_24h" />
+      <excludeFolder url="file://$MODULE_DIR$/data/24h_4h" />
+      <excludeFolder url="file://$MODULE_DIR$/tests/featurestests/.pytest_cache" />
+      <excludeFolder url="file://$MODULE_DIR$/tests/tckfilereadertests/.pytest_cache" />
+      <excludeFolder url="file://$MODULE_DIR$/tests/xlsxfilereadertests/.pytest_cache" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
