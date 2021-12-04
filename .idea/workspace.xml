@@ -20,11 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d10fb0f2-3bc6-46de-9e03-7b62648ecbe5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/features/TypeFeatureCreator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/featurestests/TypeFeatureCreatortest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plotting/EpisodeComparePlotsBase.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plotting/singleepisodecomparetrajectories/LineFeatureCreator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plotting/singleepisodecomparetrajectories/SingleEpisode1DCompareTrajectories.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plotting/singleepisodecomparetrajectories/SingleEpisode2DCompareTrajectories.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plotting/singleepisodecomparetrajectories/SingleEpisodeCompareTrajectoriesFactory.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/features/Features.py" beforeDir="false" afterPath="$PROJECT_DIR$/features/Features.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/featurestests/EpisodesFeatureCreatorTestBase.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/featurestests/EpisodesFeatureCreatorTestBase.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
