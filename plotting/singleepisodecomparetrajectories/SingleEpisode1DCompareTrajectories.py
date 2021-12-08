@@ -19,7 +19,7 @@ class SingleEpisode1DCompareTrajectories (ComparePlotsBase):
         """Displays all of the 1 dimentsional plots passed in."""
         for graphParameter in graphParameters:
             plt.close()
-            ax = self.setrup_fig()
+            ax = self.setup_fig()
             names = []
             data = []
             for name, episodesList in categories:

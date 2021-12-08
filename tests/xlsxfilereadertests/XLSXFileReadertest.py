@@ -3,7 +3,7 @@ from xlsxfilereader.XLSXFileReader import XLSXFileReader
 from xlsxfilereader.Episodes import Episodes
 from xlsxfilereader.Episode import Episode
 
-class TCKFileReaderTest (unittest.TestCase):
+class XLSXFileReaderTest (unittest.TestCase):
 
     def test_get_episodes(self):
         """Tests getting episodes from a xlsx file"""
