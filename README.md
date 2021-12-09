@@ -16,7 +16,7 @@ myPoints is passed to an XFeatureCreator object which then creates a Features ob
 3. The average that is taken of all of the X values is plotted.
 
 The code corresponding with the preceding example is shown below.
-```
+```python3
 
 from tckfilereader.TCKFileReader import TCKFileReader 
 from features.XFeatureCreator import XFeatureCreator 
