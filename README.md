@@ -17,17 +17,17 @@ myPoints is passed to an XFeatureCreator object which then creates a Features ob
 
 The code corresponding with the preceding example is shown below.
 
-from tckfilereader.TCKFileReader import TCKFileReader
-from features.XFeatureCreator import XFeatureCreator
-from featuretosingleval.AverageOfFeature import AverageOfFeature
+from tckfilereader.TCKFileReader import TCKFileReader 
+from features.XFeatureCreator import XFeatureCreator 
+from featuretosingleval.AverageOfFeature import AverageOfFeature 
  
-tckFileReader = TCKFileReader()
-myPoints = tckFileReader.get_points("MyTrajectory.tck")
-xFeatureCreator = XFeatureCreator()
-myXFeatures = xFeatureCreator.get_features(myPoints)
-averageOfFeature = AverageOfFeature()
-averageX = averageOfFeature.get_val(myXFeatures)
-#averageX is then plotted
+tckFileReader = TCKFileReader() 
+myPoints = tckFileReader.get_points("MyTrajectory.tck") 
+xFeatureCreator = XFeatureCreator() 
+myXFeatures = xFeatureCreator.get_features(myPoints) 
+averageOfFeature = AverageOfFeature() 
+averageX = averageOfFeature.get_val(myXFeatures) 
+#averageX is then plotted 
 
 In practice the user only needs to create objects for the Points, the FeatureCreatorBase(s), the FeaturesToSingleValBase(s) and pass these objects into a plotting object and it will go through the process detailed above. The data structure called GraphParameters which is located in the plotting directory is intended to store each of the above mentioned objects for each graph intended to be created.
  
