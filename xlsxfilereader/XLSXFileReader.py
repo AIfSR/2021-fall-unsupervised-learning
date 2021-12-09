@@ -17,7 +17,8 @@ class XLSXFileReader:
         data = pd.ExcelFile(path)
         # df = data.parse('Sheet1')
         ps = openpyxl.load_workbook(path)
-        sheet = ps['Sheet1']
+        #sheet = ps['Sheet1']
+        sheet = ps[ps.sheetnames[0]]
         WK_episodes = Episodes()
         SWS_episodes = Episodes()
         PS_episodes = Episodes()
