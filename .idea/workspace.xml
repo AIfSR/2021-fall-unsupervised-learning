@@ -20,15 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d10fb0f2-3bc6-46de-9e03-7b62648ecbe5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Main2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/features/EpisodesABSFeatureCreator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/features/EpisodesRateOfChangeFeatureCreator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/featurestests/EpisodesABSFeatureCreatortest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/featurestests/EpisodesRateOfChangeFeatureCreatortest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main3.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plotting/singleepisodecomparetrajectories/SingleEpisode1DCompareTrajectories.py" beforeDir="false" afterPath="$PROJECT_DIR$/plotting/singleepisodecomparetrajectories/SingleEpisode1DCompareTrajectories.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/xlsxfilereadertests/XLSXFileReadertest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/xlsxfilereadertests/XLSXFileReadertest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xlsxfilereader/XLSXFileReader.py" beforeDir="false" afterPath="$PROJECT_DIR$/xlsxfilereader/XLSXFileReader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plotting/GraphParameters.py" beforeDir="false" afterPath="$PROJECT_DIR$/plotting/GraphParameters.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/plottingtests/SinglePointCompareTrajectoriesFactorytest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/plottingtests/SinglePointCompareTrajectoriesFactorytest.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +61,7 @@
       <recent name="$PROJECT_DIR$/features" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Main2">
+  <component name="RunManager" selected="Python.main3">
     <configuration name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="2021-fall-unsupervised-learning" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -109,7 +104,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="XLSXFileReader" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="main3" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="2021-fall-unsupervised-learning" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -117,11 +112,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/xlsxfilereader" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/xlsxfilereader/XLSXFileReader.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main3.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -164,11 +159,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main3" />
         <item itemvalue="Python.Main2" />
         <item itemvalue="Python tests.pytest in EpisodesABSFeatureCreatortest.py" />
         <item itemvalue="Python tests.pytest for EpisodesABSFeatureCreatortest.ABSFeatureCreatorTest.test_string" />
         <item itemvalue="Python.Main" />
-        <item itemvalue="Python.XLSXFileReader" />
       </list>
     </recent_temporary>
   </component>
@@ -189,26 +184,30 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="440" y="270" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1633810461888">
+    <state x="184" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1639117481613">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="440" y="270" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.877@0.23.1440.877" timestamp="1633810461888" />
-    <state width="1419" height="229" key="GridCell.Tab.0.bottom" timestamp="1638963906212">
+    <state x="184" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.877@0.23.1440.877" timestamp="1639117481613" />
+    <state x="440" y="270" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1639117357354">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1419" height="229" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1638963906212" />
-    <state width="1419" height="229" key="GridCell.Tab.0.center" timestamp="1638963906211">
+    <state x="440" y="270" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.877@0.23.1440.877" timestamp="1639117357354" />
+    <state width="1419" height="229" key="GridCell.Tab.0.bottom" timestamp="1639118859670">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1419" height="229" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1638963906211" />
-    <state width="1419" height="229" key="GridCell.Tab.0.left" timestamp="1638963906211">
+    <state width="1419" height="229" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1639118859670" />
+    <state width="1419" height="229" key="GridCell.Tab.0.center" timestamp="1639118859670">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1419" height="229" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1638963906211" />
-    <state width="1419" height="229" key="GridCell.Tab.0.right" timestamp="1638963906211">
+    <state width="1419" height="229" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1639118859670" />
+    <state width="1419" height="229" key="GridCell.Tab.0.left" timestamp="1639118859669">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1419" height="229" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1638963906211" />
+    <state width="1419" height="229" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1639118859669" />
+    <state width="1419" height="229" key="GridCell.Tab.0.right" timestamp="1639118859670">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1419" height="229" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1639118859670" />
     <state width="1419" height="286" key="GridCell.Tab.1.bottom" timestamp="1636233976865">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
