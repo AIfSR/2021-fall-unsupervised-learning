@@ -19,7 +19,6 @@ from featuretosingleval.FeatureToSingleValBase import FeatureToSingleValBase
 from featuretosingleval.MedianOfFeature import MedianOfFeature
 from plotting.GraphParameters import GraphParameters
 from plotting.singlepointcomparetrajectories.SinglePoint2DCompareTrajectories import SinglePoint2DCompareTrajectories
-from plotting.TwoDComparePlots import TwoDComparePlots
 from plotting.singlepointcomparetrajectories.SinglePointCompareTrajectoriesFactory import SinglePointCompareTrajectoriesFactory
 import numpy
 import matplotlib.pyplot as plt

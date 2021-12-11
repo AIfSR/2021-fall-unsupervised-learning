@@ -27,17 +27,17 @@ class SinglePointCompareTrajectoriesFactoryTest (unittest.TestCase):
         singlePointCompareTrajectoresFactory = SinglePointCompareTrajectoriesFactory()
 
         twoDGraphParameters = GraphParameters(XFeatureCreator())
-        solution = GraphParameters(XFeatureCreator(), xLabel=str(XFeatureCreator()), featuresToSingleVal=AverageOfFeature())
+        solution = GraphParameters(XFeatureCreator(), xLabel="Average X", featuresToSingleVal=AverageOfFeature())
         singlePointCompareTrajectoresFactory._update_graph_parameters(twoDGraphParameters)
         self.assertEquals(twoDGraphParameters, solution)
 
         twoDGraphParameters = GraphParameters(XFeatureCreator(), yFeatureCreator=YFeatureCreator())
-        solution = GraphParameters(XFeatureCreator(), yFeatureCreator=YFeatureCreator(), xLabel=str(XFeatureCreator()), yLabel=str(YFeatureCreator()), featuresToSingleVal=AverageOfFeature())
+        solution = GraphParameters(XFeatureCreator(), yFeatureCreator=YFeatureCreator(), xLabel="Average X", yLabel="Average Y", featuresToSingleVal=AverageOfFeature())
         singlePointCompareTrajectoresFactory._update_graph_parameters(twoDGraphParameters)
         self.assertEquals(twoDGraphParameters, solution)
 
         twoDGraphParameters = GraphParameters(XFeatureCreator(), yFeatureCreator=YFeatureCreator(), xLabel="this")
-        solution = GraphParameters(XFeatureCreator(), yFeatureCreator=YFeatureCreator(), xLabel="this", yLabel=str(YFeatureCreator()), featuresToSingleVal=AverageOfFeature())
+        solution = GraphParameters(XFeatureCreator(), yFeatureCreator=YFeatureCreator(), xLabel="this", yLabel="Average Y", featuresToSingleVal=AverageOfFeature())
         singlePointCompareTrajectoresFactory._update_graph_parameters(twoDGraphParameters)
         self.assertEquals(twoDGraphParameters, solution)
 
@@ -47,6 +47,6 @@ class SinglePointCompareTrajectoriesFactoryTest (unittest.TestCase):
         self.assertEquals(twoDGraphParameters, solution)
 
         twoDGraphParameters = GraphParameters(XFeatureCreator(), featuresToSingleVal=MedianOfFeature())
-        solution = GraphParameters(XFeatureCreator(), xLabel=str(XFeatureCreator()), featuresToSingleVal=MedianOfFeature())
+        solution = GraphParameters(XFeatureCreator(), xLabel="Median X", featuresToSingleVal=MedianOfFeature())
         singlePointCompareTrajectoresFactory._update_graph_parameters(twoDGraphParameters)
         self.assertEquals(twoDGraphParameters, solution)
