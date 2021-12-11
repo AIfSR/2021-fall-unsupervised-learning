@@ -1,6 +1,6 @@
 class Episode(object):
     def __init__(self, type: str, n: float, occ: float, duration: float) -> None:
-        """Creates a episode with the specified x, y, z, and t coordinates"""
+        """Creates a episode with the specified type, n, occ, and duration values"""
         self.type = str(type)
         self.n = float(n)
         self.occ = float(occ)
@@ -20,19 +20,19 @@ class Episode(object):
         return "Episode(%s,%s,%s,%s)" % (self.type, self.n, self.occ, self.duration)
 
     def get_type(self) -> float:
-        """Defines x variables"""
+        """Defines type variables"""
         return self.type
 
     def get_n(self) -> float:
-        """Defines x variables"""
+        """Defines n variables"""
         return self.n
 
     def get_occ(self) -> float:
-        """Defines y variables"""
+        """Defines occ variables"""
         return self.occ
 
     def get_duration(self) -> float:
-        """Defines z variables"""
+        """Defines duration variables"""
         return self.duration
 
     def __lt__(self, other):

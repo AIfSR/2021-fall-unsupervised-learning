@@ -21,9 +21,18 @@
   <component name="ChangeListManager">
     <list default="true" id="d10fb0f2-3bc6-46de-9e03-7b62648ecbe5" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/main3.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/plottingtests/EpisodeLineFeatureCreatortest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/plottingtests/SingleEpisode2DCompareTrajectoriestest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/plottingtests/SingleEpisodeCompareTrajectoriesFactorytest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/features/DurationFeatureCreator.py" beforeDir="false" afterPath="$PROJECT_DIR$/features/DurationFeatureCreator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/plotting/GraphParameters.py" beforeDir="false" afterPath="$PROJECT_DIR$/plotting/GraphParameters.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plotting/singlepointcomparetrajectories/SinglePointCompareTrajectoriesFactory.py" beforeDir="false" afterPath="$PROJECT_DIR$/plotting/singlepointcomparetrajectories/SinglePointCompareTrajectoriesFactory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/featurestests/FeatureCreatorTestBase.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/featurestests/FeatureCreatorTestBase.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/plottingtests/SinglePointCompareTrajectoriesFactorytest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/plottingtests/SinglePointCompareTrajectoriesFactorytest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xlsxfilereader/Episode.py" beforeDir="false" afterPath="$PROJECT_DIR$/xlsxfilereader/Episode.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xlsxfilereader/Episodes.py" beforeDir="false" afterPath="$PROJECT_DIR$/xlsxfilereader/Episodes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xlsxfilereader/XLSXFileReader.py" beforeDir="false" afterPath="$PROJECT_DIR$/xlsxfilereader/XLSXFileReader.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,22 +201,22 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="440" y="270" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.877@0.23.1440.877" timestamp="1639117357354" />
-    <state width="1419" height="229" key="GridCell.Tab.0.bottom" timestamp="1639118859670">
+    <state width="1419" height="229" key="GridCell.Tab.0.bottom" timestamp="1639198562834">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1419" height="229" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1639118859670" />
-    <state width="1419" height="229" key="GridCell.Tab.0.center" timestamp="1639118859670">
+    <state width="1419" height="229" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1639198562834" />
+    <state width="1419" height="229" key="GridCell.Tab.0.center" timestamp="1639198562832">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1419" height="229" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1639118859670" />
-    <state width="1419" height="229" key="GridCell.Tab.0.left" timestamp="1639118859669">
+    <state width="1419" height="229" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1639198562832" />
+    <state width="1419" height="229" key="GridCell.Tab.0.left" timestamp="1639198562832">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1419" height="229" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1639118859669" />
-    <state width="1419" height="229" key="GridCell.Tab.0.right" timestamp="1639118859670">
+    <state width="1419" height="229" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1639198562832" />
+    <state width="1419" height="229" key="GridCell.Tab.0.right" timestamp="1639198562833">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1419" height="229" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1639118859670" />
+    <state width="1419" height="229" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1639198562833" />
     <state width="1419" height="286" key="GridCell.Tab.1.bottom" timestamp="1636233976865">
       <screen x="0" y="23" width="1440" height="877" />
     </state>

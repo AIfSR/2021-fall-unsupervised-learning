@@ -1,5 +1,3 @@
-
-
 from typing import List, Tuple
 from featuretosingleval.AverageOfFeature import AverageOfFeature
 from plotting.ComparePlotsBase import ComparePlotsBase
@@ -32,5 +30,3 @@ class SinglePointCompareTrajectoriesFactory (ComparePlotsBase):
             graphParameter.yLabel = str(graphParameter.featuresToSingleVal) + " " + str(graphParameter.yFeatureCreator)
         if graphParameter.featuresToSingleVal is None:
             graphParameter.featuresToSingleVal = AverageOfFeature()
-
-        

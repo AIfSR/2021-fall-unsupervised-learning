@@ -2,7 +2,7 @@ from features.EpisodesFeatureCreatorBase import EpisodesFeatureCreatorBase
 from features.Features import Features
 from xlsxfilereader.Episodes import Episodes
 
-class DurationFeatureCreator (EpisodesFeatureCreatorBase):
+class DurationFeatureCreator(EpisodesFeatureCreatorBase):
     """Creates a Feature that is just the Duration values of episodes"""
 
     def get_features(self, episodes:Episodes) -> Features:

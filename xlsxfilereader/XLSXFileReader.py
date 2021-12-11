@@ -2,8 +2,7 @@ from xlsxfilereader.Episodes import Episodes
 from xlsxfilereader.Episode import Episode
 import os
 import openpyxl
-import xlwt, xlrd, re
-from xlutils.copy import copy
+
 import pandas as pd
 
 class XLSXFileReader:
@@ -14,8 +13,6 @@ class XLSXFileReader:
         script1 = os.path.dirname(script)
         path = os.path.join(script1, path_to_xlsx_file)
         os.getcwd()
-        data = pd.ExcelFile(path)
-        # df = data.parse('Sheet1')
         ps = openpyxl.load_workbook(path)
         sheet = ps['Sheet1']
         WK_episodes = Episodes()

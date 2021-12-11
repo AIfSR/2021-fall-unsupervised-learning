@@ -17,7 +17,7 @@ class EpisodesIterator:
 
 class Episodes:
     def __init__(self, episodesList:List[Episode]=None) -> None:
-        """A Episodes class stores all the episodes generated from a tck file"""
+        """A Episodes class stores all the episodes generated from a xlsx file"""
         self.episodesList = episodesList or []
         pass
     

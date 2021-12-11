@@ -3,8 +3,6 @@ from abc import ABC, abstractmethod
 from features.FeatureCreatorBase import FeatureCreatorBase
 from tckfilereader.Point import Point
 from tckfilereader.Points import Points
-from xlsxfilereader.Episode import Episode
-from xlsxfilereader.Episodes import Episodes
 import random
 
 class FeatureCreatorTestBase (unittest.TestCase):
