@@ -32,10 +32,6 @@ class XYZSpeedFeatureCreatorTest (unittest.TestCase):
         features = xFeatureCreator.get_features(points)
         self.assertEquals(len(features), len(solutionFeatures))
         for speed, solutionSpeed in zip(features, solutionFeatures):
-            print("------------")
-            print("speed: " + str(speed))
-            print("solutionSpeed: " + str(solutionSpeed))
-            print("------------")
             self.assertAlmostEquals(speed, solutionSpeed, delta=0.0001)
     
     def test_string(self):

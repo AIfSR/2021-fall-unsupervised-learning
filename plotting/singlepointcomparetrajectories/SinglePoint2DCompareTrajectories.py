@@ -108,8 +108,6 @@ class SinglePoint2DCompareTrajectories (ComparePlotsBase):
             s = ax_scatter.scatter(xPointsAverages, yPointsAverages, label=name)
             pointsPlotted.append((name, xPointsAverages, yPointsAverages, s.get_ec()))
 
-        print("X: " + str(list(ax_scatter.get_xticks())))
-        print("Y: " + str(list(ax_scatter.get_yticks())))
         ax_scatter.set_xticks(ax_scatter.get_xticks())
         ax_scatter.set_yticks(ax_scatter.get_yticks())
         

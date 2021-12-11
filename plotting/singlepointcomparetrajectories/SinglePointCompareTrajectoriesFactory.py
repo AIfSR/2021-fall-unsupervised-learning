@@ -24,9 +24,12 @@ class SinglePointCompareTrajectoriesFactory (ComparePlotsBase):
 
     def _update_graph_parameters(self, graphParameter:GraphParameters) -> None:
         """Updates the graph parameters with the necessary information it may not have."""
+        if graphParameter.featuresToSingleVal is None:
+            graphParameter.featuresToSingleVal = AverageOfFeature()
         if graphParameter.xLabel is None:
             graphParameter.xLabel = str(graphParameter.featuresToSingleVal) + " " + str(graphParameter.xFeatureCreator)
         if graphParameter.yFeatureCreator is not None and graphParameter.yLabel is None:
             graphParameter.yLabel = str(graphParameter.featuresToSingleVal) + " " + str(graphParameter.yFeatureCreator)
-        if graphParameter.featuresToSingleVal is None:
-            graphParameter.featuresToSingleVal = AverageOfFeature()
+        
+
+        
