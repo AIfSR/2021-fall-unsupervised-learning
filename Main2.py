@@ -19,8 +19,8 @@ from featuretosingleval.FeatureToSingleValBase import FeatureToSingleValBase
 from featuretosingleval.MedianOfFeature import MedianOfFeature
 from plotting.GraphParameters import GraphParameters
 from plotting.singleepisodecomparetrajectories.SingleEpisode2DCompareTrajectories import SingleEpisode2DCompareTrajectories
-from plotting.TwoDComparePlots import TwoDComparePlots
 from plotting.singleepisodecomparetrajectories.SingleEpisodeCompareTrajectoriesFactory import SingleEpisodeCompareTrajectoriesFactory
+from features.PercentageFeatureCreator import PercentageFeatureCreator
 
 import numpy
 import matplotlib.pyplot as plt
@@ -265,22 +265,43 @@ if __name__ == "__main__":
     power = 3
     plotFeatures = [
         GraphParameters(
-            xFeatureCreator=EpisodesABSFeatureCreator(EpisodesRateOfChangeFeatureCreator(OccFeatureCreator())),
-            yFeatureCreator=EpisodesABSFeatureCreator(EpisodesRateOfChangeFeatureCreator(DurationFeatureCreator())),
-            xLabel="Occ",
-            yLabel="N"),
+            xFeatureCreator=PercentageFeatureCreator("WK"),
+            yFeatureCreator=PercentageFeatureCreator("SWS"),
+            xLabel="Percentage of WK",
+            yLabel="Percentage of SWS"),
         GraphParameters(
-            xFeatureCreator=EpisodesABSFeatureCreator(EpisodesRateOfChangeFeatureCreator(OccFeatureCreator())),
-            yFeatureCreator=EpisodesABSFeatureCreator(EpisodesRateOfChangeFeatureCreator(DurationFeatureCreator())),
-            featuresToSingleVal=MedianOfFeature()),
+            xFeatureCreator=PercentageFeatureCreator("WK"),
+            yFeatureCreator=PercentageFeatureCreator("PS"),
+            xLabel="Percentage of WK",
+            yLabel="Percentage of PS"),
+        GraphParameters(
+            xFeatureCreator=PercentageFeatureCreator("SWS"),
+            yFeatureCreator=PercentageFeatureCreator("PS"),
+            xLabel="Percentage of SWS",
+            yLabel="Percentage of PS"),
+        GraphParameters(
+            xFeatureCreator=PercentageFeatureCreator("WK")),
+        GraphParameters(
+            xFeatureCreator=PercentageFeatureCreator("SWS")),
+        GraphParameters(
+            xFeatureCreator=PercentageFeatureCreator("PS")),
+        # GraphParameters(
+        #     xFeatureCreator=EpisodesABSFeatureCreator(EpisodesRateOfChangeFeatureCreator(OccFeatureCreator())),
+        #     yFeatureCreator=EpisodesABSFeatureCreator(EpisodesRateOfChangeFeatureCreator(DurationFeatureCreator())),
+        #     xLabel="Occ",
+        #     yLabel="N"),
+        # GraphParameters(
+        #     xFeatureCreator=EpisodesABSFeatureCreator(EpisodesRateOfChangeFeatureCreator(OccFeatureCreator())),
+        #     yFeatureCreator=EpisodesABSFeatureCreator(EpisodesRateOfChangeFeatureCreator(DurationFeatureCreator())),
+        #     featuresToSingleVal=MedianOfFeature()),
         # GraphParameters(
         #     xFeatureCreator=EpisodesAngleFeatureCreator(),
         #     yFeatureCreator=RateOfChangeFeatureCreator(EpisodesDistanceFeatureCreator())),
         # GraphParameters(
         #     xFeatureCreator=EpisodesAngleFeatureCreator()),
-        GraphParameters(
-            xFeatureCreator=NFeatureCreator(),
-            featuresToSingleVal=MedianOfFeature()),
+        # GraphParameters(
+        #     xFeatureCreator=NFeatureCreator(),
+        #     featuresToSingleVal=MedianOfFeature()),
     ]
 
     # twoDPlotFeatures = [
@@ -340,7 +361,6 @@ if __name__ == "__main__":
         ("Susceptible_Light_pre", getEpisodesFromFilePaths(Susceptible_Light_preFilePaths)),
     ]
 
-    twoDComparePlots = TwoDComparePlots()
     # twoDComparePlots.display_plots(twoDPlotFeatures, stageCategories)
     singleEpisode2DCompareTrajectoriesFactory = SingleEpisodeCompareTrajectoriesFactory()
     singleEpisode2DCompareTrajectoriesFactory.display_plots(plotFeatures, stageCategories)

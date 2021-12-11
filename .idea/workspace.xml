@@ -20,19 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d10fb0f2-3bc6-46de-9e03-7b62648ecbe5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/main3.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/plottingtests/EpisodeLineFeatureCreatortest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/plottingtests/SingleEpisode2DCompareTrajectoriestest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/plottingtests/SingleEpisodeCompareTrajectoriesFactorytest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/features/PercentageFeatureCreator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/featurestests/PercentageFeatureCreatortest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/features/DurationFeatureCreator.py" beforeDir="false" afterPath="$PROJECT_DIR$/features/DurationFeatureCreator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plotting/GraphParameters.py" beforeDir="false" afterPath="$PROJECT_DIR$/plotting/GraphParameters.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plotting/singlepointcomparetrajectories/SinglePointCompareTrajectoriesFactory.py" beforeDir="false" afterPath="$PROJECT_DIR$/plotting/singlepointcomparetrajectories/SinglePointCompareTrajectoriesFactory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/featurestests/FeatureCreatorTestBase.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/featurestests/FeatureCreatorTestBase.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main3.py" beforeDir="false" afterPath="$PROJECT_DIR$/main3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/plottingtests/SingleEpisodeCompareTrajectoriesFactorytest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/plottingtests/SingleEpisodeCompareTrajectoriesFactorytest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/plottingtests/SinglePointCompareTrajectoriesFactorytest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/plottingtests/SinglePointCompareTrajectoriesFactorytest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xlsxfilereader/Episode.py" beforeDir="false" afterPath="$PROJECT_DIR$/xlsxfilereader/Episode.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xlsxfilereader/Episodes.py" beforeDir="false" afterPath="$PROJECT_DIR$/xlsxfilereader/Episodes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xlsxfilereader/XLSXFileReader.py" beforeDir="false" afterPath="$PROJECT_DIR$/xlsxfilereader/XLSXFileReader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/xlsxfilereadertests/XLSXFileReadertest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/xlsxfilereadertests/XLSXFileReadertest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/xlsxfilereadertests/testfile2.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/tests/xlsxfilereadertests/testfile2.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,28 +66,7 @@
       <recent name="$PROJECT_DIR$/features" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main3">
-    <configuration name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="2021-fall-unsupervised-learning" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python tests.pytest in XLSXFileReadertest.py">
     <configuration name="Main2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="2021-fall-unsupervised-learning" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -105,6 +80,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Main2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="XLSXFileReader" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="2021-fall-unsupervised-learning" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/xlsxfilereader" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/xlsxfilereader/XLSXFileReader.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -134,45 +130,45 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for EpisodesABSFeatureCreatortest.ABSFeatureCreatorTest.test_string" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for XLSXFileReadertest.XLSXFileReaderTest.test_get_episodes" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="2021-fall-unsupervised-learning" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/featurestests" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/xlsxfilereadertests" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;EpisodesABSFeatureCreatortest.ABSFeatureCreatorTest.test_string&quot;" />
+      <option name="_new_target" value="&quot;XLSXFileReadertest.XLSXFileReaderTest.test_get_episodes&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest in EpisodesABSFeatureCreatortest.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest in XLSXFileReadertest.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="2021-fall-unsupervised-learning" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/featurestests" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/xlsxfilereadertests" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/featurestests/EpisodesABSFeatureCreatortest.py&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/xlsxfilereadertests/XLSXFileReadertest.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.main3" />
+        <item itemvalue="Python tests.pytest in XLSXFileReadertest.py" />
         <item itemvalue="Python.Main2" />
-        <item itemvalue="Python tests.pytest in EpisodesABSFeatureCreatortest.py" />
-        <item itemvalue="Python tests.pytest for EpisodesABSFeatureCreatortest.ABSFeatureCreatorTest.test_string" />
-        <item itemvalue="Python.Main" />
+        <item itemvalue="Python.main3" />
+        <item itemvalue="Python.XLSXFileReader" />
+        <item itemvalue="Python tests.pytest for XLSXFileReadertest.XLSXFileReaderTest.test_get_episodes" />
       </list>
     </recent_temporary>
   </component>
@@ -201,22 +197,22 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="440" y="270" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.877@0.23.1440.877" timestamp="1639117357354" />
-    <state width="1419" height="229" key="GridCell.Tab.0.bottom" timestamp="1639198562834">
+    <state width="1419" height="229" key="GridCell.Tab.0.bottom" timestamp="1639263243099">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1419" height="229" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1639198562834" />
-    <state width="1419" height="229" key="GridCell.Tab.0.center" timestamp="1639198562832">
+    <state width="1419" height="229" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1639263243099" />
+    <state width="1419" height="229" key="GridCell.Tab.0.center" timestamp="1639263243098">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1419" height="229" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1639198562832" />
-    <state width="1419" height="229" key="GridCell.Tab.0.left" timestamp="1639198562832">
+    <state width="1419" height="229" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1639263243098" />
+    <state width="1419" height="229" key="GridCell.Tab.0.left" timestamp="1639263243098">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1419" height="229" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1639198562832" />
-    <state width="1419" height="229" key="GridCell.Tab.0.right" timestamp="1639198562833">
+    <state width="1419" height="229" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1639263243098" />
+    <state width="1419" height="229" key="GridCell.Tab.0.right" timestamp="1639263243099">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1419" height="229" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1639198562833" />
+    <state width="1419" height="229" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1639263243099" />
     <state width="1419" height="286" key="GridCell.Tab.1.bottom" timestamp="1636233976865">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
