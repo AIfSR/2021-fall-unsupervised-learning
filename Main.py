@@ -48,23 +48,30 @@ if __name__ == "__main__":
     # plots one dimension in the form of a boxplot but in this case it is taking the median value of 
     # the angle between points as opposed to the average value
     plotFeatures = [
+        # GraphParameters(
+        #     xFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())), 
+        #     yFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), 
+        #     yLabel = "Average: Y Speed",
+        #     xLabel = "Average: X Speed"),
+        # GraphParameters(
+        #     xFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())), 
+        #     yFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), 
+        #     featuresToSingleVal=MedianOfFeature()),
+        # GraphParameters(
+        #     xFeatureCreator=PointsAngleFeatureCreator(),
+        #     yFeatureCreator=RateOfChangeFeatureCreator(PointsDistanceFeatureCreator())),    
+        # GraphParameters(
+        #     xFeatureCreator=PointsAngleFeatureCreator()),
+        # GraphParameters(
+        #     xFeatureCreator=PointsAngleFeatureCreator(),
+        #     featuresToSingleVal=MedianOfFeature()),
         GraphParameters(
-            xFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())), 
-            yFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), 
-            yLabel = "Average: Y Speed",
-            xLabel = "Average: X Speed"),
-        GraphParameters(
-            xFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())), 
-            yFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), 
-            featuresToSingleVal=MedianOfFeature()),
-        GraphParameters(
-            xFeatureCreator=PointsAngleFeatureCreator(),
-            yFeatureCreator=RateOfChangeFeatureCreator(PointsDistanceFeatureCreator())),    
-        GraphParameters(
-            xFeatureCreator=PointsAngleFeatureCreator()),
-        GraphParameters(
-            xFeatureCreator=PointsAngleFeatureCreator(),
-            featuresToSingleVal=MedianOfFeature()),
+            xFeatureCreator=MarkWhenFeatureValuesChange(PointsDistanceFeatureCreator()),
+            yFeatureCreator=PointsAngleFeatureCreator(),
+            xLabel="Average: Acceleration",
+            yLabel="Average: Cosine Angle",
+            featuresToSingleVal=AverageOfFeature()),
+
     ]
     
     def getValidPointsFromFilePaths(filePaths:List[str]) -> List[Points]:
