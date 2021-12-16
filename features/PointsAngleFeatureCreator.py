@@ -2,6 +2,7 @@
 from features.FeatureCreatorBase import FeatureCreatorBase
 from features.Features import Features
 from tckfilereader.Points import Points
+import math
 
 
 class PointsAngleFeatureCreator (FeatureCreatorBase):
@@ -27,8 +28,15 @@ class PointsAngleFeatureCreator (FeatureCreatorBase):
 
             angle = (xdifference*nextxdifference + ydifference*nextydifference + zdifference*nextzdifference)/(distance*nextdistance)
             # angle in cosine
-
-            features.add_feature_val(angle)
+            
+            if angle > 1:
+                angle = 1
+            elif angle < -1:
+                angle = -1
+            
+            radiansAngle = math.acos(angle)
+            degAngle = math.degrees(radiansAngle)
+            features.add_feature_val(degAngle)
         return features
 
     def __str__(self) -> str:

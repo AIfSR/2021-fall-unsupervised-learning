@@ -19,6 +19,12 @@ class SinglePoint2DCompareTrajectories (ComparePlotsBase):
     HEIGHT = 0.6
     SPACING = 0.025
 
+    LEGEND_FONT_SIZE = 20
+    MARKER_SCALE = 3
+    TITLE_FONT_SIZE = 16
+    AXES_FONT_SIZE = 12
+
+
     def display_plots(self, graphParameters:List[GraphParameters], categories:List[Tuple[str,List[Points]]]) -> None:
         """Displays plots comparing single point values of a feature for each category"""
         for graphParameter in graphParameters:
@@ -33,10 +39,10 @@ class SinglePoint2DCompareTrajectories (ComparePlotsBase):
         ax_scatter, histogramDict = self._create_graph_and_histogram_sections(categories)
         histBinsDict = self._plot_2D_data_and_hists(categories, ax_scatter, histogramDict, xFeatureCreator, yFeatureCreator, featuresToSingleVal)
         self._set_hist_size_and_labels(histBinsDict, histogramDict, ax_scatter)
-        ax_scatter.set_ylabel(yLabel)
-        ax_scatter.set_xlabel(xLabel)
-        fig.suptitle(self._get_graph_title(categories, yLabel, xLabel))
-        fig.legend(prop={"size":20})
+        ax_scatter.set_ylabel(yLabel, fontsize=SinglePoint2DCompareTrajectories.AXES_FONT_SIZE)
+        ax_scatter.set_xlabel(xLabel, fontsize=SinglePoint2DCompareTrajectories.AXES_FONT_SIZE)
+        fig.suptitle(self._get_graph_title(categories, yLabel, xLabel), fontsize=SinglePoint2DCompareTrajectories.TITLE_FONT_SIZE)
+        fig.legend(prop={"size":SinglePoint2DCompareTrajectories.LEGEND_FONT_SIZE}, markerscale=SinglePoint2DCompareTrajectories.MARKER_SCALE)
         
 
     def _create_graph_and_histogram_sections(self, categories:List[Tuple[str,List[Points]]]) -> Tuple[Axes, Dict]:

@@ -28,9 +28,9 @@ class OutlierFeatureCreatorTest (unittest.TestCase):
         featureCreator = self.get_feature_creator()
 
         solutionFeatures = Features()
+        solutionFeatures.add_feature_val(90)
         solutionFeatures.add_feature_val(0)
-        solutionFeatures.add_feature_val(1)
-        solutionFeatures.add_feature_val(-1)
+        solutionFeatures.add_feature_val(180)
         
         
         self.assertEquals(featureCreator.get_features(points), solutionFeatures)

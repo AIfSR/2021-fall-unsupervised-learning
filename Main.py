@@ -66,11 +66,20 @@ if __name__ == "__main__":
         #     xFeatureCreator=PointsAngleFeatureCreator(),
         #     featuresToSingleVal=MedianOfFeature()),
         GraphParameters(
-            xFeatureCreator=MarkWhenFeatureValuesChange(PointsDistanceFeatureCreator()),
+            xFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())),
+            yFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())),
+            xLabel="Average: X Speed",
+            yLabel="Average: Y Speed",
+            featuresToSingleVal=AverageOfFeature()),
+
+        GraphParameters(
+            xFeatureCreator=RateOfChangeFeatureCreator(PointsDistanceFeatureCreator()),
             yFeatureCreator=PointsAngleFeatureCreator(),
             xLabel="Average: Acceleration",
-            yLabel="Average: Cosine Angle",
+            yLabel="Average: Angle in Degrees",
             featuresToSingleVal=AverageOfFeature()),
+
+        
 
     ]
     
