@@ -56,23 +56,9 @@ def getValidPointsFromFilePaths(filePaths:List[str]) -> List[Points]:
     return pointsList
 
 if __name__ == "__main__":
-    # A TCKFileReader object reads in .tck files and creates Points objects which are usable in this code base.
-    tckFileReader = TCKFileReader()
-
     xlsxFileReader = XLSXFileReader()
 
-    # PlotFeatures stores all of the GraphParameters associated with each desired graph. 
-    # In this case there will be 5 graphs, the first one will plot the average X speed 
-    # against the average Y speed of the trajectories passed in in a scatterplot, and the next two will 
-    # plot similar 2 dimensional graphs but with different features for the X and Y axes.
-    # The fourth GraphParameters object only has an xFeatureCreator set which means it will only 
-    # plot one dimension in the form of a boxplot. The final GraphParameters object similarly only 
-    # plots one dimension in the form of a boxplot but in this case it is taking the median value of 
-    # the angle between points as opposed to the average value
     plotFeatures = [
-        # GraphParameters(
-        #     xFeatureCreator=XFeatureCreator(),
-        # ),
         GraphParameters(
             xFeatureCreator=PercentageFeatureCreator("WK"),
             yFeatureCreator=PercentageFeatureCreator("SWS"),
@@ -95,18 +81,6 @@ if __name__ == "__main__":
         GraphParameters(
             xFeatureCreator=PercentageFeatureCreator("PS")),
 
-    ]
-    
-    m0Points = getValidPointsFromFilePaths(FP.m0FilePaths)
-    m1Points = getValidPointsFromFilePaths(FP.m1FilePaths)
-    m2Points = getValidPointsFromFilePaths(FP.m2FilePaths)
-    
-    # Specifies the three different categories of trajectories that are to be 
-    # compared and the points list of points associated with each of these treajectory categories
-    stageCategories = [
-        ("M0", m0Points),
-        ("M1", m1Points),
-        ("M2", m2Points),
     ]
 
     ControlEpisodes = getEpisodesFromFilePaths(FP.ControlFilePaths)
