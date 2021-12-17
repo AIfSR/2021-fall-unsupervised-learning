@@ -3,7 +3,7 @@ from features.Features import Features
 from features.pointsfeatures.PointsDistanceFeatureCreator import PointsDistanceFeatureCreator
 from tckfilereader.Point import Point
 from tckfilereader.Points import Points
-# from tests.featurestests.FeatureCreatorTestBase import FeatureCreatorTestBase
+# import unittest
 
 class PointsDistanceFeatureCreatorTest (unittest.TestCase):
     def get_feature_creator(self):

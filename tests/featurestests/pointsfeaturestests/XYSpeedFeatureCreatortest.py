@@ -1,31 +1,32 @@
 import unittest
 from features.Features import Features
-from features.pointsfeatures.XYZSpeedFeatureCreator import XYZSpeedFeatureCreator
+from features.pointsfeatures.XYSpeedFeatureCreator import XYSpeedFeatureCreator
 
 from tckfilereader.Point import Point
 from tckfilereader.Points import Points
-# from tests.featurestests.FeatureCreatorTestBase import FeatureCreatorTestBase
+# import unittest
 
-class XYZSpeedFeatureCreatorTest (unittest.TestCase):
+class XYSpeedFeatureCreatorTest (unittest.TestCase):
 
     def get_feature_creator(self):
-        """Gets the XYZSpeedFeatureCreator to test"""
-        return XYZSpeedFeatureCreator()
+        """Gets the XYSpeedFeatureCreator to test"""
+        return XYSpeedFeatureCreator()
 
     def test_get_features(self):
-        """Tests getting features from the XYZSpeedFeatureCreator"""
+        """Tests getting features from the XYSpeedFeatureCreator"""
         points = Points([
-            Point(0,0,0,1),
-            Point(1,1,1,2),
-            Point(2,2,1,3),
+            Point(1,2,3,4),
+            Point(-3,6,7,8),
+            Point(5,14,11,12),
         ])
         xFeatureCreator = self.get_feature_creator()
 
         solutionFeatures = Features()
 
-        firstSpeed = (3)**0.5
-        secondSpeed = (2)**0.5
+        firstSpeed = (2)**0.5
+        secondSpeed = (8)**0.5
 
+        # solutionFeatures.add_feature_val(0)
         solutionFeatures.add_feature_val(firstSpeed)
         solutionFeatures.add_feature_val(secondSpeed)
 
@@ -36,4 +37,4 @@ class XYZSpeedFeatureCreatorTest (unittest.TestCase):
     
     def test_string(self):
         featureCreator = self.get_feature_creator()
-        self.assertEquals(str(featureCreator), "XYZSpeed")
+        self.assertEquals(str(featureCreator), "XYSpeed")

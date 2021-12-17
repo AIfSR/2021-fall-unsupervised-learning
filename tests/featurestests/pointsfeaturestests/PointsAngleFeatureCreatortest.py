@@ -6,7 +6,7 @@ from features.pointsfeatures.XFeatureCreator import XFeatureCreator
 
 from tckfilereader.Point import Point
 from tckfilereader.Points import Points
-from tests.featurestests.FeatureCreatorTestBase import FeatureCreatorTestBase
+import unittest
 import unittest
 
 class OutlierFeatureCreatorTest (unittest.TestCase):

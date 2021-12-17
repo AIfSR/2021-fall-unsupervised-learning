@@ -6,7 +6,7 @@ from features.episodesfeatures.NFeatureCreator import NFeatureCreator
 
 from xlsxfilereader.Episode import Episode
 from xlsxfilereader.Episodes import Episodes
-# from tests.featurestests.FeatureCreatorTestBase import FeatureCreatorTestBase
+# import unittest
 
 class RateOfChangeFeatureCreatorTest (unittest.TestCase):
     def get_feature_creator(self):

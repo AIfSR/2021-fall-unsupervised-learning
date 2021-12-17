@@ -4,9 +4,9 @@ from features.pointsfeatures.TFeatureCreator import TFeatureCreator
 
 from tckfilereader.Point import Point
 from tckfilereader.Points import Points
-from tests.featurestests.FeatureCreatorTestBase import FeatureCreatorTestBase
+import unittest
 
-class TFeatureCreatorTest (FeatureCreatorTestBase):
+class TFeatureCreatorTest (unittest.TestCase):
     
     def get_feature_creator(self):
         """Gets the XFeatureCreator to test"""

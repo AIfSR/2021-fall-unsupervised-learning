@@ -5,9 +5,9 @@ from features.episodesfeatures.NFeatureCreator import NFeatureCreator
 
 from xlsxfilereader.Episode import Episode
 from xlsxfilereader.Episodes import Episodes
-from tests.featurestests.EpisodesFeatureCreatorTestBase import EpisodesFeatureCreatorTestBase
+import unittest
 
-class ABSFeatureCreatorTest (EpisodesFeatureCreatorTestBase):
+class ABSFeatureCreatorTest (unittest.TestCase):
     def get_feature_creator(self):
         """Gets the XFeatureCreator to test"""
         return ABSFeatureCreator(NFeatureCreator())

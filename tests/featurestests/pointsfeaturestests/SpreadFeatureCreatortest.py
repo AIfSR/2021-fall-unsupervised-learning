@@ -4,9 +4,9 @@ from features.pointsfeatures.SpreadFeatureCreator import SpreadFeatureCreator
 
 from tckfilereader.Point import Point
 from tckfilereader.Points import Points
-from tests.featurestests.FeatureCreatorTestBase import FeatureCreatorTestBase
+import unittest
 
-class SpreadFeatureCreatorTest (FeatureCreatorTestBase):
+class SpreadFeatureCreatorTest (unittest.TestCase):
 
     def get_feature_creator(self):
         """Gets the spreadFeatureCreator to test"""

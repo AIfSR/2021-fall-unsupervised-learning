@@ -4,9 +4,9 @@ from features.episodesfeatures.OccFeatureCreator import OccFeatureCreator
 
 from xlsxfilereader.Episode import Episode
 from xlsxfilereader.Episodes import Episodes
-from tests.featurestests.EpisodesFeatureCreatorTestBase import EpisodesFeatureCreatorTestBase
+import unittest
 
-class OccFeatureCreatorTest (EpisodesFeatureCreatorTestBase):
+class OccFeatureCreatorTest (unittest.TestCase):
 
     def get_feature_creator(self):
         """Gets the OccFeatureCreator to test"""

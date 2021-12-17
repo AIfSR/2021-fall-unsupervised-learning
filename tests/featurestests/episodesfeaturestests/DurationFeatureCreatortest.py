@@ -4,9 +4,9 @@ from features.episodesfeatures.DurationFeatureCreator import DurationFeatureCrea
 
 from xlsxfilereader.Episode import Episode
 from xlsxfilereader.Episodes import Episodes
-from tests.featurestests.EpisodesFeatureCreatorTestBase import EpisodesFeatureCreatorTestBase
+import unittest
 
-class DurationFeatureCreatorTest (EpisodesFeatureCreatorTestBase):
+class DurationFeatureCreatorTest (unittest.TestCase):
 
     def get_feature_creator(self):
         """Gets the DurationFeatureCreator to test"""

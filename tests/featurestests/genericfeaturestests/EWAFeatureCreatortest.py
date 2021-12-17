@@ -6,7 +6,7 @@ from tckfilereader.Point import Point
 from tckfilereader.Points import Points
 import unittest
 
-from tests.featurestests.FeatureCreatorTestBase import FeatureCreatorTestBase
+import unittest
 
 class DummyFeatureCreator (FeatureCreatorBase):
     
@@ -20,7 +20,7 @@ class DummyFeatureCreator (FeatureCreatorBase):
     def __str__(self) -> str:
         return "DummyFeatureCreator"
 
-class EWAFeatureCreatorTest (FeatureCreatorTestBase):
+class EWAFeatureCreatorTest (unittest.TestCase):
 
     def get_feature_creator(self) -> FeatureCreatorBase:
         """Gets the EWAFeatureCreator to test"""

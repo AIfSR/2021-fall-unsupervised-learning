@@ -6,7 +6,7 @@ from features.pointsfeatures.XFeatureCreator import XFeatureCreator
 from tckfilereader.Point import Point
 from tckfilereader.Points import Points
 from features.pointsfeatures.TFeatureCreator import TFeatureCreator
-# from tests.featurestests.FeatureCreatorTestBase import FeatureCreatorTestBase
+# import unittest
 
 class RateOfChangeFeatureCreatorTest (unittest.TestCase):
     def get_feature_creator(self):
