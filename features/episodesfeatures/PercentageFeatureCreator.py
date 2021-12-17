@@ -1,8 +1,8 @@
-from features.EpisodesFeatureCreatorBase import EpisodesFeatureCreatorBase
+from features.FeatureCreatorBase import FeatureCreatorBase
 from features.Features import Features
 from xlsxfilereader.Episodes import Episodes
 
-class PercentageFeatureCreator (EpisodesFeatureCreatorBase):
+class PercentageFeatureCreator (FeatureCreatorBase):
     """Creates a Feature that takes the percentage of a type of episode"""
 
     def __init__(self,type:str):

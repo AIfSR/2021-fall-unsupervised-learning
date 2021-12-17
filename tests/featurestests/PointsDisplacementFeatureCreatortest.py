@@ -1,6 +1,6 @@
 import unittest
 from features.Features import Features
-from features.PointsDisplacementFeatureCreator import PointsDisplacementFeatureCreator
+from features.pointsfeatures.PointsDisplacementFeatureCreator import PointsDisplacementFeatureCreator
 from tckfilereader.Point import Point
 from tckfilereader.Points import Points
 # from tests.featurestests.FeatureCreatorTestBase import FeatureCreatorTestBase

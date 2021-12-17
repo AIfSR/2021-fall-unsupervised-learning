@@ -1,3 +1,4 @@
+from typing import Iterable
 from features.FeatureCreatorBase import FeatureCreatorBase
 from features.Features import Features
 from tckfilereader.Points import Points
@@ -11,9 +12,9 @@ class EliminatePointsOutsideRangeFeatureCreator (FeatureCreatorBase):
         self._rangeMax = rangeMax
         self._featureCreator = featureCreator
 
-    def get_features(self, points:Points) -> Features:
+    def get_features(self, iterable:Iterable) -> Features:
         """Gets all the values within the range specified"""
-        origFeatures = self._featureCreator.get_features(points)
+        origFeatures = self._featureCreator.get_features(iterable)
         features = Features()
         count = 1
         for featureVal in origFeatures:

@@ -1,4 +1,5 @@
 
+from typing import Iterable
 from features.FeatureCreatorBase import FeatureCreatorBase
 from features.Features import Features
 from tckfilereader.Points import Points
@@ -12,10 +13,10 @@ class OutlierFeatureCreator (FeatureCreatorBase):
         self._featureCreator = featureCreator
         self._maxAcceptableDeviations = maxAcceptableDeviations
 
-    def get_features(self, points:Points) -> Features:
+    def get_features(self, iterable:Iterable) -> Features:
         """Gets all the outliers as features"""
 
-        stdDeviations = self._get_deviations(points)
+        stdDeviations = self._get_deviations(iterable)
         features = Features()
         for deviation in stdDeviations:
             if abs(deviation) >= self._maxAcceptableDeviations:
@@ -25,9 +26,9 @@ class OutlierFeatureCreator (FeatureCreatorBase):
 
         return features
 
-    def _get_deviations(self, points):
+    def _get_deviations(self, iterable:Iterable):
         """Gets a list o fall of the deviations from the mean for each point"""
-        features = self._featureCreator.get_features(points)
+        features = self._featureCreator.get_features(iterable)
         avg = sum(features.to_list()) / len(features)
         stdDeviation = (sum([(feature - avg)**2 for feature in features]) / len(features))**0.5
         deviationsOfFeatureVals = []

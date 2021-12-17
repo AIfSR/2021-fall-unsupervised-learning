@@ -1,8 +1,8 @@
-from features.EpisodesFeatureCreatorBase import EpisodesFeatureCreatorBase
+from features.FeatureCreatorBase import FeatureCreatorBase
 from features.Features import Features
 from xlsxfilereader.Episodes import Episodes
 
-class OccFeatureCreator (EpisodesFeatureCreatorBase):
+class OccFeatureCreator (FeatureCreatorBase):
     """Creates a Feature that is just the Occ values of episodes"""
 
     def get_features(self, episodes:Episodes) -> Features:

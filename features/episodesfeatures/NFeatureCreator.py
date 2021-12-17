@@ -1,8 +1,8 @@
-from features.EpisodesFeatureCreatorBase import EpisodesFeatureCreatorBase
+from features.FeatureCreatorBase import FeatureCreatorBase
 from features.Features import Features
 from xlsxfilereader.Episodes import Episodes
 
-class NFeatureCreator (EpisodesFeatureCreatorBase):
+class NFeatureCreator (FeatureCreatorBase):
     """Creates a Feature that is just the N values of episodes"""
 
     def get_features(self, episodes:Episodes) -> Features:

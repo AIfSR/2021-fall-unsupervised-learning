@@ -1,6 +1,6 @@
 import unittest
 from features.Features import Features
-from features.ThetaFeatureCreator import ThetaFeatureCreator
+from features.pointsfeatures.ThetaFeatureCreator import ThetaFeatureCreator
 
 from tckfilereader.Point import Point
 from tckfilereader.Points import Points

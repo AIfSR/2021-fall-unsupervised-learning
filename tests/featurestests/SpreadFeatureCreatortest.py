@@ -1,6 +1,6 @@
 import unittest
 from features.Features import Features
-from features.SpreadFeatureCreator import SpreadFeatureCreator
+from features.pointsfeatures.SpreadFeatureCreator import SpreadFeatureCreator
 
 from tckfilereader.Point import Point
 from tckfilereader.Points import Points

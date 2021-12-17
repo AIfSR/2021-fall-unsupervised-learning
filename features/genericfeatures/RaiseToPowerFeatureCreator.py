@@ -1,3 +1,4 @@
+from typing import Iterable
 from features.FeatureCreatorBase import FeatureCreatorBase
 from features.Features import Features
 from tckfilereader.Points import Points
@@ -10,10 +11,10 @@ class RaiseToPowerFeatureCreator (FeatureCreatorBase):
         self._origFeatureCreator = origFeatureCreator
         self._power = power
 
-    def get_features(self, points:Points) -> Features:
+    def get_features(self, iterable:Iterable) -> Features:
         """Gets all the features in the original feature creator raised to a 
         power"""
-        origFeatures = self._origFeatureCreator.get_features(points)
+        origFeatures = self._origFeatureCreator.get_features(iterable)
         features = Features()
         for featureVal in origFeatures:
             features.add_feature_val(featureVal**self._power)

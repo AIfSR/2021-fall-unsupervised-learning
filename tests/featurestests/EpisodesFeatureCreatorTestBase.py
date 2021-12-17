@@ -1,6 +1,6 @@
 import unittest
 from abc import ABC, abstractmethod
-from features.EpisodesFeatureCreatorBase import EpisodesFeatureCreatorBase
+from features.FeatureCreatorBase import FeatureCreatorBase
 from xlsxfilereader.Episode import Episode
 from xlsxfilereader.Episodes import Episodes
 import random
@@ -8,7 +8,7 @@ import random
 class EpisodesFeatureCreatorTestBase (unittest.TestCase):
 
     @abstractmethod
-    def get_feature_creator(self) -> EpisodesFeatureCreatorBase:
+    def get_feature_creator(self) -> FeatureCreatorBase:
         """Gets the feature creator being tested"""
         pass
 

@@ -1,6 +1,6 @@
 import unittest
 from features.Features import Features
-from features.OccFeatureCreator import OccFeatureCreator
+from features.episodesfeatures.OccFeatureCreator import OccFeatureCreator
 
 from xlsxfilereader.Episode import Episode
 from xlsxfilereader.Episodes import Episodes

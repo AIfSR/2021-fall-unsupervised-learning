@@ -1,6 +1,6 @@
 import unittest
 from features.Features import Features
-from features.TFeatureCreator import TFeatureCreator
+from features.pointsfeatures.TFeatureCreator import TFeatureCreator
 
 from tckfilereader.Point import Point
 from tckfilereader.Points import Points

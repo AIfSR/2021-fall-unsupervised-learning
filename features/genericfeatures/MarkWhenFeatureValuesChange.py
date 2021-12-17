@@ -1,5 +1,6 @@
 
 
+from typing import Iterable
 from features.FeatureCreatorBase import FeatureCreatorBase
 from features.Features import Features
 from tckfilereader.Points import Points
@@ -11,9 +12,9 @@ class MarkWhenFeatureValuesChange (FeatureCreatorBase):
         super().__init__()
         self._origFeatureCreator = origFeatureCreator
 
-    def get_features(self, points:Points) -> Features:
+    def get_features(self, iterable:Iterable) -> Features:
         """Gets all the points where the feature changes values"""
-        origFeatures = self._origFeatureCreator.get_features(points)
+        origFeatures = self._origFeatureCreator.get_features(iterable)
         features = Features()
         prevVal = origFeatures[0]
         features.add_feature_val(1.0)

@@ -1,6 +1,6 @@
 import unittest
 from features.Features import Features
-from features.PercentageFeatureCreator import PercentageFeatureCreator
+from features.episodesfeatures.PercentageFeatureCreator import PercentageFeatureCreator
 
 from xlsxfilereader.Episode import Episode
 from xlsxfilereader.Episodes import Episodes

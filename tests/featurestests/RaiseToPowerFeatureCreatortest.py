@@ -1,6 +1,6 @@
 from features.Features import Features
-from features.RaiseToPowerFeatureCreator import RaiseToPowerFeatureCreator
-from features.XFeatureCreator import XFeatureCreator
+from features.genericfeatures.RaiseToPowerFeatureCreator import RaiseToPowerFeatureCreator
+from features.pointsfeatures.XFeatureCreator import XFeatureCreator
 
 from tckfilereader.Point import Point
 from tckfilereader.Points import Points

@@ -1,19 +1,20 @@
 from typing import List
-from features.MarkWhenFeatureValuesChange import MarkWhenFeatureValuesChange
-from features.OutlierFeatureCreator import OutlierFeatureCreator
-from features.DeltaFromStartFeatureCreator import DeltaFromStartFeatureCreator 
-from features.ABSFeatureCreator import ABSFeatureCreator
-from features.EWAFeatureCreator import EWAFeatureCreator
-from features.EliminatePointsOutsideRangeFeatureCreator import EliminatePointsOutsideRangeFeatureCreator
+from features.genericfeatures.MarkWhenFeatureValuesChange import MarkWhenFeatureValuesChange
+from features.genericfeatures.OutlierFeatureCreator import OutlierFeatureCreator
+from features.genericfeatures.DeltaFromStartFeatureCreator import DeltaFromStartFeatureCreator 
+from features.genericfeatures.ABSFeatureCreator import ABSFeatureCreator
+from features.genericfeatures.EWAFeatureCreator import EWAFeatureCreator
+from features.genericfeatures.EliminatePointsOutsideRangeFeatureCreator import EliminatePointsOutsideRangeFeatureCreator
 from features.FeatureCreatorBase import FeatureCreatorBase
-from features.PhiFeatureCreator import PhiFeatureCreator
-from features.PointsAngleFeatureCreator import PointsAngleFeatureCreator
-from features.RaiseToPowerFeatureCreator import RaiseToPowerFeatureCreator
-from features.SignChangeFeatureCreator import SignChangeFeatureCreator
-from features.SpreadFeatureCreator import SpreadFeatureCreator
-from features.ThetaFeatureCreator import ThetaFeatureCreator
-from features.XYSpeedFeatureCreator import XYSpeedFeatureCreator
-from features.XYZSpeedFeatureCreator import XYZSpeedFeatureCreator
+from features.episodesfeatures.PercentageFeatureCreator import PercentageFeatureCreator
+from features.pointsfeatures.PhiFeatureCreator import PhiFeatureCreator
+from features.pointsfeatures.PointsAngleFeatureCreator import PointsAngleFeatureCreator
+from features.genericfeatures.RaiseToPowerFeatureCreator import RaiseToPowerFeatureCreator
+from features.genericfeatures.SignChangeFeatureCreator import SignChangeFeatureCreator
+from features.pointsfeatures.SpreadFeatureCreator import SpreadFeatureCreator
+from features.pointsfeatures.ThetaFeatureCreator import ThetaFeatureCreator
+from features.pointsfeatures.XYSpeedFeatureCreator import XYSpeedFeatureCreator
+from features.pointsfeatures.XYZSpeedFeatureCreator import XYZSpeedFeatureCreator
 from featuretosingleval.AverageOfFeature import AverageOfFeature
 from featuretosingleval.FeatureToSingleValBase import FeatureToSingleValBase
 from featuretosingleval.MedianOfFeature import MedianOfFeature
@@ -23,21 +24,42 @@ from plotting.singlepointcomparetrajectories.SinglePointCompareTrajectoriesFacto
 import numpy
 import matplotlib.pyplot as plt
 
-from features.XFeatureCreator import XFeatureCreator
-from features.YFeatureCreator import YFeatureCreator
-from features.ZFeatureCreator import ZFeatureCreator
-from features.TFeatureCreator import TFeatureCreator
-from features.RateOfChangeFeatureCreator import RateOfChangeFeatureCreator
-from features.PointsDistanceFeatureCreator import PointsDistanceFeatureCreator
-from features.PointsDisplacementFeatureCreator import PointsDisplacementFeatureCreator
+from features.pointsfeatures.XFeatureCreator import XFeatureCreator
+from features.pointsfeatures.YFeatureCreator import YFeatureCreator
+from features.pointsfeatures.ZFeatureCreator import ZFeatureCreator
+from features.pointsfeatures.TFeatureCreator import TFeatureCreator
+from features.genericfeatures.RateOfChangeFeatureCreator import RateOfChangeFeatureCreator
+from features.pointsfeatures.PointsDistanceFeatureCreator import PointsDistanceFeatureCreator
+from features.pointsfeatures.PointsDisplacementFeatureCreator import PointsDisplacementFeatureCreator
 from tckfilereader.Points import Points
 from tckfilereader.TCKFileReader import TCKFileReader
 
 import FilePaths as FP
+from xlsxfilereader.Episodes import Episodes
+from xlsxfilereader.XLSXFileReader import XLSXFileReader
+
+def getEpisodesFromFilePaths(filePaths:List[str]) -> List[Episodes]:
+    """Gets valid Episodes from a list of file paths"""
+    episodesList = []
+    for file in filePaths:
+        episodes = xlsxFileReader.get_episodes(file)
+        episodesList.append(episodes)
+    return episodesList
+
+def getValidPointsFromFilePaths(filePaths:List[str]) -> List[Points]:
+    """Gets valid Points from a list of file paths"""
+    pointsList = []
+    for file in filePaths:
+        points = tckFileReader.get_points(file)
+        if len(points) > 50:
+            pointsList.append(points)
+    return pointsList
 
 if __name__ == "__main__":
     # A TCKFileReader object reads in .tck files and creates Points objects which are usable in this code base.
     tckFileReader = TCKFileReader()
+
+    xlsxFileReader = XLSXFileReader()
 
     # PlotFeatures stores all of the GraphParameters associated with each desired graph. 
     # In this case there will be 5 graphs, the first one will plot the average X speed 
@@ -48,33 +70,32 @@ if __name__ == "__main__":
     # plots one dimension in the form of a boxplot but in this case it is taking the median value of 
     # the angle between points as opposed to the average value
     plotFeatures = [
+        # GraphParameters(
+        #     xFeatureCreator=XFeatureCreator(),
+        # ),
         GraphParameters(
-            xFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())), 
-            yFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), 
-            yLabel = "Average: Y Speed",
-            xLabel = "Average: X Speed"),
+            xFeatureCreator=PercentageFeatureCreator("WK"),
+            yFeatureCreator=PercentageFeatureCreator("SWS"),
+            xLabel="Percentage of WK",
+            yLabel="Percentage of SWS"),
         GraphParameters(
-            xFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())), 
-            yFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), 
-            featuresToSingleVal=MedianOfFeature()),
+            xFeatureCreator=PercentageFeatureCreator("WK"),
+            yFeatureCreator=PercentageFeatureCreator("PS"),
+            xLabel="Percentage of WK",
+            yLabel="Percentage of PS"),
         GraphParameters(
-            xFeatureCreator=PointsAngleFeatureCreator(),
-            yFeatureCreator=RateOfChangeFeatureCreator(PointsDistanceFeatureCreator())),    
+            xFeatureCreator=PercentageFeatureCreator("SWS"),
+            yFeatureCreator=PercentageFeatureCreator("PS"),
+            xLabel="Percentage of SWS",
+            yLabel="Percentage of PS"),
         GraphParameters(
-            xFeatureCreator=PointsAngleFeatureCreator()),
+            xFeatureCreator=PercentageFeatureCreator("WK")),
         GraphParameters(
-            xFeatureCreator=PointsAngleFeatureCreator(),
-            featuresToSingleVal=MedianOfFeature()),
+            xFeatureCreator=PercentageFeatureCreator("SWS")),
+        GraphParameters(
+            xFeatureCreator=PercentageFeatureCreator("PS")),
+
     ]
-    
-    def getValidPointsFromFilePaths(filePaths:List[str]) -> List[Points]:
-        """Gets valid Points from a list of file paths"""
-        pointsList = []
-        for file in filePaths:
-            points = tckFileReader.get_points(file)
-            if len(points) > 50:
-                pointsList.append(points)
-        return pointsList
     
     m0Points = getValidPointsFromFilePaths(FP.m0FilePaths)
     m1Points = getValidPointsFromFilePaths(FP.m1FilePaths)
@@ -88,10 +109,20 @@ if __name__ == "__main__":
         ("M2", m2Points),
     ]
 
+    ControlEpisodes = getEpisodesFromFilePaths(FP.ControlFilePaths)
+    ResilientEpisodes = getEpisodesFromFilePaths(FP.ResilientFilePaths)
+    SusceptibleEpisodes = getEpisodesFromFilePaths(FP.SusceptibleFilePaths)
+
+    mouseCategories = [
+        ("Control", ControlEpisodes),
+        ("Resilient", ResilientEpisodes),
+        ("Susceptible", SusceptibleEpisodes),
+    ]
+
     # Takes all of the points and categories specified above in the stageCategories variable, 
     # and all of the different types of graphs specified above in the plotFeatures variable and 
     # creates all of the desired graphs one at a time.
     singlePoint2DCompareTrajectoriesFactory = SinglePointCompareTrajectoriesFactory()
-    singlePoint2DCompareTrajectoriesFactory.display_plots(plotFeatures, stageCategories)
+    singlePoint2DCompareTrajectoriesFactory.display_plots(plotFeatures, mouseCategories)
 
 

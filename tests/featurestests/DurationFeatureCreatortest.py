@@ -1,6 +1,6 @@
 import unittest
 from features.Features import Features
-from features.DurationFeatureCreator import DurationFeatureCreator
+from features.episodesfeatures.DurationFeatureCreator import DurationFeatureCreator
 
 from xlsxfilereader.Episode import Episode
 from xlsxfilereader.Episodes import Episodes

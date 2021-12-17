@@ -1,6 +1,6 @@
 import unittest
 from features.Features import Features
-from features.XYSpeedFeatureCreator import XYSpeedFeatureCreator
+from features.pointsfeatures.XYSpeedFeatureCreator import XYSpeedFeatureCreator
 
 from tckfilereader.Point import Point
 from tckfilereader.Points import Points

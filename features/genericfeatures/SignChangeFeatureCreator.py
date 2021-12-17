@@ -1,3 +1,4 @@
+from typing import Iterable
 from features.FeatureCreatorBase import FeatureCreatorBase
 from features.Features import Features
 from tckfilereader.Points import Points
@@ -8,9 +9,9 @@ class SignChangeFeatureCreator (FeatureCreatorBase):
         super().__init__()
         self._featureCreator = featureCreator
 
-    def get_features(self, points:Points) -> Features:
+    def get_features(self, iterable:Iterable) -> Features:
         """Gets all the sign changes as features"""
-        features = self._featureCreator.get_features(points)
+        features = self._featureCreator.get_features(iterable)
         signChangeFeatures = Features()
         prevVal = None
         for featureVal in features:

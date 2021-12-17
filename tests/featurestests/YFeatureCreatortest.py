@@ -1,6 +1,6 @@
 import unittest
 from features.Features import Features
-from features.YFeatureCreator import YFeatureCreator
+from features.pointsfeatures.YFeatureCreator import YFeatureCreator
 
 from tckfilereader.Point import Point
 from tckfilereader.Points import Points

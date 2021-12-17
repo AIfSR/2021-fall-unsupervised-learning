@@ -1,6 +1,6 @@
 import unittest
 from features.Features import Features
-from features.XYZSpeedFeatureCreator import XYZSpeedFeatureCreator
+from features.pointsfeatures.XYZSpeedFeatureCreator import XYZSpeedFeatureCreator
 
 from tckfilereader.Point import Point
 from tckfilereader.Points import Points
@@ -9,11 +9,11 @@ from tckfilereader.Points import Points
 class XYZSpeedFeatureCreatorTest (unittest.TestCase):
 
     def get_feature_creator(self):
-        """Gets the XYZSpeedFeatureCreatorTest to test"""
+        """Gets the XYZSpeedFeatureCreator to test"""
         return XYZSpeedFeatureCreator()
 
     def test_get_features(self):
-        """Tests getting features from the X Feature Creator"""
+        """Tests getting features from the XYZSpeedFeatureCreator"""
         points = Points([
             Point(0,0,0,1),
             Point(1,1,1,2),

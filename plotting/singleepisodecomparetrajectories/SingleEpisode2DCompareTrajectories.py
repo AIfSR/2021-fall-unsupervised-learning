@@ -4,7 +4,7 @@ from matplotlib import pyplot as plt
 from matplotlib.axes import Axes
 from features.FeatureCreatorBase import FeatureCreatorBase
 from features.Features import Features
-from features.XFeatureCreator import XFeatureCreator
+from features.pointsfeatures.XFeatureCreator import XFeatureCreator
 from featuretosingleval.FeatureToSingleValBase import FeatureToSingleValBase
 from plotting.ComparePlotsBase import ComparePlotsBase
 from plotting.GraphParameters import GraphParameters

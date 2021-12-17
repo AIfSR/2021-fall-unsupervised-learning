@@ -1,7 +1,7 @@
 import unittest
 from features.Features import Features
-from features.ABSFeatureCreator import ABSFeatureCreator
-from features.XFeatureCreator import XFeatureCreator
+from features.genericfeatures.ABSFeatureCreator import ABSFeatureCreator
+from features.pointsfeatures.XFeatureCreator import XFeatureCreator
 
 from tckfilereader.Point import Point
 from tckfilereader.Points import Points

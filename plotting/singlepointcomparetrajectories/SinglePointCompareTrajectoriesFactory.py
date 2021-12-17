@@ -9,7 +9,7 @@ from tckfilereader.Points import Points
 
 class SinglePointCompareTrajectoriesFactory (ComparePlotsBase):
 
-    def display_plots(self, graphParameters:List[GraphParameters], categories:List[Tuple[str,List[Points]]]):
+    def display_plots(self, graphParameters:List[GraphParameters], categories:List[Tuple[str,List]]):
         """Goes through all of the graph parameters and creates the correct graphing objects and plot them."""
         for graphParameter in graphParameters:
             self._update_graph_parameters(graphParameter)

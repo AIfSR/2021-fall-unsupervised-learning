@@ -1,4 +1,4 @@
-from features.DeltaFromStartFeatureCreator import DeltaFromStartFeatureCreator
+from features.genericfeatures.DeltaFromStartFeatureCreator import DeltaFromStartFeatureCreator
 from features.FeatureCreatorBase import FeatureCreatorBase
 from features.Features import Features
 from tckfilereader.Point import Point

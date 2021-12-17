@@ -14,7 +14,12 @@ class XLSXFileReader:
         path = os.path.join(script1, path_to_xlsx_file)
         os.getcwd()
         ps = openpyxl.load_workbook(path)
-        sheet = ps['Sheet1']
+        try:
+            sheet = ps['Sheet1']
+        except Exception as e:
+            print("LOOK HERE!!!!!")
+            print("path_to_xlsx_file: " + path_to_xlsx_file)
+            raise e
         WK_episodes = Episodes()
         SWS_episodes = Episodes()
         PS_episodes = Episodes()

@@ -1,7 +1,7 @@
 import unittest
 from features.Features import Features
-from features.ABSFeatureCreator import ABSFeatureCreator
-from features.NFeatureCreator import NFeatureCreator
+from features.genericfeatures.ABSFeatureCreator import ABSFeatureCreator
+from features.episodesfeatures.NFeatureCreator import NFeatureCreator
 
 from xlsxfilereader.Episode import Episode
 from xlsxfilereader.Episodes import Episodes

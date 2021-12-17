@@ -1,3 +1,4 @@
+from typing import Iterable
 from features.FeatureCreatorBase import FeatureCreatorBase
 from features.Features import Features
 from tckfilereader.Points import Points
@@ -9,9 +10,9 @@ class ABSFeatureCreator (FeatureCreatorBase):
         super().__init__()
         self._featureCreatorBase = featureCreatorBase
 
-    def get_features(self, points:Points) -> Features:
+    def get_features(self, iterable:Iterable) -> Features:
         """Gets all the absolute values of the features passed in"""
-        features = self._featureCreatorBase.get_features(points)
+        features = self._featureCreatorBase.get_features(iterable)
         absFeatures = Features()
         for featureVal in features:
             absFeatures.add_feature_val(abs(featureVal))

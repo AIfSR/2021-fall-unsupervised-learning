@@ -1,7 +1,7 @@
 import unittest
 from features.Features import Features
-from features.SignChangeFeatureCreator import SignChangeFeatureCreator
-from features.XFeatureCreator import XFeatureCreator
+from features.genericfeatures.SignChangeFeatureCreator import SignChangeFeatureCreator
+from features.pointsfeatures.XFeatureCreator import XFeatureCreator
 
 from tckfilereader.Point import Point
 from tckfilereader.Points import Points

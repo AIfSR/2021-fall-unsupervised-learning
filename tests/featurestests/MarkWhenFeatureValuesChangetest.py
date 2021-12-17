@@ -1,7 +1,7 @@
 import unittest
 from features.Features import Features
-from features.MarkWhenFeatureValuesChange import MarkWhenFeatureValuesChange
-from features.XFeatureCreator import XFeatureCreator
+from features.genericfeatures.MarkWhenFeatureValuesChange import MarkWhenFeatureValuesChange
+from features.pointsfeatures.XFeatureCreator import XFeatureCreator
 
 from tckfilereader.Point import Point
 from tckfilereader.Points import Points

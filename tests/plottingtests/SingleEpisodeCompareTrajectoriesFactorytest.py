@@ -1,6 +1,6 @@
 import unittest
-from features.XFeatureCreator import XFeatureCreator
-from features.YFeatureCreator import YFeatureCreator
+from features.pointsfeatures.XFeatureCreator import XFeatureCreator
+from features.pointsfeatures.YFeatureCreator import YFeatureCreator
 from featuretosingleval.AverageOfFeature import AverageOfFeature
 from featuretosingleval.MedianOfFeature import MedianOfFeature
 from plotting.GraphParameters import GraphParameters
