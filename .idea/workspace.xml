@@ -20,8 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d10fb0f2-3bc6-46de-9e03-7b62648ecbe5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/features/MSDFeatureCreator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/featurestests/MSDFeatureCreatortest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plotting/SinglePointCompareTrajectories.py" beforeDir="false" afterPath="$PROJECT_DIR$/plotting/SinglePointCompareTrajectories.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilePaths.py" beforeDir="false" afterPath="$PROJECT_DIR$/FilePaths.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/features/RateOfChangeFeatureCreator.py" beforeDir="false" afterPath="$PROJECT_DIR$/features/RateOfChangeFeatureCreator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,11 +58,14 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests/featurestests" />
       <recent name="$PROJECT_DIR$/features" />
+      <recent name="$PROJECT_DIR$/tests/featuretosinglevaltests" />
+      <recent name="$PROJECT_DIR$/featuretosingleval" />
     </key>
   </component>
   <component name="RunManager" selected="Python.Main">
-    <configuration name="ComparePlotsBase" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="FilePaths" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="2021-fall-unsupervised-learning" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -64,11 +73,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/plotting" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/plotting/ComparePlotsBase.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/FilePaths.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -159,10 +168,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.Main" />
+        <item itemvalue="Python.FilePaths" />
         <item itemvalue="Python tests.pytest for PointsDistanceFeatureCreatortest.PointsDistanceFeatureCreatorTest.test_get_features" />
         <item itemvalue="Python.TwoDComparePlots" />
         <item itemvalue="Python.TCKFileReader" />
-        <item itemvalue="Python.ComparePlotsBase" />
       </list>
     </recent_temporary>
   </component>
@@ -180,26 +189,30 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="440" y="270" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1633810461888">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state x="390" y="192" key="#Inspections" timestamp="1644452731283">
+      <screen x="0" y="38" width="1512" height="944" />
     </state>
-    <state x="440" y="270" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.877@0.23.1440.877" timestamp="1633810461888" />
-    <state width="1419" height="229" key="GridCell.Tab.0.bottom" timestamp="1636237372415">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state x="390" y="192" key="#Inspections/0.38.1512.944@0.38.1512.944" timestamp="1644452731283" />
+    <state width="1491" height="248" key="GridCell.Tab.0.bottom" timestamp="1644467258559">
+      <screen x="0" y="38" width="1512" height="944" />
     </state>
     <state width="1419" height="229" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1636237372415" />
-    <state width="1419" height="229" key="GridCell.Tab.0.center" timestamp="1636237372414">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state width="1491" height="248" key="GridCell.Tab.0.bottom/0.38.1512.944@0.38.1512.944" timestamp="1644467258559" />
+    <state width="1491" height="248" key="GridCell.Tab.0.center" timestamp="1644467258558">
+      <screen x="0" y="38" width="1512" height="944" />
     </state>
     <state width="1419" height="229" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1636237372414" />
-    <state width="1419" height="229" key="GridCell.Tab.0.left" timestamp="1636237372414">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state width="1491" height="248" key="GridCell.Tab.0.center/0.38.1512.944@0.38.1512.944" timestamp="1644467258558" />
+    <state width="1491" height="248" key="GridCell.Tab.0.left" timestamp="1644467258558">
+      <screen x="0" y="38" width="1512" height="944" />
     </state>
     <state width="1419" height="229" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1636237372414" />
-    <state width="1419" height="229" key="GridCell.Tab.0.right" timestamp="1636237372415">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state width="1491" height="248" key="GridCell.Tab.0.left/0.38.1512.944@0.38.1512.944" timestamp="1644467258558" />
+    <state width="1491" height="248" key="GridCell.Tab.0.right" timestamp="1644467258559">
+      <screen x="0" y="38" width="1512" height="944" />
     </state>
     <state width="1419" height="229" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1636237372415" />
+    <state width="1491" height="248" key="GridCell.Tab.0.right/0.38.1512.944@0.38.1512.944" timestamp="1644467258559" />
     <state width="1419" height="286" key="GridCell.Tab.1.bottom" timestamp="1636233976865">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
@@ -216,10 +229,10 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="1419" height="286" key="GridCell.Tab.1.right/0.23.1440.877@0.23.1440.877" timestamp="1636233976864" />
-    <state x="278" y="178" key="SettingsEditor" timestamp="1634496481725">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state x="265" y="146" key="SettingsEditor" timestamp="1644452726557">
+      <screen x="0" y="38" width="1512" height="944" />
     </state>
-    <state x="278" y="178" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1634496481725" />
+    <state x="265" y="146" key="SettingsEditor/0.38.1512.944@0.38.1512.944" timestamp="1644452726557" />
     <state x="521" y="382" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1636233910439">
       <screen x="0" y="23" width="1440" height="877" />
     </state>

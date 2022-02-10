@@ -3,6 +3,7 @@ from features.MarkWhenFeatureValuesChange import MarkWhenFeatureValuesChange
 from features.OutlierFeatureCreator import OutlierFeatureCreator
 from features.DeltaFromStartFeatureCreator import DeltaFromStartFeatureCreator 
 from features.ABSFeatureCreator import ABSFeatureCreator
+from features.MSDFeatureCreator import MSDFeatureCreator
 from features.EWAFeatureCreator import EWAFeatureCreator
 from features.EliminatePointsOutsideRangeFeatureCreator import EliminatePointsOutsideRangeFeatureCreator
 from features.FeatureCreatorBase import FeatureCreatorBase
@@ -49,22 +50,31 @@ if __name__ == "__main__":
     # the angle between points as opposed to the average value
     plotFeatures = [
         GraphParameters(
-            xFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())), 
-            yFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), 
-            yLabel = "Average: Y Speed",
-            xLabel = "Average: X Speed"),
+            xFeatureCreator=MSDFeatureCreator(XFeatureCreator()),
+            yFeatureCreator=MSDFeatureCreator(YFeatureCreator())),
         GraphParameters(
-            xFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())), 
-            yFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())), 
-            featuresToSingleVal=MedianOfFeature()),
-        GraphParameters(
-            xFeatureCreator=PointsAngleFeatureCreator(),
-            yFeatureCreator=RateOfChangeFeatureCreator(PointsDistanceFeatureCreator())),    
-        GraphParameters(
-            xFeatureCreator=PointsAngleFeatureCreator()),
-        GraphParameters(
-            xFeatureCreator=PointsAngleFeatureCreator(),
-            featuresToSingleVal=MedianOfFeature()),
+            xFeatureCreator=MSDFeatureCreator(YFeatureCreator()),
+            yFeatureCreator=MSDFeatureCreator(ZFeatureCreator())),
+            GraphParameters(
+            xFeatureCreator=MSDFeatureCreator(XFeatureCreator()),
+            yFeatureCreator=MSDFeatureCreator(ZFeatureCreator())),
+        # GraphParameters(
+        #     xFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())),
+        #     yFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())),
+        #     yLabel = "Average: Y Speed",
+        #     xLabel = "Average: X Speed"),
+        # GraphParameters(
+        #     xFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())),
+        #     yFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())),
+        #     featuresToSingleVal=MedianOfFeature()),
+        # GraphParameters(
+        #     xFeatureCreator=PointsAngleFeatureCreator(),
+        #     yFeatureCreator=RateOfChangeFeatureCreator(PointsDistanceFeatureCreator())),
+        # GraphParameters(
+        #     xFeatureCreator=PointsAngleFeatureCreator()),
+        # GraphParameters(
+        #     xFeatureCreator=PointsAngleFeatureCreator(),
+        #     featuresToSingleVal=MedianOfFeature()),
     ]
     
     def getValidPointsFromFilePaths(filePaths:List[str]) -> List[Points]:
@@ -76,9 +86,15 @@ if __name__ == "__main__":
                 pointsList.append(points)
         return pointsList
     
+    Ballistic_movementPoints = getValidPointsFromFilePaths(FP.Ballistic_movementFilePaths)
+    Confined_diffusionPoints = getValidPointsFromFilePaths(FP.Confined_diffusionFilePaths)
+    Random_walkPoints = getValidPointsFromFilePaths(FP.Random_walkFilePaths)
+    Very_confined_diffusionPoints = getValidPointsFromFilePaths(FP.Very_confined_diffusionFilePaths)
+
     m0Points = getValidPointsFromFilePaths(FP.m0FilePaths)
     m1Points = getValidPointsFromFilePaths(FP.m1FilePaths)
     m2Points = getValidPointsFromFilePaths(FP.m2FilePaths)
+
     
     # Specifies the three different categories of trajectories that are to be 
     # compared and the points list of points associated with each of these treajectory categories
@@ -88,10 +104,17 @@ if __name__ == "__main__":
         ("M2", m2Points),
     ]
 
+    simpleCases = [
+        ("Ballistic Movement", Ballistic_movementPoints),
+        ("Confined Diffusion", Confined_diffusionPoints),
+        ("Random Walk", Random_walkPoints),
+        ("Very Confined_diffusion", Very_confined_diffusionPoints)
+    ]
+
     # Takes all of the points and categories specified above in the stageCategories variable, 
     # and all of the different types of graphs specified above in the plotFeatures variable and 
     # creates all of the desired graphs one at a time.
     singlePoint2DCompareTrajectoriesFactory = SinglePointCompareTrajectoriesFactory()
-    singlePoint2DCompareTrajectoriesFactory.display_plots(plotFeatures, stageCategories)
+    singlePoint2DCompareTrajectoriesFactory.display_plots(plotFeatures, simpleCases)
 
 

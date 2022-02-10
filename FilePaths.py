@@ -1,3 +1,13 @@
+import glob
+import os
+import re
+from os import listdir
+from os.path import isfile, join
+from natsort import natsorted
+
+current_working_dir = os.getcwd()
+path = os.path.dirname(os.path.abspath(__file__))
+
 m0_0h_4hFilePaths = [
     "data/0_4h/M0/2020-08-05_16-45-01,168_.tck",
     "data/0_4h/M0/2020-08-05_17-21-46,888_.tck",
@@ -89,6 +99,39 @@ m2_24h_24hFilePaths = [
     "data/24h_24h/M2/2020-12-11_18-41-12,360_.tck",
     "data/24h_24h/M2/2020-12-11_19-15-07,942_.tck",
 ]
+Ballistic_movementFilePaths = []
+for file in glob.glob(current_working_dir +"/data/Simple_cases/Ballistic_movement/trajectories/*.tck"):
+    Ballistic_movementFilePaths.append(file)
+for index, txtfile in enumerate(Ballistic_movementFilePaths):
+        Ballistic_movementFilePaths[index] = txtfile.replace(current_working_dir + "/","")
+Ballistic_movementFilePaths.sort(key=lambda test_string : list(
+    map(int, re.findall(r'\d+', test_string)))[0])
+
+Confined_diffusionFilePaths = []
+for file in glob.glob(current_working_dir +"/data/Simple_cases/Confined_diffusion/trajectories/*.tck"):
+    Confined_diffusionFilePaths.append(file)
+for index, txtfile in enumerate(Confined_diffusionFilePaths):
+        Confined_diffusionFilePaths[index] = txtfile.replace(current_working_dir + "/","")
+Confined_diffusionFilePaths.sort(key=lambda test_string : list(
+    map(int, re.findall(r'\d+', test_string)))[0])
+
+
+Random_walkFilePaths = []
+for file in glob.glob(current_working_dir +"/data/Simple_cases/Random_walk/trajectories/*.tck"):
+    Random_walkFilePaths.append(file)
+for index, txtfile in enumerate(Random_walkFilePaths):
+        Random_walkFilePaths[index] = txtfile.replace(current_working_dir + "/","")
+Random_walkFilePaths.sort(key=lambda test_string : list(
+    map(int, re.findall(r'\d+', test_string)))[0])
+
+Very_confined_diffusionFilePaths = []
+for file in glob.glob(current_working_dir +"/data/Simple_cases/Very_confined_diffusion/trajectories/*.tck"):
+    Very_confined_diffusionFilePaths.append(file)
+for index, txtfile in enumerate(Very_confined_diffusionFilePaths):
+        Very_confined_diffusionFilePaths[index] = txtfile.replace(current_working_dir + "/","")
+Very_confined_diffusionFilePaths.sort(key=lambda test_string : list(
+    map(int, re.findall(r'\d+', test_string)))[0])
+
 
 m2FilePaths = m2_0h_4hFilePaths[:]
 m2FilePaths.extend(m2_0h_24hFilePaths[:])
