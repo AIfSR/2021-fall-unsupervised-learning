@@ -6,6 +6,7 @@ from plotting.ComparePlotsBase import ComparePlotsBase
 from plotting.GraphParameters import GraphParameters
 from plotting.singlepointcomparetrajectories.SinglePoint1DCompareTrajectories import SinglePoint1DCompareTrajectories
 from plotting.singlepointcomparetrajectories.SinglePoint2DCompareTrajectories import SinglePoint2DCompareTrajectories
+from plotting.singlepointcomparetrajectories.SinglePoint3DCompareTrajectories import SinglePoint3DCompareTrajectories
 from tckfilereader.Points import Points
 
 
@@ -22,7 +23,9 @@ class SinglePointCompareTrajectoriesFactory (ComparePlotsBase):
         """Gets the right object to display the plots passed in."""
         if graphParameter.yFeatureCreator is None:
             return SinglePoint1DCompareTrajectories()
-        return SinglePoint2DCompareTrajectories()
+        if graphParameter.zFeatureCreator is None:
+            return SinglePoint2DCompareTrajectories()
+        return SinglePoint3DCompareTrajectories()
 
     def _update_graph_parameters(self, graphParameter:GraphParameters) -> None:
         """Updates the graph parameters with the necessary information it may not have."""
@@ -32,6 +35,7 @@ class SinglePointCompareTrajectoriesFactory (ComparePlotsBase):
             graphParameter.xLabel = str(graphParameter.featuresToSingleVal) + " " + str(graphParameter.xFeatureCreator)
         if graphParameter.yFeatureCreator is not None and graphParameter.yLabel is None:
             graphParameter.yLabel = str(graphParameter.featuresToSingleVal) + " " + str(graphParameter.yFeatureCreator)
+        if graphParameter.zFeatureCreator is not None and graphParameter.zLabel is None:
+            graphParameter.zLabel = str(graphParameter.featuresToSingleVal) + " " + str(graphParameter.zFeatureCreator)
         
 
-        

@@ -4,6 +4,7 @@ from features.OutlierFeatureCreator import OutlierFeatureCreator
 from features.DeltaFromStartFeatureCreator import DeltaFromStartFeatureCreator 
 from features.ABSFeatureCreator import ABSFeatureCreator
 from features.MSDFeatureCreator import MSDFeatureCreator
+from features.ThreeDMSDFeatureCreator import ThreeDMSDFeatureCreator
 from features.EWAFeatureCreator import EWAFeatureCreator
 from features.EliminatePointsOutsideRangeFeatureCreator import EliminatePointsOutsideRangeFeatureCreator
 from features.FeatureCreatorBase import FeatureCreatorBase
@@ -49,15 +50,22 @@ if __name__ == "__main__":
     # plots one dimension in the form of a boxplot but in this case it is taking the median value of 
     # the angle between points as opposed to the average value
     plotFeatures = [
+        # GraphParameters(
+        #     xFeatureCreator=ThreeDMSDFeatureCreator(XFeatureCreator(),YFeatureCreator(),ZFeatureCreator()),
+        #     yFeatureCreator=(TFeatureCreator())),
+        # GraphParameters(
+        #     xFeatureCreator=MSDFeatureCreator(XFeatureCreator()),
+        #     yFeatureCreator=MSDFeatureCreator(YFeatureCreator()),
+        #     zFeatureCreator=MSDFeatureCreator(ZFeatureCreator())),
         GraphParameters(
             xFeatureCreator=MSDFeatureCreator(XFeatureCreator()),
             yFeatureCreator=MSDFeatureCreator(YFeatureCreator())),
-        GraphParameters(
-            xFeatureCreator=MSDFeatureCreator(YFeatureCreator()),
-            yFeatureCreator=MSDFeatureCreator(ZFeatureCreator())),
-            GraphParameters(
-            xFeatureCreator=MSDFeatureCreator(XFeatureCreator()),
-            yFeatureCreator=MSDFeatureCreator(ZFeatureCreator())),
+        # GraphParameters(
+        #     xFeatureCreator=MSDFeatureCreator(YFeatureCreator()),
+        #     yFeatureCreator=MSDFeatureCreator(ZFeatureCreator())),
+        #     GraphParameters(
+        #     xFeatureCreator=MSDFeatureCreator(XFeatureCreator()),
+        #     yFeatureCreator=MSDFeatureCreator(ZFeatureCreator())),
         # GraphParameters(
         #     xFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(XFeatureCreator())),
         #     yFeatureCreator=ABSFeatureCreator(RateOfChangeFeatureCreator(YFeatureCreator())),
@@ -116,5 +124,6 @@ if __name__ == "__main__":
     # creates all of the desired graphs one at a time.
     singlePoint2DCompareTrajectoriesFactory = SinglePointCompareTrajectoriesFactory()
     singlePoint2DCompareTrajectoriesFactory.display_plots(plotFeatures, simpleCases)
+
 
 

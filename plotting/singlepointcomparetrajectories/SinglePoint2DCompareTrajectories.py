@@ -37,6 +37,7 @@ class SinglePoint2DCompareTrajectories (ComparePlotsBase):
         ax_scatter.set_xlabel(xLabel)
         fig.suptitle(self._get_graph_title(categories, yLabel, xLabel))
         fig.legend(prop={"size":20})
+
         
 
     def _create_graph_and_histogram_sections(self, categories:List[Tuple[str,List[Points]]]) -> Tuple[Axes, Dict]:
@@ -104,7 +105,8 @@ class SinglePoint2DCompareTrajectories (ComparePlotsBase):
                 yAvgOfFeature = featuresToSingleVal.get_val(yFeature)
                 xPointsAverages.append(xAvgOfFeature)
                 yPointsAverages.append(yAvgOfFeature)
-            
+                print(xAvgOfFeature,yAvgOfFeature)
+
             s = ax_scatter.scatter(xPointsAverages, yPointsAverages, label=name)
             pointsPlotted.append((name, xPointsAverages, yPointsAverages, s.get_ec()))
 

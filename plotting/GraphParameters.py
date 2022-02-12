@@ -9,11 +9,13 @@ from featuretosingleval.FeatureToSingleValBase import FeatureToSingleValBase
 class GraphParameters:
     """This is just a data class that holds all of the parameters of a two dimensional graph"""
 
-    def __init__(self, xFeatureCreator:FeatureCreatorBase, yFeatureCreator:FeatureCreatorBase=None, xLabel:str=None, yLabel:str=None, featuresToSingleVal:FeatureToSingleValBase=None) -> None:
+    def __init__(self, xFeatureCreator:FeatureCreatorBase, yFeatureCreator:FeatureCreatorBase=None, zFeatureCreator:FeatureCreatorBase=None, xLabel:str=None, yLabel:str=None, zLabel:str=None, featuresToSingleVal:FeatureToSingleValBase=None) -> None:
         self.xFeatureCreator = xFeatureCreator
         self.yFeatureCreator = yFeatureCreator
+        self.zFeatureCreator = zFeatureCreator
         self.xLabel = xLabel
         self.yLabel = yLabel
+        self.zLabel = zLabel
         self.featuresToSingleVal = featuresToSingleVal or AverageOfFeature()
 
     def __eq__(self, o: GraphParameters) -> bool:
@@ -22,7 +24,10 @@ class GraphParameters:
         return (
             type(self.xFeatureCreator) == type(o.xFeatureCreator) and
             type(self.yFeatureCreator) == type(o.yFeatureCreator) and
+            type(self.zFeatureCreator) == type(o.zFeatureCreator) and
             type(self.featuresToSingleVal) == type(o.featuresToSingleVal) and
             self.xLabel == o.xLabel and
-            self.yLabel == o.yLabel 
+            self.yLabel == o.yLabel and
+            self.zLabel == o.zLabel
         )
+
